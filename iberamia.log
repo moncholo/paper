@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2017.7.8)  23 SEP 2017 12:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2017.7.8)  23 SEP 2017 12:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -391,7 +391,7 @@ LaTeX Info: Redefining \nameref on input line 64.
 \@outlinefile=\write3
 \openout3 = `iberamia.out'.
 
-<logo.jpg, id=91, 557.08125pt x 562.1pt>
+<logo.jpg, id=107, 557.08125pt x 562.1pt>
 File: logo.jpg Graphic file (type jpg)
 <use logo.jpg>
 Package pdftex.def Info: logo.jpg  used on input line 93. on input line 93.
@@ -437,60 +437,69 @@ Underfull \hbox (badness 10000) in paragraph at lines 209--211
  []
 
 [126]
-<paq.png, id=175, 488.82625pt x 90.3375pt>
+<paq.png, id=192, 488.82625pt x 90.3375pt>
 File: paq.png Graphic file (type png)
 <use paq.png>
 Package pdftex.def Info: paq.png  used on input line 242. on input line 242.
 Package pdftex.def Info: Requested size: 488.82504pt x 90.33727pt on input line
  242.
+ [127]
+Underfull \hbox (badness 10000) in paragraph at lines 254--257
+
+ []
 
 
-LaTeX Warning: Citation `pearl1984' on page 127 undefined on input line 250.
+Underfull \hbox (badness 10000) in paragraph at lines 257--259
+
+ []
+
+[128 <./paq.png>]
+
+LaTeX Warning: Citation `pearl1984' on page 129 undefined on input line 300.
 
 
-LaTeX Warning: Citation `hartetal1968' on page 127 undefined on input line 250.
+LaTeX Warning: Citation `hartetal1968' on page 129 undefined on input line 300.
 
 
 
-LaTeX Warning: Citation `korf1985' on page 127 undefined on input line 250.
+LaTeX Warning: Citation `korf1985' on page 129 undefined on input line 300.
 
 
-LaTeX Warning: Citation `oetikeretal2008' on page 127 undefined on input line 2
-51.
+LaTeX Warning: Citation `oetikeretal2008' on page 129 undefined on input line 3
+01.
 
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 253.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 303.
 
-LaTeX Warning: Citation `vovk2007' on page 127 undefined on input line 254.
+LaTeX Warning: Citation `vovk2007' on page 129 undefined on input line 304.
 
 
-LaTeX Warning: Citation `oetikeretal2008' on page 127 undefined on input line 2
-55.
+LaTeX Warning: Citation `oetikeretal2008' on page 129 undefined on input line 3
+05.
 
-[127]
-<print-doi.jpg, id=189, 704.6325pt x 530.98375pt>
+<print-doi.jpg, id=213, 704.6325pt x 530.98375pt>
 File: print-doi.jpg Graphic file (type jpg)
 <use print-doi.jpg>
-Package pdftex.def Info: print-doi.jpg  used on input line 282. on input line 2
-82.
+Package pdftex.def Info: print-doi.jpg  used on input line 332. on input line 3
+32.
 Package pdftex.def Info: Requested size: 704.6308pt x 530.98244pt on input line
- 282.
-<home-doi.jpg, id=190, 608.2725pt x 339.2675pt>
+ 332.
+<home-doi.jpg, id=214, 608.2725pt x 339.2675pt>
 File: home-doi.jpg Graphic file (type jpg)
 <use home-doi.jpg>
-Package pdftex.def Info: home-doi.jpg  used on input line 290. on input line 29
+Package pdftex.def Info: home-doi.jpg  used on input line 340. on input line 34
 0.
 Package pdftex.def Info: Requested size: 608.27103pt x 339.26666pt on input lin
-e 290.
- [128 <./paq.png>] [129 <./print-doi.jpg> <./home-doi.jpg>]
-(./iberamia.bbl [130]) AED: lastpage setting LastPage [131]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 374.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 374.
+e 340.
+[129] [130 <./print-doi.jpg> <./home-doi.jpg>] (./iberamia.bbl [131])
+AED: lastpage setting LastPage [132]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 424.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 424.
  (./iberamia.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 374.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 374.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 424.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 424.
 Package rerunfilecheck Info: File `iberamia.out' has not changed.
-(rerunfilecheck)             Checksum: CCDB24C6FA33EBD8733516DEC0E55DE2;1340.
+(rerunfilecheck)             Checksum: BB4CA99E13146F9DC98AEA1FEEB97A40;1643.
 
 
 LaTeX Warning: There were undefined references.
@@ -500,10 +509,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 7719 strings out of 492990
- 108656 string characters out of 6136335
- 218441 words of memory out of 5000000
- 11095 multiletter control sequences out of 15000+600000
+ 7732 strings out of 492990
+ 108870 string characters out of 6136335
+ 218508 words of memory out of 5000000
+ 11101 multiletter control sequences out of 15000+600000
  12548 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  30i,17n,43p,1001b,501s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -522,10 +531,10 @@ ts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2017/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmr9.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmsy10.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
 i10.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on iberamia.pdf (9 pages, 477063 bytes).
+Output written on iberamia.pdf (10 pages, 488939 bytes).
 PDF statistics:
- 284 PDF objects out of 1000 (max. 8388607)
- 249 compressed objects within 3 object streams
- 62 named destinations out of 1000 (max. 500000)
- 181 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 309 PDF objects out of 1000 (max. 8388607)
+ 273 compressed objects within 3 object streams
+ 69 named destinations out of 1000 (max. 500000)
+ 213 words of extra memory for PDF output out of 10000 (max. 10000000)
 

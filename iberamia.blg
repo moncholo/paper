@@ -23,6 +23,8 @@ Warning--entry type for "Maas" isn't style-file defined
 --line 271 of file References.bib
 Warning--entry type for "Gregor" isn't style-file defined
 --line 285 of file References.bib
+Warning--entry type for "Chierichetti" isn't style-file defined
+--line 305 of file References.bib
 Warning--entry type for "Karpathy" isn't style-file defined
 --line 319 of file References.bib
 Warning--entry type for "Hutter" isn't style-file defined
@@ -41,45 +43,45 @@ Warning--I didn't find a database entry for "vovk2007"
 Warning--to sort, need author or key in Hutter
 Warning--empty year in Bown
 Warning--empty publisher in InverseSampling
-You've used 21 entries,
+You've used 23 entries,
             2118 wiz_defined-function locations,
-            619 strings with 6673 characters,
-and the built_in function-call counts, 5502 in all, are:
-= -- 483
-> -- 282
+            631 strings with 6945 characters,
+and the built_in function-call counts, 6113 in all, are:
+= -- 538
+> -- 318
 < -- 2
-+ -- 117
-- -- 92
-* -- 313
-:= -- 906
-add.period$ -- 53
-call.type$ -- 21
-change.case$ -- 107
++ -- 131
+- -- 104
+* -- 355
+:= -- 1009
+add.period$ -- 58
+call.type$ -- 23
+change.case$ -- 119
 chr.to.int$ -- 0
-cite$ -- 24
-duplicate$ -- 184
-empty$ -- 486
-format.name$ -- 92
-if$ -- 1158
+cite$ -- 26
+duplicate$ -- 202
+empty$ -- 534
+format.name$ -- 104
+if$ -- 1284
 int.to.chr$ -- 0
-int.to.str$ -- 21
-missing$ -- 8
-newline$ -- 98
-num.names$ -- 40
-pop$ -- 190
+int.to.str$ -- 23
+missing$ -- 9
+newline$ -- 107
+num.names$ -- 44
+pop$ -- 204
 preamble$ -- 1
-purify$ -- 88
+purify$ -- 98
 quote$ -- 0
-skip$ -- 177
+skip$ -- 195
 stack$ -- 0
-substring$ -- 185
-swap$ -- 31
+substring$ -- 216
+swap$ -- 33
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 80
+type$ -- 88
 warning$ -- 3
-while$ -- 44
-width$ -- 23
-write$ -- 191
-(There were 23 warnings)
+while$ -- 49
+width$ -- 25
+write$ -- 209
+(There were 24 warnings)

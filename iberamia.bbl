@@ -11,6 +11,10 @@ Oliver Bown and Sebastian Lexer.
   Computing. EvoWorkshops 2006}, volume 3907, pages 652--663, Springer, Berlin,
   Heidelberg.
 
+\bibitem{Chierichetti}
+Flavio Chierichetti, Ravi Kumar, Sandeep Pandey, and Sergei Vassilvitskii.
+\newblock Finding the jaccard median.
+
 \bibitem{Cilibrasi}
 Rudi Cilibrasi and Paul Vitanyi.
 \newblock Clustering by compression.
@@ -31,6 +35,11 @@ Arthur Franz.
 \bibitem{Gers}
 Felix Gers, Jürgen Schmidhuber, and Fred Cummins.
 \newblock Learning to forget: Continual prediction with lstm, January 1999.
+
+\bibitem{Variation}
+Alison~L. Gibbs and Francis~Edward Su.
+\newblock On choosing and bounding probability metrics.
+\newblock {\em International Statistical Review}, 70:419--435, September 2002.
 
 \bibitem{Graves}
 Alex Graves.

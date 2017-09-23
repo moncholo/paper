@@ -245,6 +245,56 @@ When data set compression is over, PAQ is ready to generate text. A random numbe
 	\end{center}
 \end{figure}
 
+Once that bit is generated, it will be compressed to reset every context for the following prediction. Here, it is essential to update models in a way that if the same context is obteined in two different samples, probabilities must be the same, otherwise it could compute and propagate errors. Seeing that, it was necessary to turn off the training process and the weight adjustment of each model at generation time. This was also possible because the source code of PAQ is available.
+
+It was noted that granting too much freedom to our compressor could result in a large accumulation of bad predictions, leading to poor text generation. Therefore, it is proposed to make the text generation more conservative adding a parameter called ?temperature? that reduces the possible range of the random number.
+
+On maximum temperature, the random number will be generated in the interval [0,1), giving the compressor maximum degree of freedom to make mistakes, whereas, when the temperature parameter turns minimum, the ?random? number will always be 0.5, removing the degree of freedom to commit errors (in this scenario, the highest probability symbol will be generated). 
+
+When temperature is around 0.5 the results are very legible even if they are not as similar to the original text (according to the proposed metrics). It can be seen at the following randomly generated Harry Potter's snippet:
+\newline
+\begin{displayquote}
+	\textit{``What happened?''  said Harry, and she was standing at him.  ``He is short, and continued to take the shallows, and the three before he did something to happen again.  Harry could hear him.  He was shaking his head, and then to the castle, and the golden thread broke; he should have been a back at him, and the common room, and as he should have to the good one that had been conjured her that the top of his wand too before he said and the looking at him, and he was shaking his head and the many of the giants who would be hot and leafy, its flower beds turned into the song.}
+	\newline
+\end{displayquote}
+
+\subsection{Metrics}
+
+A simple transformation is applied to each text in order to compute metrics. It consists in counting the number of occurrences of each n-gram in the input (i.e. every time a n-gram ?WXYZ? is detected, it increases its number of occurrences). 
+Then three different metrics were considered:
+
+\subsubsection{Pearson's Chi-Squared}
+
+How likely it is that any observed difference between the sets arose by chance. The chi-square is computed as:
+
+$$
+\mathcal{X}^2 = \sum_{i=1}^{n} \frac{(O_i - E_i)^2}{E_i}
+$$
+
+Where $O_i$ is the observed ith value and $E_i$ is the expected ith value. A value of 0 means equality.
+
+\subsubsection{Total Variation}
+
+Each n-gram?s observed frequency can be denoted like a probability if it is divided by the sum of all frequencies, P(i) on the real text and Q(i) on the generated one. 
+Total variation distance \cite{Variation} can be computed according to the following formula:
+
+$$
+\delta(P,Q) = \frac{1}{2} \sum_{i=1}^{n} |P_i - Q_i| 
+$$
+
+In other words, the total variation distance is the largest possible difference between the probabilities that two probability distributions can assign to the same event. A value of 0 means equality.
+
+\subsubsection{Generalized Jaccard Similarity}
+
+It is the size of the intersection divided by the size of the union of the sample sets \cite{Chierichetti}. Jaccard Similarity is computed using the following formula:
+
+$$
+J(G,T) = \frac{G \cap T}{G \cup T}
+$$
+
+A value of 1 means both texts are equals.
+
+
 \section{References}
 References should be clear and complete. Sample references are these
 \cite{pearl1984} \cite{hartetal1968} \cite{korf1985} and this one
