@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2017.7.8)  23 SEP 2017 12:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2017.7.8)  23 SEP 2017 13:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -328,20 +328,20 @@ LaTeX Warning: Label `tab:sample' multiply defined.
 )
 \openout1 = `iberamia.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
  (c:/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count120
@@ -373,7 +373,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box29
-Package hyperref Info: Link coloring OFF on input line 64.
+Package hyperref Info: Link coloring OFF on input line 63.
 
 (c:/texlive/2017/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -383,230 +383,187 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count126
 )
-LaTeX Info: Redefining \ref on input line 64.
-LaTeX Info: Redefining \pageref on input line 64.
-LaTeX Info: Redefining \nameref on input line 64.
+LaTeX Info: Redefining \ref on input line 63.
+LaTeX Info: Redefining \pageref on input line 63.
+LaTeX Info: Redefining \nameref on input line 63.
 
 (./iberamia.out) (./iberamia.out)
 \@outlinefile=\write3
 \openout3 = `iberamia.out'.
 
-<logo.jpg, id=115, 557.08125pt x 562.1pt>
+<logo.jpg, id=99, 557.08125pt x 562.1pt>
 File: logo.jpg Graphic file (type jpg)
 <use logo.jpg>
-Package pdftex.def Info: logo.jpg  used on input line 93. on input line 93.
+Package pdftex.def Info: logo.jpg  used on input line 92. on input line 92.
 Package pdftex.def Info: Requested size: 557.0799pt x 562.09863pt on input line
- 93.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 93.
+ 92.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 92.
 
 (c:/texlive/2017/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/bx/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 93.
+(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 92.
  [123{c:/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
  <./logo.jpg>]
-LaTeX Font Info:    Try loading font information for U+msa on input line 100.
+LaTeX Font Info:    Try loading font information for U+msa on input line 99.
 
 (c:/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 100.
+LaTeX Font Info:    Try loading font information for U+msb on input line 99.
 
 (c:/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [124] [125]
-Underfull \hbox (badness 10000) in paragraph at lines 196--199
+Underfull \hbox (badness 10000) in paragraph at lines 195--198
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 199--201
+Underfull \hbox (badness 10000) in paragraph at lines 198--200
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 204--207
+Underfull \hbox (badness 10000) in paragraph at lines 203--206
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 209--211
+Underfull \hbox (badness 10000) in paragraph at lines 208--210
 
  []
 
 [126]
-<paq.png, id=200, 488.82625pt x 90.3375pt>
+<paq.png, id=184, 488.82625pt x 90.3375pt>
 File: paq.png Graphic file (type png)
 <use paq.png>
-Package pdftex.def Info: paq.png  used on input line 242. on input line 242.
+Package pdftex.def Info: paq.png  used on input line 241. on input line 241.
 Package pdftex.def Info: Requested size: 488.82504pt x 90.33727pt on input line
- 242.
- [127]
-Underfull \hbox (badness 10000) in paragraph at lines 254--257
+ 241.
+ [127 <./paq.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 253--256
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 257--259
+Underfull \hbox (badness 10000) in paragraph at lines 256--258
 
  []
 
-[128 <./paq.png>]
-<temp.png, id=218, 1244.65pt x 698.61pt>
+[128]
+<temp.png, id=202, 1244.65pt x 698.61pt>
 File: temp.png Graphic file (type png)
 <use temp.png>
-Package pdftex.def Info: temp.png  used on input line 302. on input line 302.
+Package pdftex.def Info: temp.png  used on input line 301. on input line 301.
 Package pdftex.def Info: Requested size: 1244.64696pt x 698.60829pt on input li
-ne 302.
+ne 301.
 
-Underfull \hbox (badness 10000) in paragraph at lines 313--316
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 326--328
+Underfull \hbox (badness 10000) in paragraph at lines 312--315
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 326--328
+Underfull \hbox (badness 10000) in paragraph at lines 325--327
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 326--328
+Underfull \hbox (badness 10000) in paragraph at lines 325--327
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 325--327
 
  []
 
 [129 <./temp.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 330--333
+Underfull \hbox (badness 10000) in paragraph at lines 329--332
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 351--353
+Underfull \hbox (badness 10000) in paragraph at lines 350--352
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 351--353
+Underfull \hbox (badness 10000) in paragraph at lines 350--352
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 351--353
+Underfull \hbox (badness 10000) in paragraph at lines 350--352
 
  []
 
-<chiseed.png, id=228, 1244.65pt x 698.61pt>
+<chiseed.png, id=212, 1244.65pt x 698.61pt>
 File: chiseed.png Graphic file (type png)
 <use chiseed.png>
-Package pdftex.def Info: chiseed.png  used on input line 360. on input line 360
+Package pdftex.def Info: chiseed.png  used on input line 359. on input line 359
 .
 Package pdftex.def Info: Requested size: 1244.64696pt x 698.60829pt on input li
-ne 360.
+ne 359.
 
-Underfull \hbox (badness 10000) in paragraph at lines 367--381
+Underfull \hbox (badness 10000) in paragraph at lines 366--380
 
  []
 
 
-Overfull \hbox (2.5178pt too wide) in paragraph at lines 367--381
+Overfull \hbox (2.5178pt too wide) in paragraph at lines 366--380
 \OT1/cmr/m/it/10 CHAPTER THIRTY-SEVEN - THE GOB-LET OF LORD VOLDE-MORT OF THE F
 IRE-BOLT MARE!" 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 367--381
+Underfull \hbox (badness 10000) in paragraph at lines 366--380
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 367--381
+Underfull \hbox (badness 10000) in paragraph at lines 366--380
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 367--381
+Underfull \hbox (badness 10000) in paragraph at lines 366--380
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 367--381
+Underfull \hbox (badness 10000) in paragraph at lines 366--380
 
  []
 
-[130 <./chiseed.png>]
+[130 <./chiseed.png>] [131]
+Underfull \vbox (badness 2478) has occurred while \output is active []
 
-LaTeX Warning: Citation `pearl1984' on page 131 undefined on input line 391.
+ [132]
+(./iberamia.bbl [133]) AED: lastpage setting LastPage [134] [135]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 539.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 539.
 
-
-LaTeX Warning: Citation `hartetal1968' on page 131 undefined on input line 391.
-
-
-
-LaTeX Warning: Citation `korf1985' on page 131 undefined on input line 391.
-
-
-LaTeX Warning: Citation `oetikeretal2008' on page 131 undefined on input line 3
-92.
-
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 394.
-
-LaTeX Warning: Citation `vovk2007' on page 131 undefined on input line 395.
-
-
-LaTeX Warning: Citation `oetikeretal2008' on page 131 undefined on input line 3
-96.
-
-<print-doi.jpg, id=238, 704.6325pt x 530.98375pt>
-File: print-doi.jpg Graphic file (type jpg)
-<use print-doi.jpg>
-Package pdftex.def Info: print-doi.jpg  used on input line 423. on input line 4
-23.
-Package pdftex.def Info: Requested size: 704.6308pt x 530.98244pt on input line
- 423.
-<home-doi.jpg, id=239, 608.2725pt x 339.2675pt>
-File: home-doi.jpg Graphic file (type jpg)
-<use home-doi.jpg>
-Package pdftex.def Info: home-doi.jpg  used on input line 431. on input line 43
-1.
-Package pdftex.def Info: Requested size: 608.27103pt x 339.26666pt on input lin
-e 431.
-[131] [132 <./print-doi.jpg> <./home-doi.jpg>] (./iberamia.bbl [133])
-AED: lastpage setting LastPage [134]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 515.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 515.
- (./iberamia.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 515.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 515.
-
-
-Package rerunfilecheck Warning: File `iberamia.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `iberamia.out':
-(rerunfilecheck)             Before: 535FDDEA7AD7566E33D79AE7BAA97480;1763
-(rerunfilecheck)             After:  3F8D97C0B815C18AC35EE78634571161;1827.
-
-LaTeX Warning: There were undefined references.
+(./iberamia.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 539.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 539.
+Package rerunfilecheck Info: File `iberamia.out' has not changed.
+(rerunfilecheck)             Checksum: 4F41131B9BCD77074491D4BD7EEDB156;1448.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 7753 strings out of 492990
- 109131 string characters out of 6136335
- 218947 words of memory out of 5000000
- 11114 multiletter control sequences out of 15000+600000
- 12548 words of font info for 48 fonts, out of 8000000 for 9000
+ 7734 strings out of 492990
+ 108880 string characters out of 6136335
+ 231185 words of memory out of 5000000
+ 11098 multiletter control sequences out of 15000+600000
+ 12380 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 30i,17n,43p,1001b,501s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 30i,17n,43p,1001b,508s stack positions out of 5000i,500n,10000p,200000b,80000s
 <c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy8.pfb><c
 :/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive
 /2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2017/tex
@@ -621,11 +578,11 @@ mf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2017/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2017/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmr9.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmsy10.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
-i10.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on iberamia.pdf (12 pages, 566596 bytes).
+i10.pfb>
+Output written on iberamia.pdf (13 pages, 390545 bytes).
 PDF statistics:
- 335 PDF objects out of 1000 (max. 8388607)
- 293 compressed objects within 3 object streams
+ 318 PDF objects out of 1000 (max. 8388607)
+ 278 compressed objects within 3 object streams
  76 named destinations out of 1000 (max. 500000)
- 239 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 197 words of extra memory for PDF output out of 10000 (max. 10000000)
 

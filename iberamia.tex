@@ -54,8 +54,7 @@
 \author{Juan Andrés Laura, Gabriel Omar Masi, Luis Argerich
 \smallskip \\
 \small{Departemento de Computación,
-	Facultad de Ingeniería. Universidad de Buenos Aires\\
-please@do.not.include.email
+	Facultad de Ingeniería. Universidad de Buenos Aires
 \smallskip \\
 jandreslaura@gmail.com, masigabriel@gmail.com, largerich@fi.uba.ar 
 }}
@@ -386,125 +385,150 @@ While the text may not make sense it certainly follows the style, syntax and wri
 
 The result of both, PAQ and Karpathy's RNN, for automatic text generation using the mentioned metrics to evaluate how much similar the results are to the original ones.
 
-\section{References}
-References should be clear and complete. Sample references are these
-\cite{pearl1984} \cite{hartetal1968} \cite{korf1985} and this one
-\cite{oetikeretal2008}. Do not forget to include DOI numbers in your
-references when available. You can associate hyperlinks to DOI numbers
-in \LaTeX using the \textbackslash doi command, see for example
-\cite{vovk2007}. Please, pay attention to the difference with
-\cite{oetikeretal2008} that explicitly includes a URL, and not a DOI
-reference. See below the format of references. \LaTeX users are
-encouraged to use Bibtex.
+\subsubsection{Local similarity}
+It can be seen that the compressor got better results for all texts except Poe, Shakespeare and Game of Thrones. A subtle reason why the RNN got better results in such texts is explained in the conclusions.
 
-\subsection{What is a DOI?}
-The DOI (Digital Object Identifier) is a unique identifier assigned by
-publishers to electronically published items (books, journal papers,
-etc.) The DOI system provides a framework for persistent
-identification. The physical location of a digital object may change
-over time, but its DOI name will not change. Currently, a DOI number
-can be resolved prefixing http://dx.doi.org/ to the DOI. Therefore
-links of the form http://dx.doi.org/[DOI] are expected to work
-properly over time, regardless of the physical location changes of the
-referenced items. To learn more about the DOI see
-\url{http://www.doi.org}
 
-\subsection{Where can I find the DOI of my references?}
-DOI numbers should appear explicitly in the first page of printed
-journal papers, either at the top or bottom of the page, like in
-figure \ref{fig:print-doi}. Electronic journals display DOI numbers in
-the papers access or home pages, like in figure \ref{fig:home-doi}. If
-you cannot find the DOI of a reference at first sight it probably does
-not have one, so do not worry. Many articles do not have DOI numbers
-assigned (specially older ones).
 
-\begin{figure}
-  \begin{center}
-    \includegraphics[angle=0,width=0.7\textwidth]{print-doi}
-    \caption{DOI in a printed document.}
-    \label{fig:print-doi}
- \end{center}
-\end{figure}
+\begin{table}[hb]
+	\begin{center}
+		{\caption{Chi Squared Results (lower value is better).}\label{tab:localchi}}
+		\begin{tabular}{|l|l|l|}\hline
+			&\textbf{PAQ8L} & \textbf{RNN}\\ \hline
+			Game of Thrones & 47790 & \textbf{44935} \\ 
+			Harry Potter & \textbf{46195} & 83011 \\
+			Paulo Coelho & \textbf{45821} & 86854 \\
+			Bible & \textbf{47833} & 52898 \\
+			Poe & 	61945 & \textbf{57022} \\
+			Shakespeare & \textbf{60585} & 84858 \\
+			Math Collection & \textbf{84758} & 135798 \\
+			War and Peace & \textbf{46699} & 47590 \\
+			Linux Kernel & \textbf{136058} & 175293 \\ \hline
+		\end{tabular}
+	\end{center}
+\end{table}
 
-\begin{figure}
-  \begin{center}
-    \includegraphics[angle=0,width=0.7\textwidth]{home-doi}
-    \caption{DOI in a document available on the Web.}
-    \label{fig:home-doi}
- \end{center}
-\end{figure}
+\begin{table}[hb]
+	\begin{center}
+		{\caption{Total Variation \%(lower value is better).}\label{tab:localtotal}}
+		\begin{tabular}{|l|l|l|}\hline
+			&\textbf{PAQ8L} & \textbf{RNN}\\ \hline
+			Game of Thrones & 25.21 & \textbf{24.59} \\
+			Harry Potter & \textbf{25.58} & 37.40 \\
+			Paulo Coelho & \textbf{25.15} & 34.80 \\
+			Bible &  \textbf{25.15} & 25.88 \\
+			Poe & 30.23 & \textbf{27.88} \\
+			Shakespeare & \textbf{27.94} & 30.71\\
+			Math Collection & \textbf{31.05} & 35.85 \\
+			War and Peace & \textbf{24.63} & 25.07 \\
+			Linux Kernel & \textbf{44.74} & 45.22 \\ \hline
+		\end{tabular}
+	\end{center}
+\end{table}
 
-\subsection{Why is it important to include DOI numbers in references
-  (when available)?}
+\begin{table}[hb]
+	\begin{center}
+		{\caption{Jaccard Similarity (higher is better).}\label{tab:localjaccard}}
+		\begin{tabular}{|l|l|l|}\hline
+			&\textbf{PAQ8L} & \textbf{RNN}\\ \hline
+			Game of Thrones & 0.06118 & \textbf{0.0638} \\
+			Harry Potter &  \textbf{0.1095} & 0.0387 \\
+			Paulo Coelho &  \textbf{0.0825} & 0.0367 \\
+			Bible &  \textbf{0.1419} & 0.1310 \\
+			Poe & 	0.0602 & \textbf{0.0605} \\
+			Shakespeare & 0.0333 & \textbf{0.04016} \\
+			Math Collection & \textbf{0.21} & 0.1626 \\
+			War and Peace & \textbf{0.0753} & 0.0689 \\
+			Linux Kernel & \textbf{0.0738} & 0.0713 \\ \hline
+		\end{tabular}
+	\end{center}
+\end{table}
 
-New papers published by Inteligencia Artificial are assigned a DOI
-number as a free service to their authors. Documents receiving a DOI
-are expected to include DOI numbers in their own references.
+\subsubsection{Global similarity}
+The Recurrent Neural Network got better results in global contexts. The results are shown in the following tables:
 
-Including DOI numbers in your references (when available) will make
-your paper more useful and comfortable to read for readers and
-reviewers. If you are a \LaTeX user and include DOI numbers as
-explained above, the related hyperlinks will be added automatically to
-your document.
 
-\section{Journal Scope}
-Inteligencia Artificial is a quarterly journal promoted and sponsored by Iberamia (Sociedad Iberoamericana de Inteligencia Artificial)(http://iberamia.dsic.upv.es/inicial.html). The journal publishes high-quality original research papers reporting theoretical or applied advances in all branches of Artificial Intelligence. In addition to rapid publication and dissemination of unsolicited contributions, Inteligencia Artificial is committed to producing monographs and special issues on topics of special relevance to the AI community.
+\begin{table}[hb]
+	\begin{center}
+		{\caption{Chi Squared Results (lower value is better).}\label{tab:globalchi}}
+		\begin{tabular}{|l|l|l|}\hline
+			&\textbf{PAQ8L} & \textbf{RNN}\\ \hline
+			Game of Thrones & \textbf{60541} & 62514 \\ 
+			Harry Potter & \textbf{66008} & 363711 \\
+			Paulo Coelho & \textbf{67846} & 255951 \\
+			Bible & 838686 & \textbf{70258} \\
+			Poe & 	99199 & \textbf{75965} \\
+			Shakespeare & 180619 & \textbf{91877} \\
+			Math Collection & 294999 & \textbf{100153} \\
+			War and Peace & \textbf{59625} & 62854 \\
+			Linux Kernel & 371226 & \textbf{198317} \\ \hline
+		\end{tabular}
+	\end{center}
+\end{table}
 
-\section{Manuscript Submission and Review}
+\begin{table}[hb]
+	\begin{center}
+		{\caption{Total Variation \%(lower value is better).}\label{tab:globaltotal}}
+		\begin{tabular}{|l|l|l|}\hline
+			&\textbf{PAQ8L} & \textbf{RNN}\\ \hline
+			Game of Thrones & 21.79 & \textbf{19.16} \\
+			Harry Potter & \textbf{25.31} & 33.67 \\
+			Paulo Coelho & \textbf{24.92} & 30.62 \\
+			Bible &  28.51 & \textbf{17.21} \\
+			Poe & 29.63 & \textbf{21.39} \\
+			Shakespeare & 29.63 & \textbf{21.67}\\
+			Math Collection & 36.46 & \textbf{22.78} \\
+			War and Peace & 37.38 & \textbf{18.81} \\
+			Linux Kernel & 41.85 & \textbf{29.70} \\ \hline
+		\end{tabular}
+	\end{center}
+\end{table}
 
-Paper submission should be carried out through the journal's Web page http://journal.iberamia.org. Click the ``ABOUT'' button and follow the author's guidelines.
+\begin{table}[hb]
+	\begin{center}
+		{\caption{Jaccard Similarity (higher is better).}\label{tab:globaljaccard}}
+		\begin{tabular}{|l|l|l|}\hline
+			&\textbf{PAQ8L} & \textbf{RNN}\\ \hline
+			Game of Thrones & 0.0611 & \textbf{0.0636} \\
+			Harry Potter &  \textbf{0.0835} & 0.0386 \\
+			Paulo Coelho &  \textbf{0.0758} & 0.0399 \\
+			Bible &  0.0911 & \textbf{0.1430} \\
+			Poe & 	0.0500 & \textbf{0.0646} \\
+			Shakespeare & 0.0332 & \textbf{0.0401} \\
+			Math Collection & 0.1351 & \textbf{0.2094} \\
+			War and Peace & 0.0427 & \textbf{0.0761} \\
+			Linux Kernel & 0.0771 & \textbf{0.0925} \\ \hline
+		\end{tabular}
+	\end{center}
+\end{table}
 
-Following this process the author implicitly transfers copyright of
-accepted papers to IBERAMIA, accepting their publication electronically
-(freely available through the Journal's Web pages) and in printed
-volumes.
+\section{Conclusions}
 
-Inteligencia Artificial welcomes research papers written in Spanish or
-English. Manuscripts should be uploaded in PDF format through the
-journal's Web pages (http://journal.iberamia.org - link 'Submissions').
-All research papers falling within the journal's scope will be subject
-to double-blind peer-review by at least two anonymous
-reviewers. Authors must omit their names in submitted manuscripts. The
-journal publishes four issues per year, each one at the start of each
-season (spring, summer, autumn, and winter). The journal will not
-carry out editing of manuscripts. Authors should adhere strictly to
-the norms in the "Journal's formatting guidelines".  Accepted papers
-will be published electronically at the journal's Web pages, with free
-access from the Internet. The journal encourages authors to add links
-in their personal pages pointing to the journal's pages containing
-their contributions.
+In the sentiment analysis task, an improvement using PAQ over a Neural Network is noticed. A Data Compression algorithm has the intelligence to understand text up to the point of being able to predict its sentiment with similar or better results than the state of the art in sentiment analysis. In some cases the precision improvement was up to 6\% which is a lot. 
 
-\section{Originality and Copyright}
-Research papers submitted to Inteligencia Artificial cannot have been
-published previously, nor be under review for publication
-elsewhere. However, the journal welcomes extended and improved
-versions of papers published in conferences and workshops, which will
-be subject to a new peer-review process.  Authors implicitly accept
-publication of submitted papers by , both electronically (with
-free access from the Internet) and in print, as well as dissemination
-through other media and entities with which IBERAMIA may establish
-agreement, transferring IBERAMIA all the necessary rights.
+Sentiment analysis is a predictive task, the goal is to predict sentiment based on previously seen samples for both positive and negative sentiment, in this regard a compression algorithm seems to be a better predictor than a RNN.
 
-\section{Monographs and Special Issues}
-The journal welcomes monograph or special issue proposals related to
-specific areas of Artificial Intelligence. Proposals to coordinate
-monographs or special issues should be sent through email to the
-Editor (editor@iberamia.org).  Contributions to monographs or special
-issues can be original works including new research papers, extended
-and improved versions of papers published in conferences and
-workshops, and survey papers that summarize the topics of a particular
-monograph or special issue. In all cases, the publication of
-contributions is conditioned to acceptance in a new peer-review
-process carried out by an international scientific committee under the
-journal's supervision.
+In the text generation task, the use of a right seed is needed for PAQ algorithm to be able to generate useful text, this was evident in the Bible example. This result is consistent with the sentiment analysis result because the seed is acting like the previously seen reviews, if it is not in sync with the text then the results will not be similar to the original text.
 
-\section{Theses Summaries }
-Inteligencia Artificial is specially interested in the publication of
-Ph.D. dissertation summaries that provide a quick and state-of-the-art
-reference in particular topics of Artificial Intelligence. Summaries
-can be submitted following the regular submission process, stating
-"RESUMEN DE TESIS" in the heading, and should be limited to 2-4 pages.
+The text generation task showed the critical difference between a Data Compression algorithm and a Recurrent Neural Network and according to our research this is the most important result: Data Compression algorithms are \textit{predictors} while Recurrent Neural Networks are \textit{imitators}.
 
+The text generated by a RNN looks in general better than the text generated by a Data Compressor but if just one paragraph is generated, the Data Compressor is clearly better. PAQ learns from the previously seen text and creates a model that is optimal for predicting what is next, that is why they work so well for Data Compression and that is why they are also very good for Sentiment Analysis or to create a paragraph after seeing the training set. 
+
+On the other hand the RNN is a great imitator of what it learned, it can replicate style, syntax and other writing conventions with a surprising level of detail but what the RNN generates is based on the whole text used for training without weighting recent text as more relevant. In this sense, the RNN is better for random text generation while the Compression algorithm should be better for random text extension or completion.
+
+Suppose the text of Romeo \& Juliet is located at the end of William Shakespeare's works and then both algorithms use them to generate a sample. As a consequence, PAQ would create a new paragraph of Romeo and Juliet whereas the RNN would generate a Shakespeare-like piece of text. \textbf{Data Compressors are better for local predictions and RNNs are better for global predictions.}
+
+This explains why in the text generation process PAQ and the RNN obtained different results for different training tests. PAQ struggled with "Poe" or "Game of Thrones" but was very good with "Coelho" or the Linux Kernel. What really happened was that it was measured how predictable the last piece of the text was!. If the text is very predictable then the best predictor will win, PAQ defeated the RNN by a margin with the Linux Kernel and Paulo Coelho. When the text is not predictable then the ability to imitate in the RNN defeated PAQ. This can be used as a wonderful tool to evaluate the predictability of different authors comparing if the Compressor or the RNN works better to generate similar text. In our experiment it was concluded that Coelho is more Predictable than Poe and it makes all the sense in the world!
+
+As our final conclusion it was shown that Data Compression algorithms show rational behaviour and that they are based on the accurate prediction of what will follow, based on what they have learnt recently. RNNs learn a global model from the training data and can then replicate it. That is why Data Compression algorithms are great \textbf{predictors} while Recurrent Neural Networks are great \textbf{imitators}. Depending on which ability is needed one or the other may provide the better results. 
+
+\section{Future Work}
+
+From our point of view, Data Compression algorithms could be used with a certain degree of optimality for any Natural Language Processing Task where predictions are made with the recent local context. Completion of text, seed based text generation, sentiment analysis, text clustering are some of the areas where Compressors might play a significant role in the near future.
+
+We have also shown that the difference between a Compressor and a RNN can be used as a way to evaluate the predictability of the writing style of a given text. This might be expended in algorithms that can analyze the level of creativity in text and can be applied to books or movie scripts.
+
+\nocite{*}
 
 \section*{Acknowledgements}
 This is the place for acknowledgements.
