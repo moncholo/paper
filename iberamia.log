@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2017.7.8)  23 SEP 2017 13:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2017.7.8)  23 SEP 2017 17:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -417,22 +417,22 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 99.
 (c:/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [124] [125]
-Underfull \hbox (badness 10000) in paragraph at lines 195--198
+Underfull \hbox (badness 10000) in paragraph at lines 210--213
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 198--200
+Underfull \hbox (badness 10000) in paragraph at lines 213--215
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 203--206
+Underfull \hbox (badness 10000) in paragraph at lines 218--221
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 208--210
+Underfull \hbox (badness 10000) in paragraph at lines 223--225
 
  []
 
@@ -440,117 +440,116 @@ Underfull \hbox (badness 10000) in paragraph at lines 208--210
 <paq.png, id=184, 488.82625pt x 90.3375pt>
 File: paq.png Graphic file (type png)
 <use paq.png>
-Package pdftex.def Info: paq.png  used on input line 241. on input line 241.
+Package pdftex.def Info: paq.png  used on input line 256. on input line 256.
 Package pdftex.def Info: Requested size: 488.82504pt x 90.33727pt on input line
- 241.
- [127 <./paq.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 253--256
+ 256.
+ [127]
+Underfull \hbox (badness 10000) in paragraph at lines 268--271
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 256--258
+Underfull \hbox (badness 10000) in paragraph at lines 271--273
 
  []
 
-[128]
-<temp.png, id=202, 1244.65pt x 698.61pt>
+[128 <./paq.png>]
+<temp.png, id=201, 1244.65pt x 698.61pt>
 File: temp.png Graphic file (type png)
 <use temp.png>
-Package pdftex.def Info: temp.png  used on input line 301. on input line 301.
+Package pdftex.def Info: temp.png  used on input line 316. on input line 316.
 Package pdftex.def Info: Requested size: 1244.64696pt x 698.60829pt on input li
-ne 301.
+ne 316.
 
-Underfull \hbox (badness 10000) in paragraph at lines 312--315
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 325--327
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 325--327
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 325--327
+Underfull \hbox (badness 10000) in paragraph at lines 327--330
 
  []
 
 [129 <./temp.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 329--332
+Underfull \hbox (badness 10000) in paragraph at lines 340--342
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 350--352
+Underfull \hbox (badness 10000) in paragraph at lines 340--342
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 350--352
+Underfull \hbox (badness 10000) in paragraph at lines 340--342
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 350--352
+Underfull \hbox (badness 10000) in paragraph at lines 344--347
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 365--367
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 365--367
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 365--367
 
  []
 
 <chiseed.png, id=212, 1244.65pt x 698.61pt>
 File: chiseed.png Graphic file (type png)
 <use chiseed.png>
-Package pdftex.def Info: chiseed.png  used on input line 359. on input line 359
+Package pdftex.def Info: chiseed.png  used on input line 374. on input line 374
 .
 Package pdftex.def Info: Requested size: 1244.64696pt x 698.60829pt on input li
-ne 359.
+ne 374.
 
-Underfull \hbox (badness 10000) in paragraph at lines 366--380
+Underfull \hbox (badness 10000) in paragraph at lines 381--395
 
  []
 
 
-Overfull \hbox (2.5178pt too wide) in paragraph at lines 366--380
+Overfull \hbox (2.5178pt too wide) in paragraph at lines 381--395
 \OT1/cmr/m/it/10 CHAPTER THIRTY-SEVEN - THE GOB-LET OF LORD VOLDE-MORT OF THE F
 IRE-BOLT MARE!" 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 366--380
+Underfull \hbox (badness 10000) in paragraph at lines 381--395
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 366--380
+Underfull \hbox (badness 10000) in paragraph at lines 381--395
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 366--380
+Underfull \hbox (badness 10000) in paragraph at lines 381--395
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 366--380
+Underfull \hbox (badness 10000) in paragraph at lines 381--395
 
  []
 
-[130 <./chiseed.png>] [131]
-Underfull \vbox (badness 2478) has occurred while \output is active []
+[130 <./chiseed.png>] [131] [132]
+Underfull \vbox (badness 3078) has occurred while \output is active []
 
- [132]
-(./iberamia.bbl [133]) AED: lastpage setting LastPage [134] [135]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 539.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 539.
-
-(./iberamia.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 539.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 539.
+ [133]
+(./iberamia.bbl [134]) AED: lastpage setting LastPage [135]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 554.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 554.
+ (./iberamia.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 554.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 554.
 Package rerunfilecheck Info: File `iberamia.out' has not changed.
-(rerunfilecheck)             Checksum: 4F41131B9BCD77074491D4BD7EEDB156;1448.
+(rerunfilecheck)             Checksum: D023A979E64B708BC85995A5CB297B95;1448.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -559,11 +558,11 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  7734 strings out of 492990
  108880 string characters out of 6136335
- 231185 words of memory out of 5000000
+ 225168 words of memory out of 5000000
  11098 multiletter control sequences out of 15000+600000
  12380 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 30i,17n,43p,1001b,508s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 30i,17n,43p,1001b,504s stack positions out of 5000i,500n,10000p,200000b,80000s
 <c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy8.pfb><c
 :/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive
 /2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2017/tex
@@ -579,7 +578,7 @@ ts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2017/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmr9.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmsy10.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
 i10.pfb>
-Output written on iberamia.pdf (13 pages, 390545 bytes).
+Output written on iberamia.pdf (13 pages, 390827 bytes).
 PDF statistics:
  318 PDF objects out of 1000 (max. 8388607)
  278 compressed objects within 3 object streams

@@ -134,14 +134,36 @@ The formula is a direct derivation from the NCD. When the inequality is not true
 
 The order in which files are compressed must be considered. As you could see from the proposed formula, the review $R$ is compressed last. 
 
-Some people may ask why this inequality works to predict whether a review is positive or negative. So it is important to understand this inequality. Suppose that the review $R$ is a positive one. $R$ will be compressed in order to classify it: if $R$ is compressed after a set of positive reviews then the compression rate should be better than the one obtained if $R$ is compressed after a set of negative reviews because the review $R$ has more related information with the set of positive reviews and in consequence should be compressed better. Interestingly, both the positive and negative set could have different sizes and that is why it is important to subtract the compressed file size of both sets in the inequality.
+Some people may ask why this inequality works to predict whether a review is positive or negative. So it is important to understand this inequality. Suppose that the review $R$ is a positive one. $R$ will be compressed in order to classify it: if $R$ is compressed after a set of positive reviews then the compression rate should be better than the one obtained if $R$ is compressed after a set of negative reviews because the review $R$ has more related information with the set of positive reviews and in consequence should be compressed better. Interestingly, both the positive and negative set could have different sizes and that is why it is important to subtract the compressed file size of both sets in the inequality. Consider the following example:
+
+\begin{displayquote}
+\textit{My favorite movie. What a great story this really was. I'd just like to be able to buy a copy of it but this does not seem possible.}
+\end{displayquote}
+
+The previous review has a size of 132 bytes. After compressing the train dataset, the results are:
+
+\begin{displayquote}
+$C(P_1,...,P_n,R)-C(P_1,...,P_n)$: 42 bytes\\
+$C(N_1,...,N_n,R)-C(N_1,...,N_n)$: 43 bytes
+\end{displayquote}
+
+Given the previous results, the review $R$ is predicted positive because $C(P_1,...,P_n,R)-C(P_1,...,P_n)$ is lower than $C(N_1,...,N_n,R)-C(N_1,...,N_n)$.
+
+
+\subsection{PAQ for Sentiment Analysis}
+
+Using Data Compression for Sentiment Analysis is not a new idea. It has been already proposed in IEEE 12th International Conference\cite{Ziegelmayer}. However, the authors did not use PAQ compressor.
+
+PAQ Compressor is taken into account for this research because of its excellent compression rates achieved at Hutter's Prize\cite{Hutter} and many benchmarks such as Matt Mahoney's one\cite{Mahoney}.
+
+In order to make sentiment analysis of a movie review using PAQ, it is needed to compress each review after compressing both the positive train set and the negative one separately. Given the fact that compressing each train set takes a considerable time, a checkpoint tool is used in this work. The review is classified positive if the compression rate using the positive train set is better than the one obtained using the negative train set. Otherwise, it is classified as negative. If both compression rates are equals, it is classified as inconclusive.
 
 \subsection{Data Set Preparation}
 
 The Large Movie Review Dataset\cite{Maas}, which has been used for Sentiment Analysis competitions, is used in this research\footnote{Both training set and test set were chosen randomly}.
 
 
-\begin{table}[hb]
+\begin{table}[htb]
 	\begin{center}
 		{\caption{Movie review dataset.}\label{tab:sample}}
 		\begin{tabular}{|l|l|l|}
@@ -158,17 +180,10 @@ The Large Movie Review Dataset\cite{Maas}, which has been used for Sentiment Ana
 	\end{center}
 \end{table}
 
-\subsection{PAQ for Sentiment Analysis}
-
-Using Data Compression for Sentiment Analysis is not a new idea. It has been already proposed in IEEE 12th International Conference\cite{Ziegelmayer}. However, the authors did not use PAQ compressor.
-
-PAQ Compressor is taken into account for this research because of its excellent compression rates achieved at Hutter's Prize\cite{Hutter} and many benchmarks such as Matt Mahoney's one\cite{Mahoney}.
-
-In order to make sentiment analysis of a movie review using PAQ, it is needed to compress each review after compressing both the positive train set and the negative one separately. Given the fact that compressing each train set takes a considerable time, a checkpoint tool is used in this work. The review is classified positive if the compression rate using the positive train set is better than the one obtained using the negative train set. Otherwise, it is classified as negative. If both compression rates are equals, it is classified as inconclusive.
 
 \subsection{Experiment Results}
 
-In this section, the results obtained are explained by giving a comparison between the data compressor and the Stanford?s Neural Network for Sentiment Analysis. 
+In this section, the results obtained are explained by giving a comparison between the data compressor and the Stanford's Neural Network for Sentiment Analysis. 
 
 The following table shows the results obtained
 
@@ -390,9 +405,9 @@ It can be seen that the compressor got better results for all texts except Poe, 
 
 
 
-\begin{table}[hb]
+\begin{table}[!hbt]
 	\begin{center}
-		{\caption{Chi Squared Results (lower value is better).}\label{tab:localchi}}
+		{\caption{Chi Squared Results (Local similarity).}\label{tab:localchi}}
 		\begin{tabular}{|l|l|l|}\hline
 			&\textbf{PAQ8L} & \textbf{RNN}\\ \hline
 			Game of Thrones & 47790 & \textbf{44935} \\ 
@@ -408,9 +423,9 @@ It can be seen that the compressor got better results for all texts except Poe, 
 	\end{center}
 \end{table}
 
-\begin{table}[hb]
+\begin{table}[!hbt]
 	\begin{center}
-		{\caption{Total Variation \%(lower value is better).}\label{tab:localtotal}}
+		{\caption{Total Variation \%(Local similarity).}\label{tab:localtotal}}
 		\begin{tabular}{|l|l|l|}\hline
 			&\textbf{PAQ8L} & \textbf{RNN}\\ \hline
 			Game of Thrones & 25.21 & \textbf{24.59} \\
@@ -426,9 +441,9 @@ It can be seen that the compressor got better results for all texts except Poe, 
 	\end{center}
 \end{table}
 
-\begin{table}[hb]
+\begin{table}[!hbt]
 	\begin{center}
-		{\caption{Jaccard Similarity (higher is better).}\label{tab:localjaccard}}
+		{\caption{Jaccard Similarity (Local similarity).}\label{tab:localjaccard}}
 		\begin{tabular}{|l|l|l|}\hline
 			&\textbf{PAQ8L} & \textbf{RNN}\\ \hline
 			Game of Thrones & 0.06118 & \textbf{0.0638} \\
@@ -448,9 +463,9 @@ It can be seen that the compressor got better results for all texts except Poe, 
 The Recurrent Neural Network got better results in global contexts. The results are shown in the following tables:
 
 
-\begin{table}[hb]
+\begin{table}[!hbt]
 	\begin{center}
-		{\caption{Chi Squared Results (lower value is better).}\label{tab:globalchi}}
+		{\caption{Chi Squared Results (Global similarity).}\label{tab:globalchi}}
 		\begin{tabular}{|l|l|l|}\hline
 			&\textbf{PAQ8L} & \textbf{RNN}\\ \hline
 			Game of Thrones & \textbf{60541} & 62514 \\ 
@@ -466,9 +481,9 @@ The Recurrent Neural Network got better results in global contexts. The results 
 	\end{center}
 \end{table}
 
-\begin{table}[hb]
+\begin{table}[!hbt]
 	\begin{center}
-		{\caption{Total Variation \%(lower value is better).}\label{tab:globaltotal}}
+		{\caption{Total Variation \%(Global similarity).}\label{tab:globaltotal}}
 		\begin{tabular}{|l|l|l|}\hline
 			&\textbf{PAQ8L} & \textbf{RNN}\\ \hline
 			Game of Thrones & 21.79 & \textbf{19.16} \\
@@ -484,9 +499,9 @@ The Recurrent Neural Network got better results in global contexts. The results 
 	\end{center}
 \end{table}
 
-\begin{table}[hb]
+\begin{table}[!hbt]
 	\begin{center}
-		{\caption{Jaccard Similarity (higher is better).}\label{tab:globaljaccard}}
+		{\caption{Jaccard Similarity (Global similarity).}\label{tab:globaljaccard}}
 		\begin{tabular}{|l|l|l|}\hline
 			&\textbf{PAQ8L} & \textbf{RNN}\\ \hline
 			Game of Thrones & 0.0611 & \textbf{0.0636} \\
