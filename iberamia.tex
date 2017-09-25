@@ -13,7 +13,7 @@
 \usepackage{ifthen}
 \usepackage{csquotes}
 \usepackage{cite}
-
+\usepackage{listings}
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 \DeclareMathOperator*{\argmin}{arg\,min}
 \DeclareMathOperator*{\argmax}{arg\,max}
@@ -45,6 +45,24 @@
 \setcounter{issue}{59}
 \setcounter{page}{123}
 
+\lstset{
+  backgroundcolor=\color[rgb]{0.9,0.9,0.9},
+  tabsize=4,
+  language=C++,
+  captionpos=b,
+  tabsize=3,
+  frame=lines,
+  numbers=left,
+  numberstyle=\tiny,
+  numbersep=5pt,
+  breaklines=true,
+  showstringspaces=false,
+  basicstyle=\footnotesize,
+  identifierstyle=\color{magenta},
+  keywordstyle=\color[rgb]{0,0,1},
+  commentstyle=\color[rgb]{0.026,0.112,0.095},
+  stringstyle=\color{red},
+  }
 
 \title{From Imitation to Prediction, Data Compression vs Recurrent Neural Networks for Natural Language Processing}
 
@@ -90,6 +108,12 @@ Both neural networks and data compressors should be able to learn from the input
 
 The hypothesis for this research is that, if compression is based on learning from the input data set, then the best compressor for a given data set should be able to compete with other algorithms in natural language processing tasks. In the present work, this hypothesis will be analyzed for two given scenarios: sentiment analysis and automatic text generation.
 
+\section{RNNs for Data Compression}
+
+Recurrent Neural Networks and in particular LSTMs were used not only for predictive tasks\cite{Gers} but also for Data Compression\cite{Schmidhuber}. While the LSTMs were brilliant in their text\cite{Sutskever}, music\cite{Bown} and image generation\cite{Gregor} tasks, they were never able to defeat the state of the art algorithms in Data Compression\cite{Schmidhuber}. 
+
+This might indicate that there is a fundamental difference between Data Compression and Generative Processes and between Data Compression Algorithms and Recurrent Neural Networs. After experiments, a fundamental difference will be shown in this research in order to explain why a RNN can be the state of the art in some generatives process but not in Data Compression.
+
 \section{Data Compression as an Artificial Intelligence Field}
 
 For many authors there is a very strong relationship between Data Compression and Artificial Intelligence\cite{Franz}\cite{Ofir}. Data Compression is about making good predictions \cite{Ratsaby} which is also the goal of Machine Learning, a field of Artificial Intelligence. 
@@ -97,12 +121,6 @@ For many authors there is a very strong relationship between Data Compression an
 Essentially, Data compression involves two important steps: modeling and coding. Coding is a solved problem using arithmetic compression. The difficult task is modeling because it comes down to building a description of the data using the most compact representation; this is again directly related to Artificial Intelligence. Using the Minimal Description Length principle\cite{Grunwald} the efficiency of a good Machine Learning algorithm can be measured in terms of how good it is to compress the training data plus the size of the model itself.
 
 A file containing the digits of $\pi$ can be compressed with a very short program able to generate those digits, gigabytes of information can be compressed into a few thousand bytes. However, the problem arises when trying to find a program capable of understanding that our input file contains the digits of $\pi$. In consequence, achieving the best compression rate involves finding a program able to always find the most compact model to represent the data and that is clearly an indication of intelligence, perhaps even of General Artificial Intelligence. 
-
-\section{RNNs for Data Compression}
-
-Recurrent Neural Networks and in particular LSTMs were used not only for predictive tasks\cite{Gers} but also for Data Compression\cite{Schmidhuber}. While the LSTMs were brilliant in their text\cite{Sutskever}, music\cite{Bown} and image generation\cite{Gregor} tasks, they were never able to defeat the state of the art algorithms in Data Compression\cite{Schmidhuber}. 
-
-This might indicate that there is a fundamental difference between Data Compression and Generative Processes and between Data Compression Algorithms and Recurrent Neural Networs. After experiments, a fundamental difference will be shown in this research in order to explain why a RNN can be the state of the art in some generatives process but not in Data Compression.
 
 \section{Sentiment Analysis}
 
@@ -199,7 +217,7 @@ The following table shows the results obtained
 	\end{center}
 \end{table}
 
-As you could see from the previous table, 77.20\% of movie reviews were correctly classified by the PAQ Compressor whereas 70.93\% were well classified by the Stanford?s Neural Network. 
+As you could see from the previous table, 77.20\% of movie reviews were correctly classified by the PAQ Compressor whereas 70.93\% were well classified by the Stanford's Neural Network. 
 
 There are two main points to highlight according to the result obtained:
 \begin{enumerate}
@@ -228,7 +246,7 @@ This was classified as positive by the Stanford Analyzer, probably because of wo
 
 \section{Automatic Text Generation}
 
-This module?s goal is to automatically generate text with a PAQ series compressor and compare it with Andrej Karpathy RNN?s results \cite{Karpathy}, using specifics metrics and scenarios.
+This module's goal is to automatically generate text with a PAQ series compressor and compare it with Andrej Karpathy RNN's results \cite{Karpathy}, using specifics metrics and scenarios.
 
 The ability of good compressors when making predictions is more than evident. It just requires an entry text (training set) to be compressed. At compression time, the future symbols will get a probability of occurrence: The higher the probability, the better compression rate for success cases of that prediction, on the contrary, each failure case will take a penalty. At the end of this process, a probability distribution will be associated with that input data \cite{Mahoney4}. As a result of this probabilistic model, it will be possible to simulate new samples, in other words, generate text.
 
@@ -251,6 +269,7 @@ Generally, as you compress more information, predictions improve.
 
 When data set compression is over, PAQ is ready to generate text. A random number is sampled in the [0,1) interval and transformed into a bit 1 or 0 using Inverse Transform Sampling \cite{InverseSampling}. In other words, if the random number falls within the probability range of symbol 1, bit 1 is generated, otherwise, bit 0. 
 
+Once that bit is generated, it will be compressed to reset every context for the following prediction. Here, it is essential to update models in a way that if the same context is obteined in two different samples, probabilities must be the same, otherwise it could compute and propagate errors. Seeing that, it was necessary to turn off the training process and the weight adjustment of each model at generation time. This was also possible because the source code of PAQ is available.
 \begin{figure}[hb]
 	\begin{center}
 		\includegraphics[angle=0,width=0.5\textwidth]{paq.png}
@@ -259,11 +278,17 @@ When data set compression is over, PAQ is ready to generate text. A random numbe
 	\end{center}
 \end{figure}
 
-Once that bit is generated, it will be compressed to reset every context for the following prediction. Here, it is essential to update models in a way that if the same context is obteined in two different samples, probabilities must be the same, otherwise it could compute and propagate errors. Seeing that, it was necessary to turn off the training process and the weight adjustment of each model at generation time. This was also possible because the source code of PAQ is available.
+It was noted that granting too much freedom to our compressor could result in a large accumulation of bad predictions, leading to poor text generation. Therefore, it is proposed to make the text generation more conservative adding a parameter called "temperature" that reduces the possible range of the random number.
 
-It was noted that granting too much freedom to our compressor could result in a large accumulation of bad predictions, leading to poor text generation. Therefore, it is proposed to make the text generation more conservative adding a parameter called ?temperature? that reduces the possible range of the random number.
-
-On maximum temperature, the random number will be generated in the interval [0,1), giving the compressor maximum degree of freedom to make mistakes, whereas, when the temperature parameter turns minimum, the ?random? number will always be 0.5, removing the degree of freedom to commit errors (in this scenario, the highest probability symbol will be generated). 
+On maximum temperature, the random number will be generated in the interval [0,1), giving the compressor maximum degree of freedom to make mistakes, whereas, when the temperature parameter turns minimum, the "random" number will always be 0.5, removing the degree of freedom to commit errors (in this scenario, the highest probability symbol will be generated). 
+\begin{figure}[hb]
+	\begin{center}
+		\includegraphics[angle=0,width=0.5\textwidth]{paq2.png}
+		\caption{For example, the range will be reduced to [0.2, 0.8) when the temperature parameter turns 0.6.
+}
+		\label{fig1}
+	\end{center}
+\end{figure}
 
 When temperature is around 0.5 the results are very legible even if they are not as similar to the original text (according to the proposed metrics). It can be seen at the following randomly generated Harry Potter's snippet:
 \newline
@@ -274,12 +299,13 @@ When temperature is around 0.5 the results are very legible even if they are not
 
 \subsection{Metrics}
 
-A simple transformation is applied to each text in order to compute metrics. It consists in counting the number of occurrences of each n-gram in the input (i.e. every time a n-gram ?WXYZ? is detected, it increases its number of occurrences). 
+A simple transformation is applied to each text in order to compute metrics. It consists in counting the number of occurrences of each n-gram in the input (i.e. every time a n-gram "WXY..AZ" is detected, it increases its number of occurrences). 
 Then three different metrics were considered:
 
 \subsubsection{Pearson's Chi-Squared}
 
-How likely it is that any observed difference between the sets arose by chance. The chi-square is computed as:
+How likely it is that any observed difference between the sets arose by chance. 
+The chi-square is computed as:
 
 $$
 \mathcal{X}^2 = \sum_{i=1}^{n} \frac{(O_i - E_i)^2}{E_i}
@@ -289,7 +315,7 @@ Where $O_i$ is the observed ith value and $E_i$ is the expected ith value. A val
 
 \subsubsection{Total Variation}
 
-Each n-gram?s observed frequency can be denoted like a probability if it is divided by the sum of all frequencies, P(i) on the real text and Q(i) on the generated one. 
+Each n-gram's observed frequency can be denoted like a probability if it is divided by the sum of all frequencies, P(i) on the real text and Q(i) on the generated one. 
 Total variation distance \cite{Variation} can be computed according to the following formula:
 
 $$
@@ -306,7 +332,12 @@ $$
 J(G,T) = \frac{G \cap T}{G \cup T}
 $$
 
-A value of 1 means both texts are equals.
+Given two non-negative n-dimensional real vectors X, Y , their Jaccard similarity is defined as:
+
+$$
+J(x,y) = \frac{\sum_{i=1}^{n} min(X_i , Y_i)}{\sum_{i=1}^{n} max(X_i , Y_i)}
+$$
+This last definition is also know as "Weighted Jaccard Measure". A value of 1 means both texts are equals.
 
 \subsection{About Samples}
 For each scenario, Karpathy's RNN was trained several times to find its best hyper-parameters. Asymmetrically, the compressor required to be trained just once. After that, a sampling procedure was executed. It set up different values for "temperature" parameter, allowing these trained models to generate diverse text samples.
@@ -322,7 +353,16 @@ For each scenario, Karpathy's RNN was trained several times to find its best hyp
 In this research, similarity between the input text (for example, The Complete Works of William Shakespeare) and an automatic generated text sample was measured using a local context and a global one. The former implied splitting the input set in $n$ fragments. Each fragment was compared to the sampled text to find the best combination (i.e. the metrics were computed using each real fragment against the generated one, the best value was taken). The latter implied measuring the sampled text against the whole set without fragmentation.
 
 \subsection{Results}
-Turning off the training process and the weights adjustment of each model freezes the compressor?s global context on the last part of the training set. As a consequence of this event, the last piece of the entry text will be considered as a ?big seed?.
+Turning off the training process and the weights adjustment of each model freezes the compressor's global context on the last part of the training set. As a consequence of this event, the last piece of the entry text will be considered as a "big seed".
+
+
+\begin{figure}[hb]
+	\begin{center}
+		\includegraphics[angle=0,width=0.5\textwidth]{chiseed.png}
+		\caption{The effect of the chosen seed in the Chi Squared metric. In Orange the metric variation by temperature using a random seed. In Blue the same metric with a chosen one.}
+		\label{fig3}
+	\end{center}
+\end{figure}
 
 For example, The King James Version of the Holy Bible includes an index at the end of the text, a bad seed for text generation. Compressing the Bible with that index set an unknown context for PAQ and leaded us to this result:
 \newline
@@ -366,21 +406,14 @@ The index at the end of the file was removed and then PAQ compressed and generat
 	\newline 
 \end{displayquote}
 
-
 The difference is remarkable. Comparing different segments of each input file against each other, it was observed that in some files the last piece was significantly different than the rest of the text. Those unpredictable endings mess up PAQ's generation but it was very interesting to notice that for the RNN did not result in a noticeable difference. This was the first hint that the compressor and the RNN were proceeding in different ways.
+\newline
 
-\begin{figure}[hb]
-	\begin{center}
-		\includegraphics[angle=0,width=0.5\textwidth]{chiseed.png}
-		\caption{The effect of the chosen seed in the Chi Squared metric. In Orange the metric variation by temperature using a random seed. In Blue the same metric with a chosen seed.}
-		\label{fig3}
-	\end{center}
-\end{figure}
-
-
-In some cases the compressor generated text that was surprisingly well written. This is an example of random text generated by PAQ8L after compressing "Harry Potter"
+In some cases the compressor generated text that was surprisingly well written. 
 \newline
 \newline
+This is an example of random text generated by PAQ8L after compressing Harry Potter:
+\begin{displayquote}
 \textit{CHAPTER THIRTY-SEVEN - THE GOBLET OF LORD VOLDEMORT OF THE FIREBOLT MARE!"
 	\newline
 	\newline
@@ -392,6 +425,54 @@ In some cases the compressor generated text that was surprisingly well written. 
 	\newline
 	He was like working, his eyes.  He doing you were draped in fear of them to study of your families to kill, that the beetle, he time.  Karkaroff looked like this.  It was less frightening you.}
 \newline
+\end{displayquote}
+Another example, this one was generated after compressing Linux Kernel:
+\begin{lstlisting}
+#ifdef CONFIG_CONSTRUCTORS
+
+struct inode *inode;
+	int setup_init(trace->flags, pause_on_oops)
+{
+	int smp_mb__after_atomic();
+	struct hd_struct *p;
+	const char *t;
+	int modinfo_next_pid_nr(current));
+}
+/*
+ * Information about the signal context, int that freezers placement states if
+ * since periodic);
+ */
+int cpumask_var_node(&context, unsigned long usermodehelper_execution(struct task_struct *prev)
+{
+	struct module_attribute *attribute, struct module_kobject *mk;
+	int ret;
+	bool boolval;
+}
+\end{lstlisting}
+An automatic Game of thrones' snippet:
+\begin{displayquote}
+\textit{
+Page 775
+\newline\newline
+Summer, or closed with a leather shield, so suddenly. Mero went too. She leaves. There was a fire silver smoke. 
+"No one and losing herself and said the maester gorne a moment." 
+Ser Robin King Joffrey, though for a bolt of the wind and a sword with your brothers and frozen too far 
+and after he was finished the wine and a chainmail. They plotted hands, he had habit for her, slid unknowable,
+\newline}
+\end{displayquote}
+
+\begin{displayquote}
+\textit{
+Page 776
+\newline\newline
+"From is no tears, and began to gather himself that be well sited and a watch benches can't say, mercy 
+for him to her here. They say me have made more distinct that after another, and seized her. One was 
+many too. His neck and danced into the solar, like the other. He staggered him and something else the sky began, the blankets. The walls 
+son was dry jests. Lord Mormont feebly. I am many horses. Not only was not sorry he had no heed her a 
+moment. I saw his castle, but he thought of his personal emblem. He might have been long and the hall grey 
+mantle opened the outer was never been so heavily he saw no sign of Craven she said of a shadowcat and her smiled 
+looked candle had deflowered, a chunk of bread. "And count. It's not here, eating was a handsome unscathed.}
+\end{displayquote}
 
 While the text may not make sense it certainly follows the style, syntax and writing conventions of the training text.
 
@@ -542,8 +623,6 @@ As our final conclusion it was shown that Data Compression algorithms show ratio
 From our point of view, Data Compression algorithms could be used with a certain degree of optimality for any Natural Language Processing Task where predictions are made with the recent local context. Completion of text, seed based text generation, sentiment analysis, text clustering are some of the areas where Compressors might play a significant role in the near future.
 
 We have also shown that the difference between a Compressor and a RNN can be used as a way to evaluate the predictability of the writing style of a given text. This might be expended in algorithms that can analyze the level of creativity in text and can be applied to books or movie scripts.
-
-\nocite{*}
 
 \section*{Acknowledgements}
 This is the place for acknowledgements.
