@@ -11,6 +11,13 @@ Oliver Bown and Sebastian Lexer.
   Computing. EvoWorkshops 2006}, volume 3907, pages 652--663, Springer, Berlin,
   Heidelberg.
 
+\bibitem{Celikel}
+Ebru Celikel and Mehmet~Emin Dalkilic.
+\newblock Investigating the effects of recency and size of training text on
+  author recognition problem.
+\newblock In {\em Computer and Information Sciences - ISCIS 2004}, volume 3280,
+  pages 21--30, Springer.
+
 \bibitem{Chierichetti}
 Flavio Chierichetti, Ravi Kumar, Sandeep Pandey, and Sergei Vassilvitskii.
 \newblock Finding the jaccard median.
@@ -40,6 +47,12 @@ Felix Gers, Jürgen Schmidhuber, and Fred Cummins.
 Alison~L. Gibbs and Francis~Edward Su.
 \newblock On choosing and bounding probability metrics.
 \newblock {\em International Statistical Review}, 70:419--435, September 2002.
+
+\bibitem{Graves2}
+Alex Graves.
+\newblock {\em Supervised Sequence Labelling with Recurrent Neural Networks},
+  volume 385.
+\newblock Springer, 2012.
 
 \bibitem{Graves}
 Alex Graves.
@@ -80,6 +93,11 @@ Matt Mahoney.
 \bibitem{Mahoney}
 Matt Mahoney.
 \newblock The paq data compression series.
+
+\bibitem{Mahoney2}
+Matt Mahoney.
+\newblock Adaptive weighing of context models for lossless data compression,
+  2005.
 
 \bibitem{Mahoney4}
 Matt Mahoney.

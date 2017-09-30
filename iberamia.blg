@@ -9,6 +9,8 @@ Warning--entry type for "Mahoney" isn't style-file defined
 --line 21 of file References.bib
 Warning--entry type for "Socher" isn't style-file defined
 --line 33 of file References.bib
+Warning--entry type for "Mahoney2" isn't style-file defined
+--line 47 of file References.bib
 Warning--entry type for "Gers" isn't style-file defined
 --line 97 of file References.bib
 Warning--entry type for "Franz" isn't style-file defined
@@ -35,53 +37,49 @@ Warning--entry type for "Mahoney4" isn't style-file defined
 --line 403 of file References.bib
 Warning--entry type for "Matt3" isn't style-file defined
 --line 435 of file References.bib
-Warning--I didn't find a database entry for "pearl1984"
-Warning--I didn't find a database entry for "hartetal1968"
-Warning--I didn't find a database entry for "korf1985"
-Warning--I didn't find a database entry for "oetikeretal2008"
-Warning--I didn't find a database entry for "vovk2007"
 Warning--to sort, need author or key in Hutter
 Warning--empty year in Bown
+Warning--empty year in Celikel
 Warning--empty publisher in InverseSampling
-You've used 23 entries,
+You've used 26 entries,
             2118 wiz_defined-function locations,
-            631 strings with 6945 characters,
-and the built_in function-call counts, 6113 in all, are:
-= -- 538
-> -- 318
-< -- 2
-+ -- 131
-- -- 104
-* -- 355
-:= -- 1009
-add.period$ -- 58
-call.type$ -- 23
-change.case$ -- 119
+            641 strings with 7288 characters,
+and the built_in function-call counts, 6954 in all, are:
+= -- 617
+> -- 345
+< -- 5
++ -- 142
+- -- 112
+* -- 399
+:= -- 1139
+add.period$ -- 66
+call.type$ -- 26
+change.case$ -- 131
 chr.to.int$ -- 0
-cite$ -- 26
-duplicate$ -- 202
-empty$ -- 534
-format.name$ -- 104
-if$ -- 1284
+cite$ -- 30
+duplicate$ -- 242
+empty$ -- 614
+format.name$ -- 112
+if$ -- 1473
 int.to.chr$ -- 0
-int.to.str$ -- 23
-missing$ -- 9
-newline$ -- 107
-num.names$ -- 44
-pop$ -- 204
+int.to.str$ -- 26
+missing$ -- 12
+newline$ -- 121
+num.names$ -- 50
+pop$ -- 229
 preamble$ -- 1
-purify$ -- 98
+purify$ -- 108
 quote$ -- 0
-skip$ -- 195
+skip$ -- 226
 stack$ -- 0
-substring$ -- 216
-swap$ -- 33
-text.length$ -- 2
+substring$ -- 251
+swap$ -- 45
+text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 88
-warning$ -- 3
-while$ -- 49
-width$ -- 25
-write$ -- 209
-(There were 24 warnings)
+type$ -- 98
+warning$ -- 4
+while$ -- 57
+width$ -- 28
+write$ -- 240
+(There were 21 warnings)
