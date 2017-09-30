@@ -257,19 +257,23 @@ PAQ series compressors use arithmetic coding to encode symbols assigned to a pro
 PAQ uses an ensamble of several different models to compute how likely a bit 1 or 0 is next. Some of these models are based on the previous $n$ characters of $m$ bits of seen text, other models use whole words as contexts, etc. 
 In order to weight the prediction performed by each model, a neural network is used to determine the weight of each model \cite{Matt3}:
 
-$$P(1|c) = \sum_{i=1}^{n} P_i(1|c) W_i$$
+$$P(1|c)\footnote{The probability $P(0|c)$ can be interpreted as $1-P(1|c)$ } = \sum_{i=1}^{n} P_i(1|c) W_i$$
 
 Where $P(1|c)$ is the probability of bit 1 with context "c", $P_i(1|c)$ is the probability of bit 1 in context "c" for model $i$ and $W_i$ is the weight assigned to model $i$.
 
-In addition, each model adjusts their predictions based on the new information. When compressing, input text is processed bit by bit. On every bit, the compressor updates the context of each model and adjusts the weights of the neural network. 
+In addition, each model adjusts their predictions based on the new information. When compressing, input text is processed bit by bit. On every bit, the compressor updates the context of each model and adjusts the weights of each model $i$ as shown in the following equation: 
 
-Generally, as you compress more information, predictions improve.
+$$W_i = W_i + error_i*\alpha*S_i$$
+
+Given the compressed bit $y$, the error of each models is defined as $error_i = y-P_i(1|c)$ and $S_i$ is a signal that derives from $P_i(1|c)$\footnote{The signal $S_i$ is often computed as $S_i = stretch(P_i(1|c))$}
+
+The previous equation is important because each $W_i$ must not be adjusted when generating text because of a reason explained in the following section 
 
 \subsection{Text Generation}
 
 When data set compression is over, PAQ is ready to generate text. A random number is sampled in the [0,1) interval and transformed into a bit 1 or 0 using Inverse Transform Sampling \cite{InverseSampling}. In other words, if the random number falls within the probability range of symbol 1, bit 1 is generated, otherwise, bit 0. 
 
-Once that bit is generated, it will be compressed to reset every context for the following prediction. Here, it is essential to update models in a way that if the same context is obteined in two different samples, probabilities must be the same, otherwise it could compute and propagate errors. Seeing that, it was necessary to turn off the training process and the weight adjustment of each model at generation time. This was also possible because the source code of PAQ is available.
+Once that bit is generated, it will be compressed to reset every context for the following prediction. Here, it is essential to update models in a way that if the same context is obtained in two different samples, probabilities must be the same, otherwise it could compute and propagate errors. Seeing that, it is necessary to turn off the training process and the weight adjustment of each model at generation time. This is possible because the source code of PAQ is available.
 \begin{figure}[hb]
 	\begin{center}
 		\includegraphics[angle=0,width=0.5\textwidth]{paq.png}
