@@ -287,28 +287,29 @@ The previous equation is important because each $W_i$ must not be adjusted when 
 
 When data set compression is over, PAQ is ready to generate text. A random number is sampled in the [0,1) interval and transformed into a bit 1 or 0 using Inverse Transform Sampling \cite{InverseSampling}. In other words, if the random number falls within the probability range of symbol 1, bit 1 is generated, otherwise, bit 0. 
 
-Once that bit is generated, it will be compressed to reset every context for the following prediction. Here, it is essential to update models in a way that if the same context is obtained in two different samples, probabilities must be the same, otherwise it could compute and propagate errors. Seeing that, it is necessary to turn off the training process and the weight adjustment of each model at generation time. This is possible because the source code of PAQ is available.
-\begin{figure}[hb]
+Once that bit is generated, it will be compressed to reset every context for the following prediction. Here, it is essential to update models in a way that if the same context is obtained in two different samples, probabilities must be the same, otherwise it could compute and propagate errors. Seeing that, it is necessary to turn off the training process and the weight adjustment of each model at generation time\footnote{This is possible because the source code of PAQ is available.}. 
+
+An example is given in Figure \ref{fig1}, in which PAQ splits the [0,1) interval giving $1/4$ of probability to bit 0 and $3/4$ of probability to bit 1. When a random number is sampled in this context it is more likely to generate a 1. Each generated bit updates all models' context. However, that bit should not be learned because of its random nature. In other words, PAQ just learns from the training set and then generates random text using that probabilistic model. After 8 bits, a character is generated.
+
+\begin{figure}[ht]
 	\begin{center}
 		\includegraphics[angle=0,width=0.5\textwidth]{paq.png}
-		\caption{PAQ splits the [0,1) interval giving $1/4$ of probability to bit 0 and $3/4$ of probability to bit 1. When a random number is sampled in this context it is more likely to generate a 1. Each generated bit updates all models' context. However, that bit should not be learned becaused of its random nature. In other words, PAQ just learns from the training set and then generates random text using that probabilistic model. After 8 bits, a character is generated.}
-		\label{fig1}
+		\caption{Example of sampling}
 	\end{center}
 \end{figure}
 
-It was noted that granting too much freedom to our compressor could result in a large accumulation of bad predictions, leading to poor text generation. Therefore, it is proposed to make the text generation more conservative adding a parameter called "temperature" that reduces the possible range of the random number.
+It was noted that granting too much freedom to the compressor could result in a large accumulation of bad predictions, leading to poor text generation. Therefore, it is proposed to make the text generation more conservative adding a parameter called "temperature" that reduces the possible range of the random number as shown in Figure \ref{fig2}.
 
 On maximum temperature, the random number will be generated in the interval [0,1), giving the compressor maximum degree of freedom to make mistakes, whereas, when the temperature parameter turns minimum, the "random" number will always be 0.5, removing the degree of freedom to commit errors (in this scenario, the highest probability symbol will be generated). 
-\begin{figure}[hb]
+\begin{figure}[ht]
 	\begin{center}
 		\includegraphics[angle=0,width=0.5\textwidth]{paq2.png}
-		\caption{For example, the range will be reduced to [0.2, 0.8) when the temperature parameter turns 0.6.
-}
-		\label{fig1}
+		\caption{The range is reduced to [0.2, 0.8) when the temperature parameter turns 0.6.}
+		\label{fig2}
 	\end{center}
 \end{figure}
 
-When temperature is around 0.5 the results are very legible even if they are not as similar to the original text (according to the proposed metrics). It can be seen at the following randomly generated Harry Potter's snippet:
+When temperature is around 0.5 the results can be very legible even if they are not as similar to the original text (according to the proposed metrics). It can be seen at the following randomly generated Harry Potter's snippet:
 \newline
 \begin{displayquote}
 	\textit{``What happened?''  said Harry, and she was standing at him.  ``He is short, and continued to take the shallows, and the three before he did something to happen again.  Harry could hear him.  He was shaking his head, and then to the castle, and the golden thread broke; he should have been a back at him, and the common room, and as he should have to the good one that had been conjured her that the top of his wand too before he said and the looking at him, and he was shaking his head and the many of the giants who would be hot and leafy, its flower beds turned into the song.}
@@ -329,7 +330,7 @@ $$
 \mathcal{X}^2 = \sum_{i=1}^{n} \frac{(O_i - E_i)^2}{E_i}
 $$
 
-Where $O_i$ is the observed ith value and $E_i$ is the expected ith value. A value of 0 means equality.
+Where $O_i$ is the observed ith value and $E_i$ is the expected ith value. A value of 0 means equality. This metric is computed using 4-grams.
 
 \subsubsection{Total Variation}
 
@@ -340,7 +341,7 @@ $$
 \delta(P,Q) = \frac{1}{2} \sum_{i=1}^{n} |P_i - Q_i| 
 $$
 
-In other words, the total variation distance is the largest possible difference between the probabilities that two probability distributions can assign to the same event. A value of 0 means equality.
+In other words, the total variation distance is the largest possible difference between the probabilities that two probability distributions can assign to the same event. A value of 0 means equality. This metric is computed using 4-grams.
 
 \subsubsection{Generalized Jaccard Similarity}
 
@@ -350,35 +351,39 @@ $$
 J(G,T) = \frac{G \cap T}{G \cup T}
 $$
 
-Given two non-negative n-dimensional real vectors X, Y , their Jaccard similarity is defined as:
+Given two non-negative n-dimensional real vectors X, Y , their Jaccard similarity is defined as \cite{Chierichetti}:
 
 $$
 J(x,y) = \frac{\sum_{i=1}^{n} min(X_i , Y_i)}{\sum_{i=1}^{n} max(X_i , Y_i)}
 $$
-This last definition is also know as "Weighted Jaccard Measure". A value of 1 means both texts are equals.
+This last definition is also know as "Weighted Jaccard Similarity". A value of 1 means both texts are equals. This metric is computed using 10-grams.
 
 \subsection{About Samples}
-For each scenario, Karpathy's RNN was trained several times to find its best hyper-parameters. Asymmetrically, the compressor required to be trained just once. After that, a sampling procedure was executed. It set up different values for "temperature" parameter, allowing these trained models to generate diverse text samples.
+For each scenario, Karpathy's RNN was trained several times to find its best hyper-parameters. Asymmetrically, the compressor required to be trained just once. After that, a sampling procedure was executed. It set up different values for "temperature" parameter, allowing these trained models to generate diverse text samples It must be noticed that very high temperatures produce text that is not so similar to the training test, temperatures that are too low aren't also optimal, the best value is usually an intermediate one as shown in Figure \ref{fig3}.
 
 \begin{figure}[hb]
 	\begin{center}
 		\includegraphics[angle=0,width=0.5\textwidth]{temp.png}
-		\caption{Effect of Temperature in the Jaccard Similarity, very high temperatures produce text that is not so similar to the training test, temperatures that are too low aren't also optima, the best value is usually an intermediate one.}
-		\label{fig2}
+		\caption{Effect of Temperature in the Jaccard Similarity}
+		\label{fig3}
 	\end{center}
 \end{figure}
 
-In this research, similarity between the input text (for example, The Complete Works of William Shakespeare) and an automatic generated text sample was measured using a local context and a global one. The former implied splitting the input set in $n$ fragments. Each fragment was compared to the sampled text to find the best combination (i.e. the metrics were computed using each real fragment against the generated one, the best value was taken). The latter implied measuring the sampled text against the whole set without fragmentation.
+In this research, similarity between the input text (e.g. The Complete Works of William Shakespeare) and an automatic generated text sample was measured using a local context and a global one. 
+\begin{enumerate}
+	\item Local similarity: The input text is splitted into $n$ fragments. Then, the metric is computed using each fragment against the generated text. Given the fact that this technique produces $n$ values, the best value is taken.
+	\item Global similarity: The metric is computed using the input text against the generated one. There is no fragmentation.
+\end{enumerate}
 
 \subsection{Results}
-Turning off the training process and the weights adjustment of each model freezes the compressor's global context on the last part of the training set. As a consequence of this event, the last piece of the entry text will be considered as a "big seed".
+Turning off the training process and the weights adjustment of each model freezes the compressor's global context on the last part of the training set. As a consequence of this event, the last piece of the entry text will be considered as a "big seed" for the compression algorithm.
 
 
-\begin{figure}[hb]
+\begin{figure}[b]
 	\begin{center}
 		\includegraphics[angle=0,width=0.5\textwidth]{chiseed.png}
-		\caption{The effect of the chosen seed in the Chi Squared metric. In Orange the metric variation by temperature using a random seed. In Blue the same metric with a chosen one.}
-		\label{fig3}
+		\caption{The effect of a chosen seed in the Chi Squared metric. In Orange the metric variation by temperature using a random seed. In Blue the same metric with a chosen one.}
+		\label{fig4}
 	\end{center}
 \end{figure}
 
@@ -424,7 +429,7 @@ The index at the end of the file was removed and then PAQ compressed and generat
 	\newline 
 \end{displayquote}
 
-The difference is remarkable. Comparing different segments of each input file against each other, it was observed that in some files the last piece was significantly different than the rest of the text. Those unpredictable endings mess up PAQ's generation but it was very interesting to notice that for the RNN did not result in a noticeable difference. This was the first hint that the compressor and the RNN were proceeding in different ways.
+The difference is remarkable. Comparing different segments of each input file against each other, it was observed that in some files the last piece was significantly different than the rest of the text. Those unpredictable endings mess up PAQ's generation but it was very interesting to notice that for the RNN did not result in a noticeable difference. This was the first hint that the compressor and the RNN were proceeding in different ways. An example of the impact caused by choosing a good seed is given in Figure \ref{fig4}
 \newline
 
 In some cases the compressor generated text that was surprisingly well written. 
@@ -500,9 +505,9 @@ While the text may not make sense it certainly follows the style, syntax and wri
 The result of both, PAQ and Karpathy's RNN, for automatic text generation using the mentioned metrics to evaluate how much similar the results are to the original ones.
 
 \subsubsection{Local similarity}
-It can be seen that the compressor got better results for all texts except Poe, Shakespeare and Game of Thrones. A subtle reason why the RNN got better results in such texts is explained in the conclusions.
 
 
+Tables \ref{tab:localchi}, \ref{tab:localtotal} and \ref{tab:localjaccard} show local similarity results. It can be seen that the compressor got better results for all texts except Poe, Shakespeare and Game of Thrones. A subtle reason why the RNN got better results in such texts is explained in the conclusions.
 
 \begin{table}[!hbt]
 	\begin{center}
@@ -559,8 +564,7 @@ It can be seen that the compressor got better results for all texts except Poe, 
 \end{table}
 
 \subsubsection{Global similarity}
-The Recurrent Neural Network got better results in global contexts. The results are shown in the following tables:
-
+The Recurrent Neural Network got better results in global contexts. The results are shown in Tables \ref{tab:globalchi}, \ref{tab:globaltotal} and \ref{tab:globaljaccard}
 
 \begin{table}[!hbt]
 	\begin{center}
@@ -650,7 +654,9 @@ We thank researchers from Argentine Symposium of Artificial Intelligence for com
 \newline
 \newline
 We would also like to show our gratitude to Dr. Matt Mahoney for sharing his knowledge in compression algorithms. We are also immensely grateful to Dr. Alex Graves for his comments on an earlier attempt to make handwriting recognition with PAQ compressor
+
+\nocite{*}
 \bibliographystyle{plain}
-\bibliography{References}         %Check the iberamia.bib file
+\bibliography{References}
 
 \end{document}
