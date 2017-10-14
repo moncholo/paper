@@ -283,7 +283,7 @@ The previous review was classified as positive by the Stanford Analyzer, probabl
 
 \section{Automatic Text Generation}
 
-Recurrent neural networks have been used for automatic text generation \cite{Karpathy}. In this tasks, RNNs are trained with texts (or books) in order to sample new characters according to what it learned from those texts. Training a RNN with Shakespeare's works can produce the following example:
+Recurrent neural networks have been used for automatic text generation \cite{Karpathy}. On this tasks, RNNs are trained with texts (or books) in order to sample new characters according to those texts' patterns. Readers may think that the following example was written by Shakespeare but it was not, a RNN was trained with Shakespeare's works and produced it:
 
 \begin{displayquote}
 		PANDARUS: \\
@@ -298,31 +298,38 @@ Recurrent neural networks have been used for automatic text generation \cite{Kar
 		The earth and thoughts of many states.\\
 \end{displayquote}
 
+As a reminder, the ability of good compressors when making predictions is more than evident. It just requires an entry text (i.e. a training set) to be compressed. At compression time, the future symbols will get a probability of occurrence: The higher the probability, the better compression rate for success cases of that prediction, on the contrary, each failure case will take a penalty. At the end of this process, a probability distribution will be associated with that input data \cite{Mahoney4}. As a result of obtaining this probabilistic model, it will be possible to simulate new samples, in other words, generate text.
 
-Readers may think that the previous example was written by Shakespeare but it was not. 
-
-As a reminder, the ability of good compressors when making predictions is more than evident. It just requires an entry text (i.e. a training set) to be compressed. At compression time, the future symbols will get a probability of occurrence: The higher the probability, the better compression rate for success cases of that prediction, on the contrary, each failure case will take a penalty. At the end of this process, a probability distribution will be associated with that input data \cite{Mahoney4}. As a result of this probabilistic model, it will be possible to simulate new samples, in other words, generate text.
-
-In this module, a recurrent neural network and a PAQ compressor will be used to generate text and the results will be compared so that to determine which of them performs better. In the following sections, different scenarios and metrics will be used to make such comparison.
+In this module, a recurrent neural network and a PAQ compressor will be used to generate text and results will be compared to determine which of them performs better. In the following sections, different scenarios and metrics will be used to make such comparison.
 
 \subsection{Data Model}
 
-PAQ series compressors use arithmetic coding to encode symbols assigned to a probability distribution. Each probability lies on the interval [0,1) and when it comes to binary coding, there are two possible symbols: 0 and 1. Moreover, this compressor uses contexts, a main part of compression algorithms. They are built from the previous history and can be used to make predictions, for example, the last ten symbols can be linked to compute the prediction of the eleventh. 
+PAQ series compressors use arithmetic coding to encode symbols assigned to a probability distribution. Each probability lies on the interval [0,1) and when it comes to binary coding, there are two possible symbols: 0 and 1. 
 
-PAQ uses an ensamble of several different models to compute how likely a bit 1 or 0 is next. Some of these models are based on the previous $n$ characters of $m$ bits of seen text, other models use whole words as contexts, etc. 
-In order to weight the prediction performed by each model, a neural network is used to determine the weight of each model \cite{Matt3}:
+This compressor uses Models and Contexts, a main part of compression algorithms. Contexts are built from the previous history and can be used to make predictions, for example, the last ten symbols can be linked to compute the prediction of the eleventh. Models process data and assigns probabilities to the future symbols. Moreover, each model's prediction is based on contexts to compute how likely a bit 1 or 0 is next. 
+
+PAQ uses an ensamble of several different models. Some of them are based on the previous $n$ characters (or $m$ bits) of processed text, others use whole words as contexts, etc. In order to combine every models' prediction, a Model Mixing procedure is included to acquire a complete prediction. So, a neural network will be the mixer to determine the weight of each model \cite{Matt3}:
 
 $$P(1|c)\footnote{The probability $P(0|c)$ can be interpreted as $1-P(1|c)$ } = \sum_{i=1}^{n} P_i(1|c) W_i$$
 
-Where $P(1|c)$ is the probability of bit 1 with context "c", $P_i(1|c)$ is the probability of bit 1 in context "c" for model $i$ and $W_i$ is the weight assigned to model $i$.
-
-In addition, each model adjusts their predictions based on the new information. When compressing, input text is processed bit by bit. On every bit, the compressor updates the context of each model and adjusts the weights of each model $i$ as shown in the following equation: 
+\begin{displayquote}
+Where $P(1|c)$ is the probability of bit 1 with context "c",
+\newline
+$P_i(1|c)$ is the probability of bit 1 in context "c" for model $i$ and
+\newline$W_i$ is the weight assigned to model $i$.
+\end{displayquote}
+In addition, each model adjusts their predictions based on the new information. When compressing, input text is processed bit by bit. On every bit, the compressor updates the context of each model and adjusts the weights as shown in the following equation: 
 
 $$W_i = W_i + error_i*\alpha*S_i$$
 
-Given the compressed bit $y$, the error of each models is defined as $error_i = y-P_i(1|c)$ and $S_i$ is a signal that derives from $P_i(1|c)$\footnote{The signal $S_i$ is often computed as $S_i = stretch(P_i(1|c))$}
-
-The previous equation is important because each $W_i$ must not be adjusted when generating text because of a reason explained in the following section 
+\begin{displayquote}
+Given the compressed bit $y$, the error of each models is defined as 
+\newline
+$error_i = y-P_i(1|c)$ and 
+\newline
+$S_i$ is a signal that derives from $P_i(1|c)$\footnote{The signal $S_i$ is often computed as $S_i = stretch(P_i(1|c))$}
+\end{displayquote}
+The previous equation is important because each $W_i$ must not be adjusted at generation time.
 
 \subsection{Text Generation}
 
@@ -336,6 +343,7 @@ An example is given in Figure \ref{fig1}, in which PAQ splits the [0,1) interval
 	\begin{center}
 		\includegraphics[angle=0,width=0.5\textwidth]{paq.png}
 		\caption{Example of sampling}
+		\label{fig1}
 	\end{center}
 \end{figure}
 
