@@ -94,7 +94,7 @@ In recent studies \cite{Graves}\cite{Sutskever}\cite{Bown} Recurrent Neural Netw
 
 \medskip
 
-\noindent{\small{\textbf{Keywords}: KeyWord1, Keyword2, KeyWord3.}}
+\noindent{\small{\textbf{Keywords}: Natural language processing, Compression algorithms, Neural networks, Predictions.}}
 
 
 \section{Introduction}
@@ -203,21 +203,43 @@ The Large Movie Review Dataset\cite{Maas}, which has been used for Sentiment Ana
 
 In this section, the results obtained are explained by giving a comparison between the data compressor and the Stanford's Neural Network for Sentiment Analysis. 
 
-The following table shows the results obtained
-
+Tables \ref{tab:positive}, \ref{tab:negative} and \ref{tab:overall} show the results obtained.
 
 \begin{table}[hb]
 	\begin{center}
-		{\caption{PAQ vs RNN Classification Results.}\label{tab:sample}}
+		{\caption{PAQ vs RNN. Classification results of the positive reviews.}\label{tab:positive}}
 		\begin{tabular}{|l|l|l|l|}\hline
-			&\textbf{Correct}&\textbf{Incorrect}&\textbf{Inconcluse} \\ \hline
+			&\textbf{Correct}&\textbf{Incorrect}&\textbf{Inconclusive} \\ \hline
+			PAQ & 71.19\% & 23.72\% & 	5.10\% \\ \hline
+			RNN & 46.03\% & 45.18\% & 8.79\% \\ \hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\begin{table}[hb]
+	\begin{center}
+		{\caption{PAQ vs RNN.Classification results of the negative reviews.}\label{tab:negative}}
+		\begin{tabular}{|l|l|l|l|}\hline
+			&\textbf{Correct}&\textbf{Incorrect}&\textbf{Inconclusive} \\ \hline
+			PAQ & 83.20\% & 13.12\% & 	3.68\% \\ \hline
+			RNN & 95.76\% & 2.08\% & 2.16\% \\ \hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+
+\begin{table}[!h]
+	\begin{center}
+		{\caption{PAQ vs RNN. Overall classification results of the reviews}\label{tab:overall}}
+		\begin{tabular}{|l|l|l|l|}\hline
+			&\textbf{Correct}&\textbf{Incorrect}&\textbf{Inconclusive} \\ \hline
 			PAQ & 77.20\% & 18.41\% & 	4.39\% \\ \hline
 			RNN & 70.93\% & 23.60\% & 5.47\% \\ \hline
 		\end{tabular}
 	\end{center}
 \end{table}
 
-As you could see from the previous table, 77.20\% of movie reviews were correctly classified by the PAQ Compressor whereas 70.93\% were well classified by the Stanford's Neural Network. 
+Both algorithms have excellent performance when classifying negative reviews, as show in Table \ref{tab:negative}. In Table \ref{tab:positive} are shown the results for positive reviews classification and it can be noticed that results are not as good as the ones obtained with negative reviews. Overall results are shown in Table \ref{tab:overall} where you can see that 77.20\% of movie reviews were correctly classified by the PAQ Compressor whereas 70.93\% were well classified by the Stanford's Neural Network. 
 
 There are two main points to highlight according to the result obtained:
 \begin{enumerate}
@@ -225,10 +247,11 @@ There are two main points to highlight according to the result obtained:
 	\item In this particular case, a higher precision can be achieved using PAQ rather than the Stanford Neural Network for Sentiment Analysis.
 \end{enumerate}
 
-We observed that PAQ was very accurate to determine whether a review was positive or negative, the missclassifications were always difficult reviews and in some particular cases the compressor outdid the human label, for example consider the following review:
+It is observed that PAQ can be very accurate to determine whether a review is positive or negative, the miss-classifications were always difficult reviews and in some particular cases the compressor outdid the human label, for example consider the following review:
 \newline
 \begin{displayquote}
-	\textit{``The piano part was so simple it could have been picked out with one hand while the player whacked away at the gong with the other. This is one of the most bewilderedly trance­state inducing bad movies of the year so far for me.''}
+
+	\label{exampleee1}\textit{``The piano part was so simple it could have been picked out with one hand while the player whacked away at the gong with the other. This is one of the most bewilderedly trance­state inducing bad movies of the year so far for me.''}
 	\newline
 \end{displayquote}
 This review was labeled positive but PAQ correctly predicted it as negative, since the review is misslabeled it counted as a miss in the automated test.
@@ -242,7 +265,7 @@ Consider the following review:
 	\newline
 \end{displayquote}
 
-This was classified as positive by the Stanford Analyzer, probably because of words such as "interest, suitable, family, commercial, good, picked", the Compressor however was able to read the real sentiment of the review and predicted a negative label. In cases like this the compressor shows its ability to truly understand data. However, some cases can "hack" both algorithms. In the following example, the review is about an excellent actor that acts as a low-talent comedian. Determining whether it is a positive or negative review is not easy as you can see from the phrases in bold.
+The previous review was classified as positive by the Stanford Analyzer, probably because of words such as "interest, suitable, family, commercial, good, picked", the Compressor however was able to read the real sentiment of the review and predicted a negative label. In cases like this the compressor shows its ability to truly understand data. However, some cases can "hack" both algorithms. In the following example, the review is about an excellent actor that acts as a low-talent comedian. Determining whether it is a positive or negative review is not easy as you can see from the phrases in bold.
 
 \begin{displayquote}
 	\textit{Chris Rock stars in this remake of Warren Beatty's Heaven Can Wait (itself a remake of the 1941 film Here Comes Mr. Jordan), a comedy about a man who dies before his time, before he can realize his dreams, and his adventures in his new (albeit temporary) body.
@@ -260,7 +283,22 @@ This was classified as positive by the Stanford Analyzer, probably because of wo
 
 \section{Automatic Text Generation}
 
-This module's goal is to automatically generate text with a PAQ series compressor and compare it with Andrej Karpathy RNN's results \cite{Karpathy}, using specifics metrics and scenarios.
+Recurrent neural networks have been used for automatic text generation \cite{Karpathy}. In this tasks, RNNs are trained with texts (or books) in order to sample new characters according to what it learned from those texts. Training a RNN with Shakespare's works can produce the following example:
+
+\begin{displayquote}[width=0.5]
+PANDARUS: \\
+Alas, I think he shall be come approached and the day
+When little srain would be attain'd into being never fed,
+And who is but a chain and subjects of his death,
+I should not sleep.
+
+Second Senator: \\
+They are away this miseries, produced upon my soul,
+Breaking and strongly should be buried, when I perish
+The earth and thoughts of many states.
+\end{displayquote}
+
+This module's goal is to automatically generate text with a PAQ series compressor and compare results against results generated  it with a Recurrent neural network's results \cite{Karpathy}, using specifics metrics and scenarios.
 
 The ability of good compressors when making predictions is more than evident. It just requires an entry text (training set) to be compressed. At compression time, the future symbols will get a probability of occurrence: The higher the probability, the better compression rate for success cases of that prediction, on the contrary, each failure case will take a penalty. At the end of this process, a probability distribution will be associated with that input data \cite{Mahoney4}. As a result of this probabilistic model, it will be possible to simulate new samples, in other words, generate text.
 
@@ -551,7 +589,7 @@ Tables \ref{tab:localchi}, \ref{tab:localtotal} and \ref{tab:localjaccard} show 
 		\begin{tabular}{|l|l|l|}\hline
 			&\textbf{PAQ8L} & \textbf{RNN}\\ \hline
 			Game of Thrones & 0.06118 & \textbf{0.0638} \\
-			Harry Potter &  \textbf{0.1095} & 0.0387 \\
+			Harry Potter &  \textbf{0.1095} & 0.0387 \\f
 			Paulo Coelho &  \textbf{0.0825} & 0.0367 \\
 			Bible &  \textbf{0.1419} & 0.1310 \\
 			Poe & 	0.0602 & \textbf{0.0605} \\
