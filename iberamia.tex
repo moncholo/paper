@@ -283,24 +283,27 @@ The previous review was classified as positive by the Stanford Analyzer, probabl
 
 \section{Automatic Text Generation}
 
-Recurrent neural networks have been used for automatic text generation \cite{Karpathy}. In this tasks, RNNs are trained with texts (or books) in order to sample new characters according to what it learned from those texts. Training a RNN with Shakespare's works can produce the following example:
+Recurrent neural networks have been used for automatic text generation \cite{Karpathy}. In this tasks, RNNs are trained with texts (or books) in order to sample new characters according to what it learned from those texts. Training a RNN with Shakespeare's works can produce the following example:
 
-\begin{displayquote}[width=0.5]
-PANDARUS: \\
-Alas, I think he shall be come approached and the day
-When little srain would be attain'd into being never fed,
-And who is but a chain and subjects of his death,
-I should not sleep.
+\begin{displayquote}
+		PANDARUS: \\
+			Alas, I think he shall be come approached and the day\\
+			When little srain would be attain'd into being never fed,\\
+			And who is but a chain and subjects of his death,\\
+			I should not sleep.
 
-Second Senator: \\
-They are away this miseries, produced upon my soul,
-Breaking and strongly should be buried, when I perish
-The earth and thoughts of many states.
+		Second Senator: \\
+		They are away this miseries, produced upon my soul, \\
+		Breaking and strongly should be buried, when I perish \\
+		The earth and thoughts of many states.\\
 \end{displayquote}
 
-This module's goal is to automatically generate text with a PAQ series compressor and compare results against results generated  it with a Recurrent neural network's results \cite{Karpathy}, using specifics metrics and scenarios.
 
-The ability of good compressors when making predictions is more than evident. It just requires an entry text (training set) to be compressed. At compression time, the future symbols will get a probability of occurrence: The higher the probability, the better compression rate for success cases of that prediction, on the contrary, each failure case will take a penalty. At the end of this process, a probability distribution will be associated with that input data \cite{Mahoney4}. As a result of this probabilistic model, it will be possible to simulate new samples, in other words, generate text.
+Readers may think that the previous example was written by Shakespeare but it was not. 
+
+As a reminder, the ability of good compressors when making predictions is more than evident. It just requires an entry text (i.e. a training set) to be compressed. At compression time, the future symbols will get a probability of occurrence: The higher the probability, the better compression rate for success cases of that prediction, on the contrary, each failure case will take a penalty. At the end of this process, a probability distribution will be associated with that input data \cite{Mahoney4}. As a result of this probabilistic model, it will be possible to simulate new samples, in other words, generate text.
+
+In this module, a recurrent neural network and a PAQ compressor will be used to generate text and the results will be compared so that to determine which of them performs better. In the following sections, different scenarios and metrics will be used to make such comparison.
 
 \subsection{Data Model}
 
@@ -397,7 +400,7 @@ $$
 This last definition is also know as "Weighted Jaccard Similarity". A value of 1 means both texts are equals. This metric is computed using 10-grams.
 
 \subsection{About Samples}
-For each scenario, Karpathy's RNN was trained several times to find its best hyper-parameters. Asymmetrically, the compressor required to be trained just once. After that, a sampling procedure was executed. It set up different values for "temperature" parameter, allowing these trained models to generate diverse text samples It must be noticed that very high temperatures produce text that is not so similar to the training test, temperatures that are too low aren't also optimal, the best value is usually an intermediate one as shown in Figure \ref{fig3}.
+For each scenario, the RNN was trained several times to find its best hyper-parameters. Asymmetrically, the compressor required to be trained just once. After that, a sampling procedure was executed. It set up different values for "temperature" parameter, allowing these trained models to generate diverse text samples It must be noticed that very high temperatures produce text that is not so similar to the training test, temperatures that are too low aren't also optimal, the best value is usually an intermediate one as shown in Figure \ref{fig3}.
 
 \begin{figure}[hb]
 	\begin{center}
@@ -540,7 +543,7 @@ While the text may not make sense it certainly follows the style, syntax and wri
 \subsection{Metric Results}
 
 
-The result of both, PAQ and Karpathy's RNN, for automatic text generation using the mentioned metrics to evaluate how much similar the results are to the original ones.
+In this section, the results of both algorithms are shown so that to evaluate how much similar the results are to the original inputs.
 
 \subsubsection{Local similarity}
 
