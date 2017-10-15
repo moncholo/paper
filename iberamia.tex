@@ -358,7 +358,7 @@ On maximum temperature, the random number will be generated in the interval [0,1
 	\end{center}
 \end{figure}
 
-When temperature is around 0.5 the results can be very legible even if they are not as similar to the original text (according to the proposed metrics). It can be seen at the following randomly generated Harry Potter's snippet:
+When temperature is around 0.5, the result seems to be actually legible, even if it is not similar to the original text (according to the proposed metrics). This effect is shown at the following randomly generated Harry Potter's snippet:
 \newline
 \begin{displayquote}
 	\textit{``What happened?''  said Harry, and she was standing at him.  ``He is short, and continued to take the shallows, and the three before he did something to happen again.  Harry could hear him.  He was shaking his head, and then to the castle, and the golden thread broke; he should have been a back at him, and the common room, and as he should have to the good one that had been conjured her that the top of his wand too before he said and the looking at him, and he was shaking his head and the many of the giants who would be hot and leafy, its flower beds turned into the song.}
@@ -425,16 +425,7 @@ In this research, similarity between the input text (e.g. The Complete Works of 
 \end{enumerate}
 
 \subsection{Results}
-Turning off the training process and the weights adjustment of each model freezes the compressor's global context on the last part of the training set. As a consequence of this event, the last piece of the entry text will be considered as a "big seed" for the compression algorithm.
-
-
-\begin{figure}[b]
-	\begin{center}
-		\includegraphics[angle=0,width=0.5\textwidth]{chiseed.png}
-		\caption{The effect of a chosen seed in the Chi Squared metric. In Orange the metric variation by temperature using a random seed. In Blue the same metric with a chosen one.}
-		\label{fig4}
-	\end{center}
-\end{figure}
+Turning off the training process and the weights adjustment of each model freezes the compressor's global context at the end of the training set. As a consequence of this event, the last piece of the entry text will be considered as a "big seed".
 
 For example, The King James Version of the Holy Bible includes an index at the end of the text, a bad seed for text generation. Compressing the Bible with that index set an unknown context for PAQ and leaded us to this result:
 \newline
@@ -478,9 +469,14 @@ The index at the end of the file was removed and then PAQ compressed and generat
 	\newline 
 \end{displayquote}
 
-The difference is remarkable. Comparing different segments of each input file against each other, it was observed that in some files the last piece was significantly different than the rest of the text. Those unpredictable endings mess up PAQ's generation but it was very interesting to notice that for the RNN did not result in a noticeable difference. This was the first hint that the compressor and the RNN were proceeding in different ways. An example of the impact caused by choosing a good seed is given in Figure \ref{fig4}
-\newline
-
+The difference is remarkable. Comparing different segments of each input file against each other, it was observed that in some files the last piece was significantly different than the rest of the text. Those unpredictable endings mess up PAQ's generation but it was very interesting to notice that for the RNN did not result in a noticeable difference. This was the first hint that the compressor and the RNN were proceeding in different ways. An example of the impact caused by choosing a good seed is given in Figure \ref{fig4}.
+\begin{figure}[b]
+	\begin{center}
+		\includegraphics[angle=0,width=0.5\textwidth]{chiseed.png}
+		\caption{The effect of a chosen seed in the Chi Squared metric. In Orange the metric variation by temperature using a random seed. In Blue the same metric with a chosen one.}
+		\label{fig4}
+	\end{center}
+\end{figure}
 In some cases the compressor generated text that was surprisingly well written. 
 \newline
 \newline
