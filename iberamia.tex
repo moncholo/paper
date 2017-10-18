@@ -71,7 +71,7 @@
 
 \author{Juan Andrés Laura, Gabriel Omar Masi, Luis Argerich
 \smallskip \\
-\small{Departemento de Computación,
+\small{Departamento de Computación,
 	Facultad de Ingeniería. Universidad de Buenos Aires
 \smallskip \\
 jandreslaura@gmail.com, masigabriel@gmail.com, largerich@fi.uba.ar 
@@ -112,7 +112,7 @@ The hypothesis for this research is that, if compression is based on learning fr
 
 Recurrent Neural Networks and in particular LSTMs were used not only for predictive tasks\cite{Gers} but also for Data Compression\cite{Schmidhuber}. While the LSTMs were brilliant in their text\cite{Sutskever}, music\cite{Bown} and image generation\cite{Gregor} tasks, they were never able to defeat the state of the art algorithms in Data Compression\cite{Schmidhuber}. 
 
-This might indicate that there is a fundamental difference between Data Compression and Generative Processes and between Data Compression Algorithms and Recurrent Neural Networs. After experiments, a fundamental difference will be shown in this research in order to explain why a RNN can be the state of the art in some generatives process but not in Data Compression.
+This might indicate that there is a fundamental difference between Data Compression and Generative Processes and between Data Compression Algorithms and Recurrent Neural Networks. After experiments, a fundamental difference will be shown in this research in order to explain why a RNN can be the state of the art in some generative processes but not in Data Compression.
 
 \section{Data Compression as an Artificial Intelligence Field}
 
@@ -128,9 +128,9 @@ A file containing the digits of $\pi$ can be compressed with a very short progra
 
 Human feelings can be determined according to what they write in many social networks such as Facebook, Twitter, etc.. It looks like an easy task for humans. However, it could be not so easy for a computer to automatically determine the sentiment behind a piece of writing.
 
-The task of guessing the sentiment of text using a computer is known as Sentiment Analysis and one of the most popular approaches for this task is to use neural networks. In fact, Stanford University created a powerful neural network for sentiment analysis\cite{Socher} which is used to predict the sentiment of movie reviews taking into account not only the words in isolation but also the order in which they appear. In the first experiment, the Stanford neural network and a PAQ compressor\footnote{PAQ's source code is free and it is available at Mahoney's web \cite{Mahoney}}\cite{Mahoney} will be used for doing sentiment analysis of movie reviews in order to determine whether a user likes or not a given movie (i.e. each movie review will be classified as positive or negative). After that, results obtained will be compared using the percentage of correctly classified movie reviews. Both algorithms will use a public data set for movie reviews\cite{Maas}.
+The task of guessing the sentiment of text using a computer is known as Sentiment Analysis and one of the most popular approaches for this task is to use neural networks. In fact, Stanford University created a powerful neural network for sentiment analysis\cite{Socher} which is used to predict the sentiment of movie reviews taking into account not only the words in isolation but also the order in which they appear. In the first experiment, the Stanford's neural network and a PAQ compressor\footnote{PAQ's source code is free and it is available at Mahoney's web \cite{Mahoney}}\cite{Mahoney} will be used for doing sentiment analysis of movie reviews in order to determine whether a user likes or not a given movie (i.e. each movie review will be classified as positive or negative). After that, results obtained will be compared using the percentage of correctly classified movie reviews. Both algorithms will use a public data set for movie reviews\cite{Maas}.
 
-In order to understand how sentiment analysis could be done with a data compressor it is important to comprehend the concept of using Data Compression to compute the distance between two strings using the \textit{Normalized Compression Distance}\cite{Vitanyi}.
+In order to understand how sentiment analysis could be done with a data compressor it is important to comprehend the concept of using Data Compression to compute the distance between two strings using the \textit{Normalized Compression Distance}\cite{Vitanyi}. The following equation shows how this distance is measured:
 
 $$
 NCD(x,y) = \frac{C(xy)-\min\{C(x),C(y)\}}{\max\{C(x),C(y)\}}
@@ -162,10 +162,10 @@ The previous review has a size of 132 bytes. After compressing the train dataset
 
 \begin{displayquote}
 $C(P_1,...,P_n,R)-C(P_1,...,P_n)$: 42 bytes\\
-$C(N_1,...,N_n,R)-C(N_1,...,N_n)$: 43 bytes
+$C(N_1,...,N_m,R)-C(N_1,...,N_m)$: 43 bytes
 \end{displayquote}
 
-Given the previous results, the review $R$ is predicted positive because $C(P_1,...,P_n,R)-C(P_1,...,P_n)$ is lower than $C(N_1,...,N_n,R)-C(N_1,...,N_n)$.
+Given the previous results, the review $R$ is predicted positive because $C(P_1,...,P_n,R)-C(P_1,...,P_n)$ is lower than $C(N_1,...,N_m,R)-C(N_1,...,N_m)$.
 
 
 \subsection{PAQ for Sentiment Analysis}
