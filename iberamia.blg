@@ -1,0 +1,85 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: iberamia.aux
+The style file: plain.bst
+Database file #1: References.bib
+Warning--entry type for "Graves" isn't style-file defined
+--line 1 of file References.bib
+Warning--entry type for "Mahoney" isn't style-file defined
+--line 11 of file References.bib
+Warning--entry type for "Socher" isn't style-file defined
+--line 17 of file References.bib
+Warning--entry type for "Mahoney2" isn't style-file defined
+--line 25 of file References.bib
+Warning--entry type for "Gers" isn't style-file defined
+--line 50 of file References.bib
+Warning--entry type for "Franz" isn't style-file defined
+--line 59 of file References.bib
+Warning--entry type for "Ofir" isn't style-file defined
+--line 69 of file References.bib
+Warning--entry type for "Grunwald" isn't style-file defined
+--line 79 of file References.bib
+Warning--entry type for "Sutskever" isn't style-file defined
+--line 111 of file References.bib
+Warning--entry type for "Maas" isn't style-file defined
+--line 137 of file References.bib
+Warning--entry type for "Gregor" isn't style-file defined
+--line 144 of file References.bib
+Warning--entry type for "Chierichetti" isn't style-file defined
+--line 154 of file References.bib
+Warning--entry type for "Karpathy" isn't style-file defined
+--line 161 of file References.bib
+Warning--entry type for "Hutter" isn't style-file defined
+--line 169 of file References.bib
+Warning--entry type for "Ratsaby" isn't style-file defined
+--line 183 of file References.bib
+Warning--entry type for "Mahoney4" isn't style-file defined
+--line 203 of file References.bib
+Warning--entry type for "Matt3" isn't style-file defined
+--line 219 of file References.bib
+Warning--to sort, need author or key in Hutter
+Warning--empty year in Bown
+Warning--empty year in Celikel
+Warning--empty publisher in InverseSampling
+You've used 26 entries,
+            2118 wiz_defined-function locations,
+            658 strings with 8205 characters,
+and the built_in function-call counts, 7141 in all, are:
+= -- 668
+> -- 345
+< -- 5
++ -- 142
+- -- 112
+* -- 399
+:= -- 1190
+add.period$ -- 83
+call.type$ -- 26
+change.case$ -- 131
+chr.to.int$ -- 0
+cite$ -- 30
+duplicate$ -- 242
+empty$ -- 614
+format.name$ -- 112
+if$ -- 1524
+int.to.chr$ -- 0
+int.to.str$ -- 26
+missing$ -- 12
+newline$ -- 138
+num.names$ -- 50
+pop$ -- 217
+preamble$ -- 1
+purify$ -- 108
+quote$ -- 0
+skip$ -- 204
+stack$ -- 0
+substring$ -- 251
+swap$ -- 45
+text.length$ -- 5
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 98
+warning$ -- 4
+while$ -- 57
+width$ -- 28
+write$ -- 274
+(There were 21 warnings)

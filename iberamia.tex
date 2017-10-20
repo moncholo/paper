@@ -14,6 +14,7 @@
 \usepackage{csquotes}
 \usepackage{cite}
 \usepackage{listings}
+\usepackage{indentfirst}
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 \DeclareMathOperator*{\argmin}{arg\,min}
 \DeclareMathOperator*{\argmax}{arg\,max}
@@ -89,7 +90,7 @@ jandreslaura@gmail.com, masigabriel@gmail.com, largerich@fi.uba.ar
 
 
 \noindent{\small{{\textbf Abstract}
-In recent studies \cite{Graves}\cite{Sutskever}\cite{Bown} Recurrent Neural Networks were used for generative processes and their surprising performance can be explained by their ability to create good predictions. In addition, data compression is also based on prediction. What the problem comes down to is whether a data compressor could be used to perform as well as recurrent neural networks in the natural language processing tasks of sentiment analysis and automatic text generation. If this is possible, then the problem comes down to determining if a compression algorithm is even more intelligent than a neural network in such tasks. In our journey, a fundamental difference between a Data Compression Algorithm and a Recurrent Neural Network has been discovered. }}
+In recent studies \cite{Graves}\cite{Sutskever}\cite{Bown} Recurrent Neural Networks were used for generative processes and their surprising performance can be explained by their ability to create good predictions. In addition, Data Compression is also based on prediction. What the problem comes down to is whether a data compressor could be used to perform as well as recurrent neural networks in the natural language processing tasks of sentiment analysis and automatic text generation. If this is possible, then the problem comes down to determining if a compression algorithm is even more intelligent than a neural network in such tasks. In our journey, a fundamental difference between a Data Compression Algorithm and Recurrent Neural Networks has been discovered. }}
 
 
 \medskip
@@ -98,27 +99,28 @@ In recent studies \cite{Graves}\cite{Sutskever}\cite{Bown} Recurrent Neural Netw
 
 
 \section{Introduction}
+
 One of the most interesting goals of Artificial Intelligence is the simulation of different human creative processes like speech recognition, sentiment analysis, image recognition, automatic text generation, etc. In order to achieve such goals, a program should be able to create a model that reflects how humans think about these problems.
 
 Researchers think that Recurrent Neural Networks (RNN) are capable of understanding the way some tasks are done such as music composition, writing of texts, etc. Moreover, RNNs can be trained for sequence generation by processing real data sequences one step at a time and predicting what comes next\cite{Graves}\cite{Sutskever}.
 
 Compression algorithms are also capable of understanding and representing different sequences and that is why the compression of a string could be achieved. However, a compression algorithm might be used not only to compress a string but also to do non-conventional tasks in the same way as neural nets (e.g. a compression algorithm could be used for clustering\cite{Cilibrasi}, sequence generation or music composition).
 
-Both neural networks and data compressors should be able to learn from the input data to do the tasks for which they are designed. In this way, someone could argue that a data compressor can be used to generate sequences or a neural network can be used to compress data. In consequence, using the best data compressor to generate sequences should produce better results than the ones obtained by a neural network but if this is not true then the neural network should compress better than the state of the art in data compression.
+Both neural networks and data compressors should be able to learn from the input data to do the tasks for which they are designed. In this way, someone could argue that a data compressor can be used to generate sequences or a neural network can be used to compress data. In consequence, using the best data compressor to generate sequences should produce better results than the ones obtained by a neural network, otherwise the neural network should compress better than the state of the art in Data Compression.
 
-The hypothesis for this research is that, if compression is based on learning from the input data set, then the best compressor for a given data set should be able to compete with other algorithms in natural language processing tasks. In the present work, this hypothesis will be analyzed for two given scenarios: sentiment analysis and automatic text generation.
+The hypothesis for this research is that, if compression is based on training from an input data, then the best compressor for a given training set should be able to compete with other algorithms in natural language processing tasks. In the present work, this hypothesis will be analyzed for two given scenarios: sentiment analysis and automatic text generation.
 
 \section{RNNs for Data Compression}
 
 Recurrent Neural Networks and in particular LSTMs were used not only for predictive tasks\cite{Gers} but also for Data Compression\cite{Schmidhuber}. While the LSTMs were brilliant in their text\cite{Sutskever}, music\cite{Bown} and image generation\cite{Gregor} tasks, they were never able to defeat the state of the art algorithms in Data Compression\cite{Schmidhuber}. 
 
-This might indicate that there is a fundamental difference between Data Compression and Generative Processes and between Data Compression Algorithms and Recurrent Neural Networks. After experiments, a fundamental difference will be shown in this research in order to explain why a RNN can be the state of the art in some generative processes but not in Data Compression.
+This might indicate that there is a fundamental difference between Data Compression and Generative Processes and between Data Compression Algorithms and Recurrent Neural Networks. After experiments, a fundamental difference will be shown in this research in order to explain why a RNN can not be the state of the art in Data Compression.
 
 \section{Data Compression as an Artificial Intelligence Field}
 
 For many authors there is a very strong relationship between Data Compression and Artificial Intelligence\cite{Franz}\cite{Ofir}. Data Compression is about making good predictions \cite{Ratsaby} which is also the goal of Machine Learning, a field of Artificial Intelligence. 
 
-Essentially, Data compression involves two important steps: modeling and coding. Coding is a solved problem using arithmetic compression. The difficult task is modeling because it comes down to building a description of the data using the most compact representation; this is again directly related to Artificial Intelligence. Using the Minimal Description Length principle\cite{Grunwald} the efficiency of a good Machine Learning algorithm can be measured in terms of how good it is to compress the training data plus the size of the model itself.
+Essentially, Data Compression involves two important steps: modeling and coding. Coding is a solved problem using arithmetic coding. The difficult task is modeling because it comes down to building a description of the data using the most compact representation; this is again directly related to Artificial Intelligence. Using the Minimal Description Length principle\cite{Grunwald} the efficiency of a good Machine Learning algorithm can be measured in terms of how good it is to compress the training data plus the size of the model itself.
 
 A file containing the digits of $\pi$ can be compressed with a very short program able to generate those digits, gigabytes of information can be compressed into a few thousand bytes. However, the problem arises when trying to find a program capable of understanding that our input file contains the digits of $\pi$. In consequence, achieving the best compression rate involves finding a program able to always find the most compact model to represent the data and that is clearly an indication of intelligence, perhaps even of General Artificial Intelligence. 
 
@@ -128,7 +130,7 @@ A file containing the digits of $\pi$ can be compressed with a very short progra
 
 Human feelings can be determined according to what they write in many social networks such as Facebook, Twitter, etc.. It looks like an easy task for humans. However, it could be not so easy for a computer to automatically determine the sentiment behind a piece of writing.
 
-The task of guessing the sentiment of text using a computer is known as Sentiment Analysis and one of the most popular approaches for this task is to use neural networks. In fact, Stanford University created a powerful neural network for sentiment analysis\cite{Socher} which is used to predict the sentiment of movie reviews taking into account not only the words in isolation but also the order in which they appear. In the first experiment, the Stanford's neural network and a PAQ compressor\footnote{PAQ's source code is free and it is available at Mahoney's web \cite{Mahoney}}\cite{Mahoney} will be used for doing sentiment analysis of movie reviews in order to determine whether a user likes or not a given movie (i.e. each movie review will be classified as positive or negative). After that, results obtained will be compared using the percentage of correctly classified movie reviews. Both algorithms will use a public data set for movie reviews\cite{Maas}.
+The task of guessing the sentiment of texts using a computer is known as Sentiment Analysis and one of the most popular approaches for this task is to use neural networks. In fact, Stanford University created a powerful neural network for sentiment analysis\cite{Socher} which is used to predict the sentiment of movie reviews taking into account not only the words in isolation but also the order in which they appear. In the first experiment, the Stanford's neural network and a PAQ compressor\footnote{PAQ's source code is free and it is available at Mahoney's web \cite{Mahoney}}\cite{Mahoney} will be used for sentiment analysis in order to determine whether a user likes or not a given movie (i.e. each movie review will be classified as positive or negative). After that, results obtained will be compared using the percentage of correctly classified movie reviews. Both algorithms will use a public data set \cite{Maas}.
 
 In order to understand how sentiment analysis could be done with a data compressor it is important to comprehend the concept of using Data Compression to compute the distance between two strings using the \textit{Normalized Compression Distance}\cite{Vitanyi}. The following equation shows how this distance is measured:
 
@@ -142,7 +144,8 @@ The NCD is an approximation to the Kolmogorov distance between two strings using
 
 The principle behind the NCD is quite simple: when string $y$ is concatenated after string $x$ then $y$ should be highly compressed whenever $y$ is very similar to $x$ because the information in $x$ contains everything needed to describe $y$. An observation is that $C(xx)$ should be equal, with minimal overhead difference to $C(x)$ because Kolmogorov complexity of a string concatenated to itself is equal to the Kolmogorov complexity of the string. 
 
-As introduced, a data compressor performs well when it is capable of understanding the data set that will be compressed. This understanding often grows when the data set becomes bigger and in consequence compression rate improves. However, it is not true when future data (i.e. data that has not been compressed yet) has no relation with already compressed data because the more similar the information it is the better compression rate is achieved. 
+As introduced, a data compressor performs well when it is capable of understanding the data set that will be compressed. This understanding often grows when the data set becomes bigger and in consequence compression rate improves. However, if the future data (i.e. data that has not been compressed yet) has no relation with compressed data, compression rate would fall. The more similarity the
+information share, the better compression rate is achieved.
 
 Let $C(X_1,X_2...X_n)$ be a compression algorithm that compresses a set of n files denoted by $X_1,X_2...X_n$. Let $P_1,P_2...P_n$ and $N_1,N_2...N_m$ be a set of $n$ positive reviews and $m$ negative reviews respectively. Then, a review $R$ can be predicted positive or negative using the following inequality:
 
@@ -174,7 +177,7 @@ Using Data Compression for Sentiment Analysis is not a new idea. It has been alr
 
 PAQ Compressor is taken into account for this research because of its excellent compression rates achieved at Hutter's Prize\cite{Hutter} and many benchmarks such as Matt Mahoney's one\cite{Mahoney}.
 
-In order to make sentiment analysis of a movie review using PAQ, it is needed to compress each review after compressing both the positive train set and the negative one separately. Given the fact that compressing each train set takes a considerable time, a checkpoint tool is used in this work. The review is classified positive if the compression rate using the positive train set is better than the one obtained using the negative train set. Otherwise, it is classified as negative. If both compression rates are equals, it is classified as inconclusive.
+In order to make sentiment analysis of a movie review using PAQ, it is needed to compress each review after compressing both the positive train set and the negative one separately. Given the fact that compressing each train set takes a considerable time, a checkpoint tool is used in this work. The review is classified positive if the compression rate is better using the positive train set than the one obtained using the negative one. Otherwise, it is classified as negative. If both compression rates are equals, it is classified as inconclusive.
 
 \subsection{Data Set Preparation}
 
@@ -254,6 +257,7 @@ It is observed that PAQ can be very accurate to determine whether a review is po
 	\label{exampleee1}\textit{``The piano part was so simple it could have been picked out with one hand while the player whacked away at the gong with the other. This is one of the most bewilderedly trance­state inducing bad movies of the year so far for me.''}
 	\newline
 \end{displayquote}
+
 This review was labeled positive but PAQ correctly predicted it as negative, since the review is misslabeled it counted as a miss in the automated test.
 
 Analyzers based on words like the Stanford Analyzer tend to have difficulties when the review contains a lot of uncommon words. However, they can work well in longer documents by relying on a few words with strong sentiment like 'awesome' or 'exhilarating'\cite{Socher}. It was surprising to find that PAQ was able to correctly predict those.
@@ -318,6 +322,7 @@ Where $P(1|c)$ is the probability of bit 1 with context "c",
 $P_i(1|c)$ is the probability of bit 1 in context "c" for model $i$ and
 \newline$W_i$ is the weight assigned to model $i$.
 \end{displayquote}
+
 In addition, each model adjusts their predictions based on the new information. When compressing, input text is processed bit by bit. On every bit, the compressor updates the context of each model and adjusts the weights as shown in the following equation: 
 
 $$W_i = W_i + error_i*\alpha*S_i$$
@@ -329,13 +334,14 @@ $error_i = y-P_i(1|c)$ and
 \newline
 $S_i$ is a signal that derives from $P_i(1|c)$\footnote{The signal $S_i$ is often computed as $S_i = stretch(P_i(1|c))$}
 \end{displayquote}
+
 The previous equation is important because each $W_i$ must not be adjusted at generation time.
 
 \subsection{Text Generation}
 
-When data set compression is over, PAQ is ready to generate text. A random number is sampled in the [0,1) interval and transformed into a bit 1 or 0 using Inverse Transform Sampling \cite{InverseSampling}. In other words, if the random number falls within the probability range of symbol 1, bit 1 is generated, otherwise, bit 0. 
+When data set compression is over, PAQ is ready to generate text. A random number is sampled in the [0,1) interval and transformed into a bit 1 or 0 using Inverse Transform Sampling \cite{InverseSampling}. If the random number falls within the probability range of symbol 1, bit 1 is generated, otherwise, bit 0. 
 
-Once that bit is generated, it will be compressed to reset every context for the following prediction. Here, it is essential to update models in a way that if the same context is obtained in two different samples, probabilities must be the same, otherwise it could compute and propagate errors. Seeing that, it is necessary to turn off the training process and the weight adjustment of each model at generation time\footnote{This is possible because the source code of PAQ is available.}. 
+Once that bit is generated, it will be compressed to reset every context for the following prediction. Here, it is essential to update models in a way that if the same context is obtained in two different samples, probabilities must be the same, otherwise it could compute and propagate errors. So, it is necessary to turn off the training process and the weight adjustment of each model at generation time\footnote{This is possible because the source code of PAQ is available.}. 
 
 An example is given in Figure \ref{fig1}, in which PAQ splits the [0,1) interval giving $1/4$ of probability to bit 0 and $3/4$ of probability to bit 1. When a random number is sampled in this context it is more likely to generate a 1. Each generated bit updates all models' context. However, that bit should not be learned because of its random nature. In other words, PAQ just learns from the training set and then generates random text using that probabilistic model. After 8 bits, a character is generated.
 
@@ -469,7 +475,7 @@ The index at the end of the file was removed and then PAQ compressed and generat
 	\newline 
 \end{displayquote}
 
-The difference is remarkable. Comparing different segments of each input file against each other, it was observed that in some files the last piece was significantly different than the rest of the text. Those unpredictable endings mess up PAQ's generation but it was very interesting to notice that for the RNN did not result in a noticeable difference. This was the first hint that the compressor and the RNN were proceeding in different ways. An example of the impact caused by choosing a good seed is given in Figure \ref{fig4}.
+The difference is remarkable. Comparing different segments of each input file against each other, it was observed that in some files the last piece was significantly different than the rest of the text. Those unpredictable endings mess up PAQ's generation but it was very interesting to notice that for the RNN did not result in a noticeable difference. This was the first hint that the compressor and the RNN were proceeding in different ways. An example of the impact caused by choosing a seed is given in Figure \ref{fig4}.
 \begin{figure}[hbt]
 	\begin{center}
 		\includegraphics[angle=0,width=0.5\textwidth]{chiseed.png}
@@ -518,28 +524,6 @@ int cpumask_var_node(&context, unsigned long usermodehelper_execution(struct tas
 An automatic Game of thrones' snippet:
 \begin{displayquote}
 \textit{
-Page 774
-\newline\newline
-"I have a notion is my son. She needs them bronze heads above the shoulder by a son, stuffed with comer 
-belly, reduced him. "There had been nothing to entrust craven, a season." He waved a hand. My left him, 
-I thought was a son." 
-"What of the serving girl to his chained to his string the wedding. I said." 
-"You didn't break," said Ser Kevan. Must keep nothing at him, a boy born as a streaked at him. What kind 
-it her his spine from the high bridge benches and siege towers. He would have come out from and dreamed. 
-"In a thin, not a man of his sword hand. I saved for the bearskin cloaks here. Bitter and squire, to die 
-doesn't prove, and catch them over her head, and chained so coming across. And he would have their choice. 
-Merrett would shame for the things companions from defenses, but his shaft, and drew up the knife in the 
-tales the noise was making for the child, my lord." He walked away, if questioned, if you know, the lot he'll 
-began. The lions. He shook her head. The stunted. He had to be silence. My guests had pinned walking the 
-sons. He needed a long now and clung. It made her angry. For half the fall into her hands, to show him comfort 
-took before he took the same, thinking would shakes than he knows, and began to patter against noisily. 
-"Thanks dismissed. I fear he had turned against animals were afire he thought the boy was screamed. 
-It was well have his legs. My father had no doubt. And desperate to pieces. A blanket and the castle gates 
-and the battle but only wounds. Even his sleep in a swift dash forward. "Let's get out of the silver mockingbird, but ... he had tried to say moving. 
-"Ser Ryman offered, for our beds, and made him easy clothes, the ranks, nor harpers."}
-\end{displayquote}
-\begin{displayquote}
-\textit{
 Page 775
 \newline\newline
 Summer, or closed with a leather shield, so suddenly. Mero went too. She leaves. There was a fire silver smoke. 
@@ -548,6 +532,29 @@ Ser Robin King Joffrey, though for a bolt of the wind and a sword with your brot
 and after he was finished the wine and a chainmail. They plotted hands, he had habit for her, slid unknowable,
 \newline}
 \end{displayquote}
+\begin{displayquote}
+\textit{
+Page 776
+\newline\newline
+"From is no tears, and began to gather himself that be well sited and a watch benches can't say, mercy 
+for him to her here. They say me have made more distinct that after another, and seized her. One was 
+many too. His neck and danced into the solar, like the other. He staggered him and something else the sky began, the blankets. The walls 
+son was dry jests. Lord Mormont feebly. I am many horses. Not only was not sorry he had no heed her a 
+moment. I saw his castle, but he thought of his personal emblem. He might have been long and the hall grey 
+mantle opened the outer was never been so heavily he saw no sign of Craven she said of a shadowcat and her smiled 
+looked candle had deflowered, a chunk of bread. "And count. It's not here, eating was a handsome unscathed. 
+Merrett had no one had no more than one faint below into deformed longsword inch ones in the castle, and looked 
+the boots rode over the same silver, for the golden before and brighter from his bedchamber was deeply leather 
+courtesies, and the rest. The red woman was pleased with his wings, of consume us, this is a bill of a 
+single torch, and was a sour on her tongue. It had once the continued until he could close over about 
+a slave chose his true brothers. You know, but the first time my nose to her feet. 
+There was nothing in the walls of it was plain, if defeating into forging from the crown for another. 
+She just another two shoved her own. He has been standing at the dwarf's penny. "You spoke to get a pleasure 
+steward, the sooner. It was when the horses had more screaming and the gods but the look on the causeway 
+the boy chance with the ice where it myself shall, she thought even say her name. No doubt he had gone 
+dark. On around him.}
+\end{displayquote}
+
 While the text may not make sense it certainly follows the style, syntax and writing conventions of the training text.
 \newpage
 \subsection{Metric Results}
