@@ -90,7 +90,7 @@ jandreslaura@gmail.com, masigabriel@gmail.com, largerich@fi.uba.ar
 
 
 \noindent{\small{{\textbf Abstract}
-In recent studies \cite{Graves}\cite{Sutskever}\cite{Bown} Recurrent Neural Networks were used for generative processes and their surprising performance can be explained by their ability to create good predictions. In addition, Data Compression is also based on prediction. What the problem comes down to is whether a data compressor could be used to perform as well as recurrent neural networks in the natural language processing tasks of sentiment analysis and automatic text generation. If this is possible, then the problem comes down to determining if a compression algorithm is even more intelligent than a neural network in such tasks. In our journey, a fundamental difference between a Data Compression Algorithm and Recurrent Neural Networks has been discovered. }}
+In recent studies \cite{Graves}\cite{Sutskever}\cite{Bown} Recurrent Neural Networks were used for generative processes and their surprising performance can be explained by their ability to create good predictions. In addition, Data Compression is also based on prediction. What the problem comes down to is whether a data compressor could be used to perform as well as recurrent neural networks in the natural language processing tasks of sentiment analysis and  text generation. If this is possible, then the problem comes down to determining if a compression algorithm is even more intelligent than a neural network in such tasks. In our journey, a fundamental difference between a Data Compression Algorithm and Recurrent Neural Networks has been discovered. }}
 
 
 \medskip
@@ -290,7 +290,7 @@ The previous review was classified as positive by the Stanford Analyzer, probabl
 
 \section{Automatic Text Generation}
 
-Recurrent neural networks have been used for automatic text generation \cite{Karpathy}. On this tasks, RNNs are trained with texts (or books) in order to sample new characters according to those texts' patterns. Readers may think that the following example was written by Shakespeare but it was not, a RNN was trained with Shakespeare's works and produced it:
+Recurrent neural networks have been used for automatic text generation \cite{Karpathy} \cite{Graves}. On this tasks, a RNN is trained with texts (or books) in order to sample new characters according to those texts' patterns \footnote{The source code for this network is available in \cite{Karpathy}}. Readers may think that the following example was written by Shakespeare but it was not, a RNN was trained with Shakespeare's works and produced it:
 
 \begin{displayquote}
 		PANDARUS: \\
@@ -345,7 +345,7 @@ $S_i$ is a signal that derives from $P_i(1|c)$\footnote{The signal $S_i$ is ofte
 
 The previous equation is important because each $W_i$ must not be adjusted at generation time.
 
-\subsection{Text Generation}
+\subsection{PAQ for Text Generation}
 
 When data set compression is over, PAQ is ready to generate text. A random number is sampled in the [0,1) interval and transformed into a bit 1 or 0 using Inverse Transform Sampling \cite{InverseSampling}. If the random number falls within the probability range of symbol 1, bit 1 is generated, otherwise, bit 0. 
 
@@ -378,6 +378,28 @@ When temperature is around 0.5, the result seems to be actually legible, even if
 	\textit{``What happened?''  said Harry, and she was standing at him.  ``He is short, and continued to take the shallows, and the three before he did something to happen again.  Harry could hear him.  He was shaking his head, and then to the castle, and the golden thread broke; he should have been a back at him, and the common room, and as he should have to the good one that had been conjured her that the top of his wand too before he said and the looking at him, and he was shaking his head and the many of the giants who would be hot and leafy, its flower beds turned into the song.}
 	\newline
 \end{displayquote}
+
+\subsection{RNN for Text Generation}
+
+Previous experiments have been done sampling new text with RNNs \cite{Graves}\cite{Karpathy}\cite{Sutskever}]. In this section, a brief explanation of the architecture is given\footnote{Reader is expected to have knowledge in neural networks}. 
+
+As suggested in \cite{Graves}, Figure \ref{figrnn}  illustrates a basic recurrent neural network prediction architecture. An input vector sequence $x = (x_1, . . . , x_T)$ is passed through weighted connections to a stack of $N$ recurrently connected hidden layers to
+compute first the hidden vector sequences $h^n = (h^n_1, . . . , h^n_T)$ and then the output vector sequence $y = (y_1, . . . , y_T )$. Each output vector $y_t$ is used to parameterise a predictive distribution $Pr(x_t+1|y_t)$ over the possible next inputs $x_t+1$.
+
+\begin{figure}[hbt]
+	\begin{center}
+		\includegraphics[angle=0,width=0.5\textwidth]{rnnarch.png}
+		\caption{Architechture of a RNN}
+		\label{figrnn}
+	\end{center}
+\end{figure}
+
+For this research, a  Long Short-Term Memory (LSTM) network has been used. A LSTM is a novel recurrent network architecture in conjunction with an appropiate gradient-based learning algorithm \cite{Hochreiter}. 
+
+In order to sample new text, each character of the training text is represented as a vector using 1-of-k encoding (i.e. all zero except for a single one at the index of the character in the vocabulary), and this vector is fed into the RNN. Once the network is trained, a character is fed into it and a you will get a distribution over what characters are likely to come next. Once the distribution is given, a character is sampled from that distribution and then it is fed right back in to get the next letter \cite{Karpathy}.
+As mentioned in Figure \ref{fig2}, a temperature parameter is also used when sampling text with the RNN used in this research where lower values will give more conservative results whereas using higher values will give more diversity but at cost of more mistakes.
+
+Not only the temperature but also the number of layers and the size of the network are important parameters and they can vary. In fact, varying them is a common practice to find good models. In this research, the network has been trained several times varying such parameters. After each training process, many texts where sampled.  
 
 \subsection{Metrics}
 
