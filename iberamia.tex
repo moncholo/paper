@@ -134,9 +134,10 @@ The task of guessing the sentiment of texts using a computer is known as Sentime
 
 In order to understand how sentiment analysis could be done with a data compressor it is important to comprehend the concept of using Data Compression to compute the distance between two strings using the \textit{Normalized Compression Distance}\cite{Vitanyi}. The following equation shows how this distance is measured:
 
-$$
-NCD(x,y) = \frac{C(xy)-\min\{C(x),C(y)\}}{\max\{C(x),C(y)\}}
-$$
+\begin{equation}  \label{eq:ncdequation}
+NCD(x,y) = \frac{C(xy)-\min\{C(x),C(y)\}}{\max\{C(x),C(y)\}} 
+\end{equation}
+
 
 Where $C(x)$ is the size of applying the best possible compressor to $x$ and $C(xy)$ is the size of applying the best possible compressor to the concatenation of $x$ and $y$. 
 
@@ -149,11 +150,13 @@ information share, the better compression rate is achieved.
 
 Let $C(X_1,X_2...X_n)$ be a compression algorithm that compresses a set of n files denoted by $X_1,X_2...X_n$. Let $P_1,P_2...P_n$ and $N_1,N_2...N_m$ be a set of $n$ positive reviews and $m$ negative reviews respectively. Then, a review $R$ can be predicted positive or negative using the following inequality:
 
-$$C(P_1,...P_n,R)-C(P_1,...,P_n) < C(N_1,...,N_m,R)-C(N_1,...,N_m)$$
+\begin{equation} \label{eq:sentimentinequality}
+C(P_1,...P_n,R)-C(P_1,...,P_n) < C(N_1,...,N_m,R)-C(N_1,...,N_m)
+\end{equation}
 
 The formula is a direct derivation from the NCD. When the inequality is not true, a review is predicted negative. 
 
-The order in which files are compressed must be considered. As you could see from the proposed formula, the review $R$ is compressed last. 
+The order in which files are compressed must be considered. As you could see from the proposed formula in \ref{eq:sentimentinequality}, the review $R$ is compressed last. 
 
 Some people may ask why this inequality works to predict whether a review is positive or negative. So it is important to understand this inequality. Suppose that the review $R$ is a positive one. $R$ will be compressed in order to classify it: if $R$ is compressed after a set of positive reviews then the compression rate should be better than the one obtained if $R$ is compressed after a set of negative reviews because the review $R$ has more related information with the set of positive reviews and in consequence should be compressed better. Interestingly, both the positive and negative set could have different sizes and that is why it is important to subtract the compressed file size of both sets in the inequality. Consider the following example:
 
@@ -314,18 +317,23 @@ This compressor uses Models and Contexts, a main part of compression algorithms.
 
 PAQ uses an ensamble of several different models. Some of them are based on the previous $n$ characters (or $m$ bits) of processed text, others use whole words as contexts, etc. In order to combine every models' prediction, a Model Mixing procedure is included to acquire a complete prediction. So, a neural network will be the mixer to determine the weight of each model \cite{Matt3}:
 
-$$P(1|c)\footnote{The probability $P(0|c)$ can be interpreted as $1-P(1|c)$ } = \sum_{i=1}^{n} P_i(1|c) W_i$$
+\begin{equation} \label{eq:paq1}
+P(1|c)\footnote{The probability $P(0|c)$ can be interpreted as $1-P(1|c)$ } = \sum_{i=1}^{n} P_i(1|c) W_i
+\end{equation}
 
 \begin{displayquote}
 Where $P(1|c)$ is the probability of bit 1 with context "c",
 \newline
 $P_i(1|c)$ is the probability of bit 1 in context "c" for model $i$ and
-\newline$W_i$ is the weight assigned to model $i$.
+\newline
+$W_i$ is the weight assigned to model $i$.
 \end{displayquote}
 
 In addition, each model adjusts their predictions based on the new information. When compressing, input text is processed bit by bit. On every bit, the compressor updates the context of each model and adjusts the weights as shown in the following equation: 
 
-$$W_i = W_i + error_i*\alpha*S_i$$
+\begin{equation} \label{eq:paq2}
+W_i = W_i + error_i*\alpha*S_i
+\end{equation}
 
 \begin{displayquote}
 Given the compressed bit $y$, the error of each models is defined as 
@@ -381,9 +389,10 @@ Then three different metrics were considered:
 How likely it is that any observed difference between the sets arose by chance. 
 The chi-square is computed as:
 
-$$
+\begin{equation} \label{eq:chisquare}
 \mathcal{X}^2 = \sum_{i=1}^{n} \frac{(O_i - E_i)^2}{E_i}
-$$
+\end{equation}
+
 
 Where $O_i$ is the observed ith value and $E_i$ is the expected ith value. A value of 0 means equality. This metric is computed using 4-grams.
 
@@ -392,9 +401,9 @@ Where $O_i$ is the observed ith value and $E_i$ is the expected ith value. A val
 Each n-gram's observed frequency can be denoted like a probability if it is divided by the sum of all frequencies, P(i) on the real text and Q(i) on the generated one. 
 Total variation distance \cite{Variation} can be computed according to the following formula:
 
-$$
+\begin{equation} \label{eq:totalvariation}
 \delta(P,Q) = \frac{1}{2} \sum_{i=1}^{n} |P_i - Q_i| 
-$$
+\end{equation}
 
 In other words, the total variation distance is the largest possible difference between the probabilities that two probability distributions can assign to the same event. A value of 0 means equality. This metric is computed using 4-grams.
 
@@ -402,15 +411,18 @@ In other words, the total variation distance is the largest possible difference 
 
 It is the size of the intersection divided by the size of the union of the sample sets \cite{Chierichetti}. Jaccard Similarity is computed using the following formula:
 
-$$
+\begin{equation} \label{eq:jaccard}
 J(G,T) = \frac{G \cap T}{G \cup T}
-$$
+\end{equation}
+
 
 Given two non-negative n-dimensional real vectors X, Y , their Jaccard similarity is defined as \cite{Chierichetti}:
 
-$$
+\begin{equation} \label{eq: jaccardweighted}
 J(x,y) = \frac{\sum_{i=1}^{n} min(X_i , Y_i)}{\sum_{i=1}^{n} max(X_i , Y_i)}
-$$
+\end{equation}
+
+
 This last definition is also know as "Weighted Jaccard Similarity". A value of 1 means both texts are equals. This metric is computed using 10-grams.
 
 \subsection{About Samples}
