@@ -124,7 +124,7 @@ Essentially, Data Compression involves two important steps: modeling and coding.
 
 A file containing the digits of $\pi$ can be compressed with a very short program able to generate those digits, gigabytes of information can be compressed into a few thousand bytes. However, the problem arises when trying to find a program capable of understanding that our input file contains the digits of $\pi$. In consequence, achieving the best compression rate involves finding a program able to always find the most compact model to represent the data and that is clearly an indication of intelligence, perhaps even of General Artificial Intelligence. 
 
-\section{Sentiment Analysis}
+\section{Sentiment Analysis} \label{sentimentRNN}
 
 \subsection{A Qualitative Approach}
 
@@ -174,17 +174,18 @@ $C(N_1,...,N_m,R)-C(N_1,...,N_m)$: 43 bytes
 Given the previous results, the review $R$ is predicted positive because $C(P_1,...,P_n,R)-C(P_1,...,P_n)$ is lower than $C(N_1,...,N_m,R)-C(N_1,...,N_m)$.
 
 
-\subsection{PAQ for Sentiment Analysis}
+\subsection{PAQ for Sentiment Analysis} \label{paqfsa}
 
 Using Data Compression for Sentiment Analysis is not a new idea. It has been already proposed in IEEE 12th International Conference\cite{Ziegelmayer}. However, the authors did not use PAQ compressor.
 
 PAQ Compressor is taken into account for this research because of its excellent compression rates achieved at Hutter's Prize\cite{Hutter} and many benchmarks such as Matt Mahoney's one\cite{Mahoney}.
 
-In order to make sentiment analysis of a movie review using PAQ, it is needed to compress each review after compressing both the positive train set and the negative one separately. Given the fact that compressing each train set takes a considerable time, a checkpoint tool is used in this work. The review is classified positive if the compression rate is better using the positive train set than the one obtained using the negative one. Otherwise, it is classified as negative. If both compression rates are equals, it is classified as inconclusive.
+In order to make sentiment analysis of a movie review using PAQ, it is needed to compress each review after compressing both the positive train set and the negative one separately. Given the fact that compressing each train set takes a considerable time, a checkpoint tool is used in this work. As mentioned in equation \ref{eq:sentimentinequality}, the review is classified positive if the compression rate is better using the positive train set than the one obtained using the negative one. Otherwise, it is classified as negative. If both compression rates are equals, it is classified as inconclusive.
 
 \subsection{Data Set Preparation}
 
 The Large Movie Review Dataset\cite{Maas}, which has been used for Sentiment Analysis competitions, is used in this research\footnote{Both training set and test set were chosen randomly}.
+This data set consist of thousands of movie reviews labeled as positive or negative. A review is intended to be positive when the user liked the movie whereas it is negative when the user did not like the movie. Table \ref{tab:sample} shows the quantity of reviews used for trainining and testing.
 
 
 \begin{table}[htb]
@@ -204,6 +205,7 @@ The Large Movie Review Dataset\cite{Maas}, which has been used for Sentiment Ana
 	\end{center}
 \end{table}
 
+The process of training a PAQ compresor with such dataset is explained in section \ref{paqfsa}
 
 \subsection{Experiment Results}
 
@@ -307,7 +309,7 @@ Recurrent neural networks have been used for automatic text generation \cite{Kar
 
 As a reminder, the ability of good compressors when making predictions is more than evident. It just requires an entry text (i.e. a training set) to be compressed. At compression time, the future symbols will get a probability of occurrence: The higher the probability, the better compression rate for success cases of that prediction, on the contrary, each failure case will take a penalty. At the end of this process, a probability distribution will be associated with that input data \cite{Mahoney4}. As a result of obtaining this probabilistic model, it will be possible to simulate new samples, in other words, generate text.
 
-In this module, a recurrent neural network and a PAQ compressor will be used to generate text and results will be compared to determine which of them performs better. In the following sections, different scenarios and metrics will be used to make such comparison.
+In this module, a recurrent neural network and a PAQ compressor will be used to generate text and results will be compared to determine which of them performs better. In the following sections, different scenarios and  will be used to make such comparison.
 
 \subsection{Data Model}
 
@@ -372,7 +374,7 @@ On maximum temperature, the random number will be generated in the interval [0,1
 	\end{center}
 \end{figure}
 
-When temperature is around 0.5, the result seems to be actually legible, even if it is not similar to the original text (according to the proposed metrics). This effect is shown at the following randomly generated Harry Potter's snippet:
+When temperature is around 0.5, the result seems to be actually legible, even if it is not similar to the original text (according to the proposed ). This effect is shown at the following randomly generated Harry Potter's snippet:
 \newline
 \begin{displayquote}
 	\textit{``What happened?''  said Harry, and she was standing at him.  ``He is short, and continued to take the shallows, and the three before he did something to happen again.  Harry could hear him.  He was shaking his head, and then to the castle, and the golden thread broke; he should have been a back at him, and the common room, and as he should have to the good one that had been conjured her that the top of his wand too before he said and the looking at him, and he was shaking his head and the many of the giants who would be hot and leafy, its flower beds turned into the song.}
@@ -394,19 +396,16 @@ compute first the hidden vector sequences $h^n = (h^n_1, . . . , h^n_T)$ and the
 	\end{center}
 \end{figure}
 
-For this research, a  Long Short-Term Memory (LSTM) network has been used. A LSTM is a novel recurrent network architecture in conjunction with an appropiate gradient-based learning algorithm \cite{Hochreiter}. 
+Instead of using  Stanford's Neural Network for Sentiment Analysis used in section \ref{sentimentRNN}, a  Long Short-Term Memory (LSTM) network has been used for sampling text. A LSTM is a novel recurrent network architecture in conjunction with an appropiate gradient-based learning algorithm \cite{Hochreiter}. 
 
-In order to sample new text, each character of the training text is represented as a vector using 1-of-k encoding (i.e. all zero except for a single one at the index of the character in the vocabulary), and this vector is fed into the RNN. Once the network is trained, a character is fed into it and a you will get a distribution over what characters are likely to come next. Once the distribution is given, a character is sampled from that distribution and then it is fed right back in to get the next letter \cite{Karpathy}.
-As mentioned in Figure \ref{fig2}, a temperature parameter is also used when sampling text with the RNN used in this research where lower values will give more conservative results whereas using higher values will give more diversity but at cost of more mistakes.
-
-Not only the temperature but also the number of layers and the size of the network are important parameters and they can vary. In fact, varying them is a common practice to find good models. In this research, the network has been trained several times varying such parameters. After each training process, many texts where sampled.  
+In order to sample new text, each character of the training text is represented as a vector using 1-of-k encoding (i.e. all zero except for a single one at the index of the character in the vocabulary), and this vector is fed into the RNN. Once the network is trained, a character is fed into it and a distribution over what characters are likely to come next will be given. Once the distribution is given, a character is sampled from that distribution and then it is fed right back in to get the next letter \cite{Karpathy}.
+As mentioned in Figure \ref{fig2}, a temperature parameter is also used when sampling text with the RNN used in this research where lower values will give more conservative results whereas using higher values will give more diversity but at cost of more mistakes. Not only the temperature but also the number of layers and the size of the network are important parameters and they can vary. In fact, varying them is a common practice to find good models. In this research, the network has been trained several times varying such parameters. After each training process, many texts where sampled as mentioned in section \ref{aboutSamples} 
 
 \subsection{Metrics}
 
-A simple transformation is applied to each text in order to compute metrics. It consists in counting the number of occurrences of each n-gram in the input (i.e. every time a n-gram "WXY..AZ" is detected, it increases its number of occurrences). 
-Then three different metrics were considered:
+Given the fact that both algorithm must be compared to understand which of them is better when sampling new text, it is needed to compute metrics. In consequence, a simple transformation is applied to each text in order to compute them. It consists in counting the number of occurrences of each n-gram in the input and in the sampled text (i.e. every time a n-gram "WXY..AZ" is detected, it increases its number of occurrences) and then processing them according to the following three equations:
 
-\subsubsection{Pearson's Chi-Squared}
+\subsubsection{Pearson's Chi-Squared} \label{chisquare}
 
 How likely it is that any observed difference between the sets arose by chance. 
 The chi-square is computed as:
@@ -416,18 +415,18 @@ The chi-square is computed as:
 \end{equation}
 
 
-Where $O_i$ is the observed ith value and $E_i$ is the expected ith value. A value of 0 means equality. This metric is computed using 4-grams.
+Where $O_i$ is the observed ith value and $E_i$ is the expected ith value. Values of  $O_i$ are obtained from the sampled text whereas values of $E_i$ are obtained from the input text. The closer the value is to zero, the more similarity there will be between the input text and the sampled one. A value of 0 means equality. This metric is computed using 4-grams.
 
 \subsubsection{Total Variation}
 
-Each n-gram's observed frequency can be denoted like a probability if it is divided by the sum of all frequencies, P(i) on the real text and Q(i) on the generated one. 
+Each n-gram's observed frequency can be denoted like a probability if it is divided by the sum of all frequencies, $P_i$ on the input text and $Q_i$ on the sampled one. 
 Total variation distance \cite{Variation} can be computed according to the following formula:
 
 \begin{equation} \label{eq:totalvariation}
 \delta(P,Q) = \frac{1}{2} \sum_{i=1}^{n} |P_i - Q_i| 
 \end{equation}
 
-In other words, the total variation distance is the largest possible difference between the probabilities that two probability distributions can assign to the same event. A value of 0 means equality. This metric is computed using 4-grams.
+In other words, the total variation distance is the largest possible difference between the probabilities that two probability distributions can assign to the same event. As shown in section \ref{chisquare}, the closer the value is to zero, the more similarity there will be between the input text and the sampled one. A value of 0 means equality. This metric is computed using 4-grams.
 
 \subsubsection{Generalized Jaccard Similarity}
 
@@ -445,9 +444,9 @@ J(x,y) = \frac{\sum_{i=1}^{n} min(X_i , Y_i)}{\sum_{i=1}^{n} max(X_i , Y_i)}
 \end{equation}
 
 
-This last definition is also know as "Weighted Jaccard Similarity". A value of 1 means both texts are equals. This metric is computed using 10-grams.
+This last definition is also know as "Weighted Jaccard Similarity". The closer the value is to one, the more similarity there will be between the input text and the sampled one. A value of 1 means both texts are equals. This metric is computed using 10-grams.
 
-\subsection{About Samples}
+\subsection{About Samples}\label{aboutSamples}
 For each scenario, the RNN was trained several times to find its best hyper-parameters. Asymmetrically, the compressor required to be trained just once. After that, a sampling procedure was executed. It set up different values for "temperature" parameter, allowing these trained models to generate diverse text samples It must be noticed that very high temperatures produce text that is not so similar to the training test, temperatures that are too low aren't also optimal, the best value is usually an intermediate one as shown in Figure \ref{fig3}.
 
 \begin{figure}[hb]
@@ -593,11 +592,13 @@ While the text may not make sense it certainly follows the style, syntax and wri
 \newpage
 \subsection{Metric Results}
 
-In this section, the results of both algorithms are shown with the purpose of doing an evaluation of how much similar the results are to the original inputs. 
+In this section, the results of both algorithms are shown with the purpose of doing an evaluation of how much similar the results are to the original inputs.  According to section \ref{aboutSamples}, similarity between texts can be computed using a local context or a global one. The following subsections show results for both contexts.
 
 \subsubsection{Local similarity}
 
-Tables \ref{tab:localchi}, \ref{tab:localtotal} and \ref{tab:localjaccard} show local similarity results. It can be noticed that the results obtained using a PAQ compression algorithm are better than the ones obtained by the RNN execpting Poe, Shakespare and Game of Thrones because of a subtle reason that will be explained in the conclusions.
+Tables \ref{tab:localchi}, \ref{tab:localtotal} and \ref{tab:localjaccard} show local similarity results. In order to understand how tables must be read, consider as an example the first row of Table \ref{tab:localchi}. In such table, the metric Chi Squared has been used within a local context. As you could see in section \ref{chisquare}, lower values mean that there is more similarity between two texts. The value 44935 (RNN) is lower than the value 47790 (PAQ8L) and it means that a RNN samples more similar results to the input text than a PAQ8L compressor. 
+
+It can be noticed that the results obtained using a PAQ compression algorithm are better than the ones obtained by the RNN execpting Poe, Shakespare and Game of Thrones because of a subtle reason that will be explained in the conclusions.
 
 \begin{table}[!hbt]
 	\begin{center}
