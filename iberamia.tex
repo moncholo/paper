@@ -65,7 +65,7 @@
   stringstyle=\color{red},
   }
 
-\title{From Imitation to Prediction, Data Compression vs Recurrent Neural Networks for Natural Language Processing}
+\title{From Imitation to Prediction, Data Compression vs Recurrent Neural Networks for Sentiment Analysis and Automatic Text Generation}
 
 %%NOTE: If you are submitting for review, do not include author's data
 %       The journal uses a double-blind review processe
@@ -460,7 +460,7 @@ For each scenario, the RNN was trained several times to find its best hyper-para
 In this research, similarity between the input text (e.g. The Complete Works of William Shakespeare) and an automatic generated text sample was measured using a local context and a global one. 
 \begin{enumerate}
 	\item Local similarity: The input text is splitted into $n$ fragments. Then, the metric is computed using each fragment against the generated text. Given the fact that this technique produces $n$ values, the best value is taken.
-	\item Global similarity: The metric is computed using the input text against the generated one. There is no fragmentation.
+	\item Global similarity: The metric is computed using the entirely input text against the generated one. There is no fragmentation.
 \end{enumerate}
 
 \subsection{Results}
@@ -528,7 +528,7 @@ Occasionally, the compressor generated text that was surprisingly well written. 
 	Dumbledore stopped their way down in days and after her winged around him.
 	\newline
 	\newline
-	He was like working, his eyes.  He doing you were draped in fear of them to study of your families to kill, that the beetle, he time.  Karkaroff looked like this.  It was less frightening you.}
+	He was like working, his eyes. }
 \newline
 \end{displayquote}
 Another example, this one was generated after compressing Linux Kernel:
@@ -596,9 +596,7 @@ In this section, the results of both algorithms are shown with the purpose of do
 
 \subsubsection{Local similarity}
 
-Tables \ref{tab:localchi}, \ref{tab:localtotal} and \ref{tab:localjaccard} show local similarity results. In order to understand how tables must be read, consider as an example the first row of Table \ref{tab:localchi}. In such table, the metric Chi Squared has been used within a local context. As you could see in section \ref{chisquare}, lower values mean that there is more similarity between two texts. The value 44935 (RNN) is lower than the value 47790 (PAQ8L) and it means that a RNN samples more similar results to the input text than a PAQ8L compressor. 
-
-It can be noticed that the results obtained using a PAQ compression algorithm are better than the ones obtained by the RNN execpting Poe, Shakespare and Game of Thrones because of a subtle reason that will be explained in the conclusions.
+Tables \ref{tab:localchi}, \ref{tab:localtotal} and \ref{tab:localjaccard} show local similarity results. 
 
 \begin{table}[!hbt]
 	\begin{center}
@@ -653,7 +651,9 @@ It can be noticed that the results obtained using a PAQ compression algorithm ar
 		\end{tabular}
 	\end{center}
 \end{table}
+In order to understand how tables must be read, consider as an example the first row of Table \ref{tab:localchi}. In such table, the metric Chi Squared has been used within a local context. As you could see in section \ref{chisquare}, lower values mean that there is more similarity between two texts. The value 44935 (RNN) is lower than the value 47790 (PAQ8L) and it means that a RNN samples more similar results to the input text than a PAQ8L compressor. 
 
+It can be noticed that the results obtained using a PAQ compression algorithm are better than the ones obtained by the RNN execpting Poe, Shakespare and Game of Thrones because of a subtle reason that will be explained in the conclusions.
 \subsubsection{Global similarity}
 The Recurrent Neural Network got better results in global contexts. The results are shown in Tables \ref{tab:globalchi}, \ref{tab:globaltotal} and \ref{tab:globaljaccard}
 
@@ -717,19 +717,17 @@ In the sentiment analysis task, an improvement using PAQ over a Neural Network i
 
 Sentiment analysis is a predictive task, the goal is to predict sentiment based on previously seen samples for both positive and negative sentiment, in this regard a compression algorithm seems to be a better predictor than a RNN.
 
-In the text generation task, the use of a right seed is needed for PAQ algorithm to be able to generate useful text, this was evident in the Bible example. This result is consistent with the sentiment analysis result because the seed is acting like the previously seen reviews, if it is not in sync with the text then the results will not be similar to the original text.
+In the text generation task, the use of a right seed is needed for PAQ algorithm to be able to generate useful text, this was evident in the Bible example. This result is consistent with the sentiment analysis result because the seed is acting like the previously seen reviews, if it is not in sync with the text then the results will not be similar to the original one. 
 
-The text generation task showed the critical difference between a Data Compression algorithm and a Recurrent Neural Network and according to our research this is the most important result: Data Compression algorithms are \textit{predictors} while Recurrent Neural Networks are \textit{imitators}.
+Considering that, PAQ learns from the previously seen text and creates a model that is optimal for predicting what is next, that is why it works so well for Data Compression or generating local sampling. The text generated by a RNN looks in general better than the Data Compressor's, but if specific paragraphs are generated, PAQ is clearly better. 
 
-The text generated by a RNN looks in general better than the text generated by a Data Compressor but if just one paragraph is generated, the Data Compressor is clearly better. PAQ learns from the previously seen text and creates a model that is optimal for predicting what is next, that is why they work so well for Data Compression and that is why they are also very good for Sentiment Analysis or to create a paragraph after seeing the training set. 
-
-On the other hand the RNN is a great imitator of what it learned, it can replicate style, syntax and other writing conventions with a surprising level of detail but what the RNN generates is based on the whole text used for training without weighting recent text as more relevant. In this sense, the RNN is better for random text generation while the Compression algorithm should be better for random text extension or completion.
+On the other hand, the RNN is a great imitator of what it learned, it can replicate style, syntax and other writing conventions with a surprising level of detail but what the RNN generates is based on the whole text used for training without weighting recent text as more relevant. In this sense, the RNN is better for random text generation while the Compression algorithm should be better for random text extension or completion.
 
 Suppose the text of Romeo \& Juliet is located at the end of William Shakespeare's works and then both algorithms use them to generate a sample. As a consequence, PAQ would create a new paragraph of Romeo and Juliet whereas the RNN would generate a Shakespeare-like piece of text. \textit{Data Compressors are better for local predictions and RNNs are better for global predictions.}
 
-This explains why in the text generation process PAQ and the RNN obtained different results for different training tests. PAQ struggled with "Poe" or "Game of Thrones" but was very good with "Coelho" or the Linux Kernel. What really happened was that it was measured how predictable the last piece of the text was!. If the text is very predictable then the best predictor will win, PAQ defeated the RNN by a margin with the Linux Kernel and Paulo Coelho. When the text is not predictable then the ability to imitate in the RNN defeated PAQ. This can be used as a wonderful tool to evaluate the predictability of different authors comparing if the Compressor or the RNN works better to generate similar text. In our experiment it was concluded that Coelho is more Predictable than Poe and it makes all the sense in the world!
+Accordingly, PAQ and the RNN obtained different results for the different training tests on Automatic Text Generation. PAQ struggled with "Poe" but was outstanding with "Coelho" and "Harry Potter". What really happened was that it was measured how predictable the last piece of each text was! When the text is not predictable enough, PAQ will be defeated in local similarity by the RNN's ability to imitate. This can be used as a wonderful tool to evaluate the predictability of different authors comparing if the Compressor or the RNN works better on this task. In our experiment it was concluded that Coelho is more predictable than Poe and it makes all the sense in the world!
 
-As our final conclusion it was shown that Data Compression algorithms show rational behaviour and that they are based on the accurate prediction of what will follow, based on what they have learnt recently. RNNs learn a global model from the training data and can then replicate it. That is why Data Compression algorithms are great \textbf{predictors} while Recurrent Neural Networks are great \textbf{imitators}. Depending on which ability is needed one or the other may provide the better results. 
+As our final conclusion it was shown that Data Compression algorithms show rational behaviour and they predict with high accuracy what will follow, based on what they have learnt recently. RNNs learn a global model from the training data and can then replicate it. That is why Data Compression algorithms are great \textit{predictors} while Recurrent Neural Networks are great \textit{imitators}. Depending on which ability is needed one or the other may provide the better results. 
 
 \section{Future Work}
 

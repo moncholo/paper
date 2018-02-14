@@ -6,80 +6,78 @@ Database file #1: References.bib
 Warning--entry type for "Graves" isn't style-file defined
 --line 1 of file References.bib
 Warning--entry type for "Mahoney" isn't style-file defined
---line 11 of file References.bib
+--line 10 of file References.bib
 Warning--entry type for "Socher" isn't style-file defined
---line 17 of file References.bib
+--line 16 of file References.bib
 Warning--entry type for "Mahoney2" isn't style-file defined
---line 25 of file References.bib
-Warning--entry type for "Gers" isn't style-file defined
---line 50 of file References.bib
-Warning--entry type for "Franz" isn't style-file defined
---line 59 of file References.bib
+--line 24 of file References.bib
 Warning--entry type for "Ofir" isn't style-file defined
---line 69 of file References.bib
+--line 66 of file References.bib
 Warning--entry type for "Grunwald" isn't style-file defined
---line 79 of file References.bib
+--line 76 of file References.bib
 Warning--entry type for "Sutskever" isn't style-file defined
---line 111 of file References.bib
+--line 116 of file References.bib
 Warning--entry type for "Maas" isn't style-file defined
---line 137 of file References.bib
+--line 142 of file References.bib
 Warning--entry type for "Gregor" isn't style-file defined
---line 144 of file References.bib
+--line 149 of file References.bib
 Warning--entry type for "Chierichetti" isn't style-file defined
---line 154 of file References.bib
+--line 159 of file References.bib
 Warning--entry type for "Karpathy" isn't style-file defined
---line 161 of file References.bib
+--line 166 of file References.bib
 Warning--entry type for "Hutter" isn't style-file defined
---line 169 of file References.bib
+--line 174 of file References.bib
 Warning--entry type for "Ratsaby" isn't style-file defined
---line 183 of file References.bib
+--line 188 of file References.bib
+Warning--entry type for "Variation" isn't style-file defined
+--line 198 of file References.bib
 Warning--entry type for "Mahoney4" isn't style-file defined
---line 203 of file References.bib
+--line 207 of file References.bib
 Warning--entry type for "Matt3" isn't style-file defined
---line 219 of file References.bib
+--line 223 of file References.bib
 Warning--to sort, need author or key in Hutter
 Warning--empty year in Bown
 Warning--empty year in Celikel
-Warning--empty publisher in InverseSampling
+Warning--empty booktitle in InverseSampling
 You've used 26 entries,
             2118 wiz_defined-function locations,
-            658 strings with 8205 characters,
-and the built_in function-call counts, 7141 in all, are:
-= -- 668
-> -- 345
-< -- 5
-+ -- 142
-- -- 112
-* -- 399
-:= -- 1190
-add.period$ -- 83
+            657 strings with 8468 characters,
+and the built_in function-call counts, 7784 in all, are:
+= -- 734
+> -- 363
+< -- 8
++ -- 148
+- -- 118
+* -- 445
+:= -- 1255
+add.period$ -- 80
 call.type$ -- 26
-change.case$ -- 131
+change.case$ -- 136
 chr.to.int$ -- 0
 cite$ -- 30
-duplicate$ -- 242
-empty$ -- 614
-format.name$ -- 112
-if$ -- 1524
+duplicate$ -- 275
+empty$ -- 671
+format.name$ -- 118
+if$ -- 1692
 int.to.chr$ -- 0
 int.to.str$ -- 26
-missing$ -- 12
-newline$ -- 138
+missing$ -- 11
+newline$ -- 135
 num.names$ -- 50
 pop$ -- 217
 preamble$ -- 1
-purify$ -- 108
+purify$ -- 111
 quote$ -- 0
-skip$ -- 204
+skip$ -- 245
 stack$ -- 0
-substring$ -- 251
-swap$ -- 45
-text.length$ -- 5
+substring$ -- 343
+swap$ -- 70
+text.length$ -- 8
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 98
+type$ -- 102
 warning$ -- 4
-while$ -- 57
+while$ -- 63
 width$ -- 28
-write$ -- 274
-(There were 21 warnings)
+write$ -- 271
+(There were 20 warnings)

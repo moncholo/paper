@@ -33,58 +33,62 @@ Rudi Cilibrasi and Paul Vitanyi.
 \bibitem{Ofir}
 Ofir David, Shay Moran, and Amir Yehudayoff.
 \newblock On statistical learning via the lens of compression.
-\newblock \url{ https://arxiv.org/pdf/1610.03592.pdf}, October 2016.
-\newblock arXiv:1610.03592v2.
-
-\bibitem{Franz}
-Arthur Franz.
-\newblock Artificial general intelligence through recursive data compression
-  and grounded reasoning: a position paper.
-\newblock \url{ https://arxiv.org/pdf/1506.04366.pdf}, June 2015.
-\newblock arXiv:1506.04366v1.
+\newblock \url{
+  https://papers.nips.cc/paper/6490-supervised-learning-through-the-lens-of-compression.pdf},
+  October 2016.
+\newblock 30th Conference on Neural Information Processing Systems.
 
 \bibitem{Gers}
-Felix Gers, Jürgen Schmidhuber, and Fred Cummins.
-\newblock Learning to forget: Continual prediction with lstm.
-\newblock \url{
-  https://pdfs.semanticscholar.org/1154/0131eae85b2e11d53df7f1360eeb6476e7f4.pdf},
-  January 1999.
+F.~A. Gers, J.~Schmidhuber, and F.~Cummins.
+\newblock Learning to forget: continual prediction with lstm.
+\newblock In {\em 1999 Ninth International Conference on Artificial Neural
+  Networks ICANN 99. (Conf. Publ. No. 470)}, volume~2, pages 850--855 vol.2,
+  1999.
 
 \bibitem{Variation}
 Alison~L. Gibbs and Francis~Edward Su.
 \newblock On choosing and bounding probability metrics.
-\newblock {\em International Statistical Review}, 70:419--435, September 2002.
-
-\bibitem{Graves2}
-Alex Graves.
-\newblock {\em Supervised Sequence Labelling with Recurrent Neural Networks},
-  volume 385.
-\newblock Springer, 2012.
+\newblock \url{ https://www.math.hmc.edu/~su/papers.dir/metrics.pdf}, September
+  2002.
 
 \bibitem{Graves}
 Alex Graves.
 \newblock Generating sequences with recurrent neural networks.
-\newblock \url{https://arxiv.org/pdf/1308.0850.pdf}, June 2014.
-\newblock arXiv:1308.0850v5.
+\newblock
+  \url{https://pdfs.semanticscholar.org/dcc3/26daee87e74bbe962b85fea13343819f58cc.pdf},
+  June 2014.
 
 \bibitem{Gregor}
 Karol Gregor, Ivo Danihelka, Alex Graves, Danilo~Jimenez Rezende, and Daan
   Wierstra.
 \newblock Draw: A recurrent neural network for image generation.
-\newblock \url{ https://arxiv.org/pdf/1502.04623.pdf}, February 2015.
-\newblock arXiv:1502.04623v2.
+\newblock \url{ http://proceedings.mlr.press/v37/gregor15.pdf}, February 2015.
+\newblock Proceedings of the 32 nd International Conference on Machine
+  Learning.
 
 \bibitem{Grunwald}
 Peter Grunwald.
 \newblock A tutorial introduction to the minimum description length principle.
-\newblock \url{ https://arxiv.org/pdf/math/0406077.pdf}, June 2004.
-\newblock arXiv:math/0406077v1.
+\newblock \url{https://homepages.cwi.nl/~pdg/ftp/mdlintro.pdf}, June 2004.
+
+\bibitem{Hochreiter}
+Sepp Hochreiter and J{\"u}rgen Schmidhuber.
+\newblock Long short-term memory.
+\newblock {\em Neural Computation}, 9:1735--1780, 1997.
 
 \bibitem{Karpathy}
 Andrej Karpathy.
 \newblock The unreasonable effectiveness of recurrent neural networks.
 \newblock \url{ http://karpathy.github.io/2015/05/21/rnn-effectiveness/}, May
   2015.
+
+\bibitem{Ratsaby}
+Ming Li and Paul Vitanyi.
+\newblock On prediction by data compression.
+\newblock \url{
+  https://link.springer.com/content/pdf/10.1007/3-540-62858-4_69.pdf}, April
+  1997.
+\newblock 9th European Conference on Machine Learning Prague.
 
 \bibitem{Vitanyi}
 Ming Li and Paul Vitanyi.
@@ -118,16 +122,17 @@ Matt Mahoney.
 \newblock Data compression explained.
 \newblock \url{ http://mattmahoney.net/dc/dce.html#Section_4}, April 2013.
 
-\bibitem{Ratsaby}
-Joel Ratsaby.
-\newblock Prediction by compression.
-\newblock \url{ https://arxiv.org/pdf/1008.5078.pdf}, August 2010.
-\newblock arXiv:1008.5078v1.
-
 \bibitem{Schmidhuber}
-Jürgen Schmidhuber and Stefan Heil.
+J{\"u}rgen Schmidhuber and Stefan Heil.
 \newblock Sequential neural text compression.
 \newblock {\em IEEE Transactions on Neural Networks}, 7:142--146, January 1996.
+
+\bibitem{Franz}
+D.~Sculley and C.~E. Brodley.
+\newblock Compression and machine learning: a new perspective on feature space
+  vectors.
+\newblock In {\em Data Compression Conference (DCC'06)}, pages 332--341, March
+  2006.
 
 \bibitem{Socher}
 Richard Socher, Alex Perelygin, Jean Wu, Jason Chuang, Christopher Manning,
@@ -138,8 +143,8 @@ Richard Socher, Alex Perelygin, Jean Wu, Jason Chuang, Christopher Manning,
 
 \bibitem{InverseSampling}
 Mark Steyvers.
-\newblock {\em Computational Statistics with Matlab}.
-\newblock May 2011.
+\newblock Computational statistics with matlab.
+\newblock pages 7--9, May 2011.
 
 \bibitem{Sutskever}
 Ilya Sutskever, James Martens, and Geoffrey Hinton.
