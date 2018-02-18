@@ -9,11 +9,11 @@
 \BOOKMARK [1][-]{section.5}{Automatic Text Generation}{}% 9
 \BOOKMARK [2][-]{subsection.5.1}{Data Model}{section.5}% 10
 \BOOKMARK [2][-]{subsection.5.2}{PAQ for Text Generation}{section.5}% 11
-\BOOKMARK [2][-]{subsection.5.3}{RNN for Text Generation}{section.5}% 12
-\BOOKMARK [2][-]{subsection.5.4}{Metrics}{section.5}% 13
-\BOOKMARK [3][-]{subsubsection.5.4.1}{Pearson's Chi-Squared}{subsection.5.4}% 14
-\BOOKMARK [3][-]{subsubsection.5.4.2}{Total Variation}{subsection.5.4}% 15
-\BOOKMARK [3][-]{subsubsection.5.4.3}{Generalized Jaccard Similarity}{subsection.5.4}% 16
+\BOOKMARK [2][-]{subsection.5.3}{Metrics}{section.5}% 12
+\BOOKMARK [3][-]{subsubsection.5.3.1}{Pearson's Chi-Squared}{subsection.5.3}% 13
+\BOOKMARK [3][-]{subsubsection.5.3.2}{Total Variation}{subsection.5.3}% 14
+\BOOKMARK [3][-]{subsubsection.5.3.3}{Generalized Jaccard Similarity}{subsection.5.3}% 15
+\BOOKMARK [2][-]{subsection.5.4}{RNN for Text Generation}{section.5}% 16
 \BOOKMARK [2][-]{subsection.5.5}{About Samples}{section.5}% 17
 \BOOKMARK [2][-]{subsection.5.6}{Results}{section.5}% 18
 \BOOKMARK [2][-]{subsection.5.7}{Metric Results}{section.5}% 19

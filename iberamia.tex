@@ -70,6 +70,7 @@
 %%NOTE: If you are submitting for review, do not include author's data
 %       The journal uses a double-blind review processe
 
+
 \author{Juan Andrés Laura, Gabriel Omar Masi, Luis Argerich
 \smallskip \\
 \small{Departamento de Computación,
@@ -112,17 +113,17 @@ The hypothesis for this research is that, if compression is based on training fr
 
 \section{RNNs for Data Compression}
 
-Recurrent Neural Networks and in particular LSTMs were used not only for predictive tasks\cite{Gers} but also for Data Compression\cite{Schmidhuber}. While the LSTMs were brilliant in their text\cite{Sutskever}, music\cite{Bown} and image generation\cite{Gregor} tasks, they were never able to defeat the state of the art algorithms in Data Compression\cite{Schmidhuber}. 
+Recurrent Neural Networks and in particular LSTMs were used not only for predictive tasks\cite{Gers} but also for Data Compression\cite{Schmidhuber}. While the LSTMs were brilliant in their text\cite{Sutskever}, music\cite{Bown} and image generation\cite{Gregor} tasks, they were never able to defeat the state of the art algorithms in Data Compression\cite{Schmidhuber}.
 
 This might indicate that there is a fundamental difference between Data Compression and Generative Processes and between Data Compression Algorithms and Recurrent Neural Networks. After experiments, a fundamental difference will be shown in this research in order to explain why a RNN can not be the state of the art in Data Compression.
 
 \section{Data Compression as an Artificial Intelligence Field}
 
-For many authors there is a very strong relationship between Data Compression and Artificial Intelligence\cite{Franz}\cite{Ofir}. Data Compression is about making good predictions \cite{Ratsaby} which is also the goal of Machine Learning, a field of Artificial Intelligence. 
+For many authors there is a very strong relationship between Data Compression and Artificial Intelligence\cite{Franz}\cite{Ofir}. Data Compression is about making good predictions \cite{Ratsaby} which is also the goal of Machine Learning, a field of Artificial Intelligence.
 
 Essentially, Data Compression involves two important steps: modeling and coding. Coding is a solved problem using arithmetic coding. The difficult task is modeling because it comes down to building a description of the data using the most compact representation; this is again directly related to Artificial Intelligence. Using the Minimal Description Length principle\cite{Grunwald} the efficiency of a good Machine Learning algorithm can be measured in terms of how good it is to compress the training data plus the size of the model itself.
 
-A file containing the digits of $\pi$ can be compressed with a very short program able to generate those digits, gigabytes of information can be compressed into a few thousand bytes. However, the problem arises when trying to find a program capable of understanding that our input file contains the digits of $\pi$. In consequence, achieving the best compression rate involves finding a program able to always find the most compact model to represent the data and that is clearly an indication of intelligence, perhaps even of General Artificial Intelligence. 
+A file containing the digits of $\pi$ can be compressed with a very short program able to generate those digits, gigabytes of information can be compressed into a few thousand bytes. However, the problem arises when trying to find a program capable of understanding that our input file contains the digits of $\pi$. In consequence, achieving the best compression rate involves finding a program able to always find the most compact model to represent the data and that is clearly an indication of intelligence, perhaps even of General Artificial Intelligence.
 
 \section{Sentiment Analysis} \label{sentimentRNN}
 
@@ -135,15 +136,15 @@ The task of guessing the sentiment of texts using a computer is known as Sentime
 In order to understand how sentiment analysis could be done with a data compressor it is important to comprehend the concept of using Data Compression to compute the distance between two strings using the \textit{Normalized Compression Distance}\cite{Vitanyi}. The following equation shows how this distance is measured:
 
 \begin{equation}  \label{eq:ncdequation}
-NCD(x,y) = \frac{C(xy)-\min\{C(x),C(y)\}}{\max\{C(x),C(y)\}} 
+NCD(x,y) = \frac{C(xy)-\min\{C(x),C(y)\}}{\max\{C(x),C(y)\}}
 \end{equation}
 
 
-Where $C(x)$ is the size of applying the best possible compressor to $x$ and $C(xy)$ is the size of applying the best possible compressor to the concatenation of $x$ and $y$. 
+Where $C(x)$ is the size of applying the best possible compressor to $x$ and $C(xy)$ is the size of applying the best possible compressor to the concatenation of $x$ and $y$.
 
-The NCD is an approximation to the Kolmogorov distance between two strings using a Compression Algorithm to approximate the complexity of a string because the Kolmogorov Complexity is uncomputable. 
+The NCD is an approximation to the Kolmogorov distance between two strings using a Compression Algorithm to approximate the complexity of a string because the Kolmogorov Complexity is uncomputable.
 
-The principle behind the NCD is quite simple: when string $y$ is concatenated after string $x$ then $y$ should be highly compressed whenever $y$ is very similar to $x$ because the information in $x$ contains everything needed to describe $y$. An observation is that $C(xx)$ should be equal, with minimal overhead difference to $C(x)$ because Kolmogorov complexity of a string concatenated to itself is equal to the Kolmogorov complexity of the string. 
+The principle behind the NCD is quite simple: when string $y$ is concatenated after string $x$ then $y$ should be highly compressed whenever $y$ is very similar to $x$ because the information in $x$ contains everything needed to describe $y$. An observation is that $C(xx)$ should be equal, with minimal overhead difference to $C(x)$ because Kolmogorov complexity of a string concatenated to itself is equal to the Kolmogorov complexity of the string.
 
 As introduced, a data compressor performs well when it is capable of understanding the data set that will be compressed. This understanding often grows when the data set becomes bigger and in consequence compression rate improves. However, if the future data (i.e. data that has not been compressed yet) has no relation with compressed data, compression rate would fall. The more similarity the
 information share, the better compression rate is achieved.
@@ -154,9 +155,9 @@ Let $C(X_1,X_2...X_n)$ be a compression algorithm that compresses a set of n fil
 C(P_1,...P_n,R)-C(P_1,...,P_n) < C(N_1,...,N_m,R)-C(N_1,...,N_m)
 \end{equation}
 
-The formula is a direct derivation from the NCD. When the inequality is not true, a review is predicted negative. 
+The formula is a direct derivation from the NCD. When the inequality is not true, a review is predicted negative.
 
-The order in which files are compressed must be considered. As you could see from the proposed formula in \ref{eq:sentimentinequality}, the review $R$ is compressed last. 
+The order in which files are compressed must be considered. As you could see from the proposed formula in \ref{eq:sentimentinequality}, the review $R$ is compressed last.
 
 Some people may ask why this inequality works to predict whether a review is positive or negative. So it is important to understand this inequality. Suppose that the review $R$ is a positive one. $R$ will be compressed in order to classify it: if $R$ is compressed after a set of positive reviews then the compression rate should be better than the one obtained if $R$ is compressed after a set of negative reviews because the review $R$ has more related information with the set of positive reviews and in consequence should be compressed better. Interestingly, both the positive and negative set could have different sizes and that is why it is important to subtract the compressed file size of both sets in the inequality. Consider the following example:
 
@@ -209,7 +210,7 @@ The process of training a PAQ compresor with such dataset is explained in sectio
 
 \subsection{Experiment Results}
 
-In this section, the results obtained are explained by giving a comparison between the data compressor and the Stanford's Neural Network for Sentiment Analysis. 
+In this section, the results obtained are explained by giving a comparison between the data compressor and the Stanford's Neural Network for Sentiment Analysis.
 
 Tables \ref{tab:positive}, \ref{tab:negative} and \ref{tab:overall} show the results obtained.
 
@@ -247,7 +248,7 @@ Tables \ref{tab:positive}, \ref{tab:negative} and \ref{tab:overall} show the res
 	\end{center}
 \end{table}
 
-Both algorithms have excellent performance when classifying negative reviews, as show in Table \ref{tab:negative}. In Table \ref{tab:positive} are shown the results for positive reviews classification and it can be noticed that results are not as good as the ones obtained with negative reviews. Overall results are shown in Table \ref{tab:overall} where you can see that 77.20\% of movie reviews were correctly classified by the PAQ Compressor whereas 70.93\% were well classified by the Stanford's Neural Network. 
+Both algorithms have excellent performance when classifying negative reviews, as show in Table \ref{tab:negative}. In Table \ref{tab:positive} are shown the results for positive reviews classification and it can be noticed that results are not as good as the ones obtained with negative reviews. Overall results are shown in Table \ref{tab:overall} where you can see that 77.20\% of movie reviews were correctly classified by the PAQ Compressor whereas 70.93\% were well classified by the Stanford's Neural Network.
 
 There are two main points to highlight according to the result obtained:
 \begin{enumerate}
@@ -259,7 +260,7 @@ It is observed that PAQ can be very accurate to determine whether a review is po
 \newline
 \begin{displayquote}
 
-	\label{exampleee1}\textit{``The piano part was so simple it could have been picked out with one hand while the player whacked away at the gong with the other. This is one of the most bewilderedly trance­state inducing bad movies of the year so far for me.''}
+	\label{exampleee1}\textit{``The piano part was so simple it could have been picked out with one hand while the player whacked away at the gong with the other. This is one of the most bewilderedly tranceï¿½state inducing bad movies of the year so far for me.''}
 	\newline
 \end{displayquote}
 
@@ -292,7 +293,7 @@ The previous review was classified as positive by the Stanford Analyzer, probabl
 
 \section{Automatic Text Generation}
 
-Recurrent neural networks have been used for automatic text generation \cite{Karpathy} \cite{Graves}. On this tasks, a RNN is trained with texts (or books) in order to sample new characters according to those texts' patterns \footnote{The source code for this network is available in \cite{Karpathy}}. Readers may think that the following example was written by Shakespeare but it was not, a RNN was trained with Shakespeare's works and produced it:
+Recurrent Neural Networks have been used for Automatic Text Generation \cite{Karpathy} \cite{Graves}. On this task, a RNN is trained with texts (or books) in order to sample new characters according to those texts' patterns. Readers may think that the following example was written by Shakespeare but it was not, a RNN was trained with Shakespeare's works and produced it \footnote{The source code for this network is available in \cite{Karpathy}} :
 
 \begin{displayquote}
 		PANDARUS: \\
@@ -309,51 +310,49 @@ Recurrent neural networks have been used for automatic text generation \cite{Kar
 
 As a reminder, the ability of good compressors when making predictions is more than evident. It just requires an entry text (i.e. a training set) to be compressed. At compression time, the future symbols will get a probability of occurrence: The higher the probability, the better compression rate for success cases of that prediction, on the contrary, each failure case will take a penalty. At the end of this process, a probability distribution will be associated with that input data \cite{Mahoney4}. As a result of obtaining this probabilistic model, it will be possible to simulate new samples, in other words, generate text.
 
-In this module, a recurrent neural network and a PAQ compressor will be used to generate text and results will be compared to determine which of them performs better. In the following sections, different scenarios and  will be used to make such comparison.
+In this module, Karpathy's char-RNN \cite{Karpathy} and PAQ8L compressor will be used to generate automatic text. The results will be compared to determine which of them performs better. In the following sections, different scenarios and metrics will be used to make such comparison.
 
 \subsection{Data Model}
 
-PAQ series compressors use arithmetic coding to encode symbols assigned to a probability distribution. Each probability lies on the interval [0,1) and when it comes to binary coding, there are two possible symbols: 0 and 1. 
+PAQ series compressors use arithmetic coding to encode symbols assigned to a probability distribution. Each probability lies on the interval [0,1) and when it comes to binary coding, there are two possible symbols: 0 and 1.
 
-This compressor uses Models and Contexts, a main part of compression algorithms. Contexts are built from the previous history and can be used to make predictions, for example, the last ten symbols can be linked to compute the prediction of the eleventh. Models process data and assigns probabilities to the future symbols. Moreover, each model's prediction is based on contexts to compute how likely a bit 1 or 0 is next. 
+This compressor uses Models and Contexts, a main part of compression algorithms. Contexts are built from the previous history and can be used to make predictions, for example, the last ten symbols can be linked to compute the prediction of the eleventh. Models process data and assigns occurrence probabilities to the future symbols. Each model's prediction is based on their contexts to compute how likely a bit 1 or 0 is next.
 
-PAQ uses an ensamble of several different models. Some of them are based on the previous $n$ characters (or $m$ bits) of processed text, others use whole words as contexts, etc. In order to combine every models' prediction, a Model Mixing procedure is included to acquire a complete prediction. So, a neural network will be the mixer to determine the weight of each model \cite{Matt3}:
+Moreover, PAQ8L uses an ensamble of several different models. Some of them are based on the previous $n$ characters (or $m$ bits) of processed text, others use whole words as contexts, etc. In order to combine every models' prediction, a Model Mixing procedure is included to acquire a complete prediction. A neural network will be the mixer to determine the weight of each model \cite{Matt3}:
 
 \begin{equation} \label{eq:paq1}
-P(1|c)\footnote{The probability $P(0|c)$ can be interpreted as $1-P(1|c)$ } = \sum_{i=1}^{n} P_i(1|c) W_i
+P(1|c) = \sum_{i=1}^{n} P_i(1|c) W_i
 \end{equation}
 
 \begin{displayquote}
-Where $P(1|c)$ is the probability of bit 1 with context "c",
+Where $P(1|c)$\footnote{The probability $P(0|c)$ can be interpreted as $1-P(1|c)$ } is the probability of bit 1 with context "c",
 \newline
 $P_i(1|c)$ is the probability of bit 1 in context "c" for model $i$ and
 \newline
 $W_i$ is the weight assigned to model $i$.
 \end{displayquote}
 
-In addition, each model adjusts their predictions based on the new information. When compressing, input text is processed bit by bit. On every bit, the compressor updates the context of each model and adjusts the weights as shown in the following equation: 
+In addition, each model adjusts their predictions based on the new information. When compressing, input text is processed bit by bit. On every bit, the compressor updates the contexts of each model and adjusts the weights as shown in the following equation:
 
 \begin{equation} \label{eq:paq2}
 W_i = W_i + error_i*\alpha*S_i
 \end{equation}
 
 \begin{displayquote}
-Given the compressed bit $y$, the error of each models is defined as 
+Given the compressed bit $y$, the error of each models is defined as
 \newline
-$error_i = y-P_i(1|c)$ and 
+$error_i = y-P_i(1|c)$ and
 \newline
-$S_i$ is a signal that derives from $P_i(1|c)$\footnote{The signal $S_i$ is often computed as $S_i = stretch(P_i(1|c))$}
+$S_i$\footnote{The signal $S_i$ is often computed as $S_i = stretch(P_i(1|c))$} is a signal that derives from $P_i(1|c)$
 \end{displayquote}
-
-The previous equation is important because each $W_i$ must not be adjusted at generation time.
 
 \subsection{PAQ for Text Generation}
 
-When data set compression is over, PAQ is ready to generate text. A random number is sampled in the [0,1) interval and transformed into a bit 1 or 0 using Inverse Transform Sampling \cite{InverseSampling}. If the random number falls within the probability range of symbol 1, bit 1 is generated, otherwise, bit 0. 
+When data set compression is over, PAQ is ready to generate text. A random number is sampled in the [0,1) interval and transformed into a bit 1 or 0 using Inverse Transform Sampling \cite{InverseSampling}. If the random number falls within the probability range of symbol 1, bit 1 is generated, otherwise, bit 0.
 
-Once that bit is generated, it will be compressed to reset every context for the following prediction. Here, it is essential to update models in a way that if the same context is obtained in two different samples, probabilities must be the same, otherwise it could compute and propagate errors. So, it is necessary to turn off the training process and the weight adjustment of each model at generation time\footnote{This is possible because the source code of PAQ is available.}. 
+Once that bit is generated, it will be compressed to reset every context for the following prediction. Here, it is essential to update models in a way that if the same context is obtained in two different samples, probabilities must be the same, otherwise it could compute and propagate errors. So, it is necessary to \textbf{turn off the training process and the weight adjustment of each model at generation time}\footnote{This is possible because the source code of PAQ is available.}.
 
-An example is given in Figure \ref{fig1}, in which PAQ splits the [0,1) interval giving $1/4$ of probability to bit 0 and $3/4$ of probability to bit 1. When a random number is sampled in this context it is more likely to generate a 1. Each generated bit updates all models' context. However, that bit should not be learned because of its random nature. In other words, PAQ just learns from the training set and then generates random text using that probabilistic model. After 8 bits, a character is generated.
+An example is given in Figure \ref{fig1}, in which PAQ splits the [0,1) interval giving $1/4$ of probability to bit 0 and $3/4$ of probability to bit 1. When a random number is sampled in this context it is more likely to generate a 1. Each generated bit updates all models' contexts. However, that bit should not be learned because of its random nature. In other words, PAQ just learns from the training set and then generates random text using that probabilistic model. After 8 bits, a character is generated.
 
 \begin{figure}[ht]
 	\begin{center}
@@ -363,9 +362,9 @@ An example is given in Figure \ref{fig1}, in which PAQ splits the [0,1) interval
 	\end{center}
 \end{figure}
 
-It was noted that granting too much freedom to the compressor could result in a large accumulation of bad predictions, leading to poor text generation. Therefore, it is proposed to make the text generation more conservative adding a parameter called "temperature" that reduces the possible range of the random number as shown in Figure \ref{fig2}.
+It was noted that granting too much freedom to the compressor could result in a large accumulation of bad predictions, leading to poor text generation. Therefore, it is proposed to make the text generation more conservative adding a parameter called "temperature" that reduces the possible range of the random number, as shown in Figure \ref{fig2}.
 
-On maximum temperature, the random number will be generated in the interval [0,1), giving the compressor maximum degree of freedom to make mistakes, whereas, when the temperature parameter turns minimum, the "random" number will always be 0.5, removing the degree of freedom to commit errors (in this scenario, the highest probability symbol will be generated). 
+On maximum temperature, the random number will be generated in the interval [0,1), giving the compressor maximum degree of freedom to make mistakes, whereas, when the temperature parameter turns minimum, the "random" number will always be 0.5, removing the degree of freedom to commit errors (in this scenario, the highest probability symbol will be generated).
 \begin{figure}[ht]
 	\begin{center}
 		\includegraphics[angle=0,width=0.5\textwidth]{paq2.png}
@@ -374,32 +373,12 @@ On maximum temperature, the random number will be generated in the interval [0,1
 	\end{center}
 \end{figure}
 
-When temperature is around 0.5, the result seems to be actually legible, even if it is not similar to the original text (according to the proposed ). This effect is shown at the following randomly generated Harry Potter's snippet:
+When temperature is around 0.5, the result seems to be actually legible, even if it is not similar to the original text (according to the proposed metrics). This effect is shown at the following randomly generated Harry Potter's snippet:
 \newline
 \begin{displayquote}
 	\textit{``What happened?''  said Harry, and she was standing at him.  ``He is short, and continued to take the shallows, and the three before he did something to happen again.  Harry could hear him.  He was shaking his head, and then to the castle, and the golden thread broke; he should have been a back at him, and the common room, and as he should have to the good one that had been conjured her that the top of his wand too before he said and the looking at him, and he was shaking his head and the many of the giants who would be hot and leafy, its flower beds turned into the song.}
 	\newline
 \end{displayquote}
-
-\subsection{RNN for Text Generation}
-
-Previous experiments have been done sampling new text with RNNs \cite{Graves}\cite{Karpathy}\cite{Sutskever}]. In this section, a brief explanation of the architecture is given\footnote{Reader is expected to have knowledge in neural networks}. 
-
-As suggested in \cite{Graves}, Figure \ref{figrnn}  illustrates a basic recurrent neural network prediction architecture. An input vector sequence $x = (x_1, . . . , x_T)$ is passed through weighted connections to a stack of $N$ recurrently connected hidden layers to
-compute first the hidden vector sequences $h^n = (h^n_1, . . . , h^n_T)$ and then the output vector sequence $y = (y_1, . . . , y_T )$. Each output vector $y_t$ is used to parameterise a predictive distribution $Pr(x_t+1|y_t)$ over the possible next inputs $x_t+1$.
-
-\begin{figure}[hbt]
-	\begin{center}
-		\includegraphics[angle=0,width=0.5\textwidth]{rnnarch.png}
-		\caption{Architechture of a RNN}
-		\label{figrnn}
-	\end{center}
-\end{figure}
-
-Instead of using  Stanford's Neural Network for Sentiment Analysis used in section \ref{sentimentRNN}, a  Long Short-Term Memory (LSTM) network has been used for sampling text. A LSTM is a novel recurrent network architecture in conjunction with an appropiate gradient-based learning algorithm \cite{Hochreiter}. 
-
-In order to sample new text, each character of the training text is represented as a vector using 1-of-k encoding (i.e. all zero except for a single one at the index of the character in the vocabulary), and this vector is fed into the RNN. Once the network is trained, a character is fed into it and a distribution over what characters are likely to come next will be given. Once the distribution is given, a character is sampled from that distribution and then it is fed right back in to get the next letter \cite{Karpathy}.
-As mentioned in Figure \ref{fig2}, a temperature parameter is also used when sampling text with the RNN used in this research where lower values will give more conservative results whereas using higher values will give more diversity but at cost of more mistakes. Not only the temperature but also the number of layers and the size of the network are important parameters and they can vary. In fact, varying them is a common practice to find good models. In this research, the network has been trained several times varying such parameters. After each training process, many texts where sampled as mentioned in section \ref{aboutSamples} 
 
 \subsection{Metrics}
 
@@ -407,7 +386,7 @@ Given the fact that both algorithm must be compared to understand which of them 
 
 \subsubsection{Pearson's Chi-Squared} \label{chisquare}
 
-How likely it is that any observed difference between the sets arose by chance. 
+How likely it is that any observed difference between the sets arose by chance.
 The chi-square is computed as:
 
 \begin{equation} \label{eq:chisquare}
@@ -419,16 +398,16 @@ Where $O_i$ is the observed ith value and $E_i$ is the expected ith value. Value
 
 \subsubsection{Total Variation}
 
-Each n-gram's observed frequency can be denoted like a probability if it is divided by the sum of all frequencies, $P_i$ on the input text and $Q_i$ on the sampled one. 
+Each n-gram's observed frequency can be denoted like a probability if it is divided by the sum of all frequencies, $P_i$ on the input text and $Q_i$ on the sampled one.
 Total variation distance \cite{Variation} can be computed according to the following formula:
 
 \begin{equation} \label{eq:totalvariation}
-\delta(P,Q) = \frac{1}{2} \sum_{i=1}^{n} |P_i - Q_i| 
+\delta(P,Q) = \frac{1}{2} \sum_{i=1}^{n} |P_i - Q_i|
 \end{equation}
 
 In other words, the total variation distance is the largest possible difference between the probabilities that two probability distributions can assign to the same event. As shown in section \ref{chisquare}, the closer the value is to zero, the more similarity there will be between the input text and the sampled one. A value of 0 means equality. This metric is computed using 4-grams.
-
-\subsubsection{Generalized Jaccard Similarity}
+Karpathy
+\subsubsection{Generalized Jaccard Similarity}\label{subjaccard}
 
 It is the size of the intersection divided by the size of the union of the sample sets \cite{Chierichetti}. Jaccard Similarity is computed using the following formula:
 
@@ -446,8 +425,28 @@ J(x,y) = \frac{\sum_{i=1}^{n} min(X_i , Y_i)}{\sum_{i=1}^{n} max(X_i , Y_i)}
 
 This last definition is also know as "Weighted Jaccard Similarity". The closer the value is to one, the more similarity there will be between the input text and the sampled one. A value of 1 means both texts are equals. This metric is computed using 10-grams.
 
+\subsection{RNN for Text Generation}
+
+Previous experiments have been done sampling new text with RNNs \cite{Graves}\cite{Karpathy}\cite{Sutskever}. In this section, a brief explanation of the architecture is given\footnote{Reader is expected to have knowledge in neural networks}.
+
+As suggested in "Generating sequences with recurrent neural networks"\cite{Graves}, Figure \ref{figrnn}  illustrates a basic recurrent neural network prediction architecture. An input vector sequence $x = (x_1, . . . , x_T)$ is passed through weighted connections to a stack of $N$ recurrently connected hidden layers to
+compute first the hidden vector sequences $h^n = (h^n_1, . . . , h^n_T)$ and then the output vector sequence $y = (y_1, . . . , y_T )$. Each output vector $y_t$ is used to parameterise a predictive distribution $Pr(x_t+1|y_t)$ over the possible next inputs $x_t+1$.
+
+\begin{figure}[hbt]
+	\begin{center}
+		\includegraphics[angle=0,width=0.5\textwidth]{rnnarch.png}
+		\caption{Architechture of a RNN}
+		\label{figrnn}
+	\end{center}
+\end{figure}
+
+Instead of using Stanford's Neural Network for Sentiment Analysis used in section \ref{sentimentRNN}, a  Long Short-Term Memory (LSTM) network called char-RNN has been used for sampling text\cite{Karpathy}. A LSTM is a novel recurrent network architecture in conjunction with an appropiate gradient-based learning algorithm \cite{Hochreiter}.
+
+In order to sample new text, each character of the training text is represented as a vector using 1-of-k encoding (i.e. all zero except for a single one at the index of the character in the vocabulary), and this vector is fed into the RNN. Once the network is trained, a character is fed into it and a distribution over what characters are likely to come next will be given. Once the distribution is given, a character is sampled from that distribution and then it is fed right back in to get the next letter \cite{Karpathy}.
+As mentioned in Figure \ref{fig2}, a temperature parameter is also used when sampling text with the RNN used in this research where lower values will give more conservative results whereas using higher values will give more diversity but at cost of more mistakes. Not only the temperature but also the number of layers and the size of the network are important parameters and they can vary. In fact, varying them is a common practice to find good models. In this research, the network has been trained several times varying such parameters. After each training process, many texts where sampled as mentioned in section \ref{aboutSamples}
+
 \subsection{About Samples}\label{aboutSamples}
-For each scenario, the RNN was trained several times to find its best hyper-parameters. Asymmetrically, the compressor required to be trained just once. After that, a sampling procedure was executed. It set up different values for "temperature" parameter, allowing these trained models to generate diverse text samples It must be noticed that very high temperatures produce text that is not so similar to the training test, temperatures that are too low aren't also optimal, the best value is usually an intermediate one as shown in Figure \ref{fig3}.
+For each scenario, char-RNN was trained several times to find its best hyper-parameters. Asymmetrically, the compressor required to be trained just once. After that, a sampling procedure was executed. It set up different values for "temperature" parameter, allowing these trained models to generate diverse text samples. It must be noticed that very high temperatures produce text that is not so similar to the training test, temperatures that are too low aren't also optimal, the best value is usually an intermediate one as shown in Figure \ref{fig3}.
 
 \begin{figure}[hb]
 	\begin{center}
@@ -457,7 +456,7 @@ For each scenario, the RNN was trained several times to find its best hyper-para
 	\end{center}
 \end{figure}
 
-In this research, similarity between the input text (e.g. The Complete Works of William Shakespeare) and an automatic generated text sample was measured using a local context and a global one. 
+In this research, similarity between the input text (e.g. The Complete Works of William Shakespeare) and an automatic generated text sample was measured using a local stage and a global one.
 \begin{enumerate}
 	\item Local similarity: The input text is splitted into $n$ fragments. Then, the metric is computed using each fragment against the generated text. Given the fact that this technique produces $n$ values, the best value is taken.
 	\item Global similarity: The metric is computed using the entirely input text against the generated one. There is no fragmentation.
@@ -480,7 +479,7 @@ For example, The King James Version of the Holy Bible includes an index at the e
 		\newline
 		\newline
 		[67Blessed shall be loosed in heaven.)}
-	\newline 
+	\newline
 \end{displayquote}
 
 The index at the end of the file was removed and then PAQ compressed and generated again:
@@ -499,16 +498,16 @@ The index at the end of the file was removed and then PAQ compressed and generat
 		as of the temple of men, so we say a shame for a worshipped his face: I
 		will come from his place, declaring into the glory to the behold a
 		good; and loosed.
-		\newline  
-		\newline 
+		\newline
+		\newline
 		\^{}14He that worketh in us, by the Spirit saith unto the earth;and he
 		that they shall not be ashamed before mine old, I come saith unto
 		him the second time, and prayed, saying to flower, and death reigned
 		brass.}
-	\newline 
+	\newline
 \end{displayquote}
 
-The difference is remarkable. Comparing different segments of each input file against each other, it was observed that in some files the last piece was significantly different than the rest of the text. Those unpredictable endings mess up PAQ's generation but it was very interesting to notice that for the RNN did not result in a noticeable difference. This was the first hint that the compressor and the RNN were proceeding in different ways. An example of the impact caused by choosing a seed is given in Figure \ref{fig4}.
+The difference is remarkable. Comparing different segments of each input file against each other, it was observed that in some files the last piece was significantly different than the rest of the text. Those unpredictable endings mess up PAQ's generation but it was very interesting to notice that for the RNN did not result in a noticeable difference. An example of the impact caused by choosing a seed is given in Figure \ref{fig4}.
 \begin{figure}[hbt]
 	\begin{center}
 		\includegraphics[angle=0,width=0.5\textwidth]{chiseed.png}
@@ -528,8 +527,11 @@ Occasionally, the compressor generated text that was surprisingly well written. 
 	Dumbledore stopped their way down in days and after her winged around him.
 	\newline
 	\newline
-	He was like working, his eyes. }
-\newline
+	He was like working, his eyes. He doing you were draped in fear of them to study of your families to kill, that the beetle, he time.  Karkaroff looked like this.  It was less frightening you.
+  \newline
+  \newline
+  "Sight what's Fred cauldron bottle to wish you reckon?  Binding him to with his head was handle."}
+ \newline
 \end{displayquote}
 Another example, this one was generated after compressing Linux Kernel:
 \begin{lstlisting}
@@ -559,9 +561,9 @@ An automatic Game of thrones' snippet:
 \textit{
 Page 775
 \newline\newline
-Summer, or closed with a leather shield, so suddenly. Mero went too. She leaves. There was a fire silver smoke. 
-"No one and losing herself and said the maester gorne a moment." 
-Ser Robin King Joffrey, though for a bolt of the wind and a sword with your brothers and frozen too far 
+Summer, or closed with a leather shield, so suddenly. Mero went too. She leaves. There was a fire silver smoke.
+"No one and losing herself and said the maester gorne a moment."
+Ser Robin King Joffrey, though for a bolt of the wind and a sword with your brothers and frozen too far
 and after he was finished the wine and a chainmail. They plotted hands, he had habit for her, slid unknowable,
 \newline}
 \end{displayquote}
@@ -569,22 +571,22 @@ and after he was finished the wine and a chainmail. They plotted hands, he had h
 \textit{
 Page 776
 \newline\newline
-"From is no tears, and began to gather himself that be well sited and a watch benches can't say, mercy 
-for him to her here. They say me have made more distinct that after another, and seized her. One was 
-many too. His neck and danced into the solar, like the other. He staggered him and something else the sky began, the blankets. The walls 
-son was dry jests. Lord Mormont feebly. I am many horses. Not only was not sorry he had no heed her a 
-moment. I saw his castle, but he thought of his personal emblem. He might have been long and the hall grey 
-mantle opened the outer was never been so heavily he saw no sign of Craven she said of a shadowcat and her smiled 
-looked candle had deflowered, a chunk of bread. "And count. It's not here, eating was a handsome unscathed. 
-Merrett had no one had no more than one faint below into deformed longsword inch ones in the castle, and looked 
-the boots rode over the same silver, for the golden before and brighter from his bedchamber was deeply leather 
-courtesies, and the rest. The red woman was pleased with his wings, of consume us, this is a bill of a 
-single torch, and was a sour on her tongue. It had once the continued until he could close over about 
-a slave chose his true brothers. You know, but the first time my nose to her feet. 
-There was nothing in the walls of it was plain, if defeating into forging from the crown for another. 
-She just another two shoved her own. He has been standing at the dwarf's penny. "You spoke to get a pleasure 
-steward, the sooner. It was when the horses had more screaming and the gods but the look on the causeway 
-the boy chance with the ice where it myself shall, she thought even say her name. No doubt he had gone 
+"From is no tears, and began to gather himself that be well sited and a watch benches can't say, mercy
+for him to her here. They say me have made more distinct that after another, and seized her. One was
+many too. His neck and danced into the solar, like the other. He staggered him and something else the sky began, the blankets. The walls
+son was dry jests. Lord Mormont feebly. I am many horses. Not only was not sorry he had no heed her a
+moment. I saw his castle, but he thought of his personal emblem. He might have been long and the hall grey
+mantle opened the outer was never been so heavily he saw no sign of Craven she said of a shadowcat and her smiled
+looked candle had deflowered, a chunk of bread. "And count. It's not here, eating was a handsome unscathed.
+Merrett had no one had no more than one faint below into deformed longsword inch ones in the castle, and looked
+the boots rode over the same silver, for the golden before and brighter from his bedchamber was deeply leather
+courtesies, and the rest. The red woman was pleased with his wings, of consume us, this is a bill of a
+single torch, and was a sour on her tongue. It had once the continued until he could close over about
+a slave chose his true brothers. You know, but the first time my nose to her feet.
+There was nothing in the walls of it was plain, if defeating into forging from the crown for another.
+She just another two shoved her own. He has been standing at the dwarf's penny. "You spoke to get a pleasure
+steward, the sooner. It was when the horses had more screaming and the gods but the look on the causeway
+the boy chance with the ice where it myself shall, she thought even say her name. No doubt he had gone
 dark. On around him.}
 \end{displayquote}
 
@@ -592,18 +594,18 @@ While the text may not make sense it certainly follows the style, syntax and wri
 \newpage
 \subsection{Metric Results}
 
-In this section, the results of both algorithms are shown with the purpose of doing an evaluation of how much similar the results are to the original inputs.  According to section \ref{aboutSamples}, similarity between texts can be computed using a local context or a global one. The following subsections show results for both contexts.
+In this section, the results of both algorithms are shown with the purpose of doing an evaluation of how much similar the results are to the original inputs.  According to section \ref{aboutSamples}, similarity between texts can be computed using a local stage or a global one. The following subsections show the results for both stages.
 
 \subsubsection{Local similarity}
 
-Tables \ref{tab:localchi}, \ref{tab:localtotal} and \ref{tab:localjaccard} show local similarity results. 
+Tables \ref{tab:localchi}, \ref{tab:localtotal} and \ref{tab:localjaccard} show local similarity results.
 
 \begin{table}[!hbt]
 	\begin{center}
 		{\caption{Chi Squared Results (Local similarity).}\label{tab:localchi}}
 		\begin{tabular}{|l|l|l|}\hline
 			&\textbf{PAQ8L} & \textbf{RNN}\\ \hline
-			Game of Thrones & 47790 & \textbf{44935} \\ 
+			Game of Thrones & 47790 & \textbf{44935} \\
 			Harry Potter & \textbf{46195} & 83011 \\
 			Paulo Coelho & \textbf{45821} & 86854 \\
 			Bible & \textbf{47833} & 52898 \\
@@ -639,21 +641,21 @@ Tables \ref{tab:localchi}, \ref{tab:localtotal} and \ref{tab:localjaccard} show 
 		{\caption{Jaccard Similarity (Local similarity).}\label{tab:localjaccard}}
 		\begin{tabular}{|l|l|l|}\hline
 			&\textbf{PAQ8L} & \textbf{RNN}\\ \hline
-			Game of Thrones & 0.06118 & \textbf{0.0638} \\
+			Game of Thrones & \textbf{0.0692} & 0.0608 \\
 			Harry Potter &  \textbf{0.1095} & 0.0387 \\f
 			Paulo Coelho &  \textbf{0.0825} & 0.0367 \\
 			Bible &  \textbf{0.1419} & 0.1310 \\
 			Poe & 	0.0602 & \textbf{0.0605} \\
-			Shakespeare & 0.0333 & \textbf{0.04016} \\
-			Math Collection & \textbf{0.21} & 0.1626 \\
+			Shakespeare & \textbf{0.0470} & 0.0295 \\
+			Math Collection & \textbf{0.2100} & 0.1626 \\
 			War and Peace & \textbf{0.0753} & 0.0689 \\
 			Linux Kernel & \textbf{0.0738} & 0.0713 \\ \hline
 		\end{tabular}
 	\end{center}
 \end{table}
-In order to understand how tables must be read, consider as an example the first row of Table \ref{tab:localchi}. In such table, the metric Chi Squared has been used within a local context. As you could see in section \ref{chisquare}, lower values mean that there is more similarity between two texts. The value 44935 (RNN) is lower than the value 47790 (PAQ8L) and it means that a RNN samples more similar results to the input text than a PAQ8L compressor. 
+In order to understand how tables must be read, consider as an example the first row of Table \ref{tab:localjaccard}. In such table, the Jaccard Similarity has been used within a local stage. As you could see in section \ref{subjaccard}, higher values mean that there is more similarity between two texts. The value 0.0692 (PAQ) is higher than 0.0608 (RNN) and it means that given local stage and Jaccard Similarity, PAQ samples are more similar to the input text than the RNN's ones.
 
-It can be noticed that the results obtained using a PAQ compression algorithm are better than the ones obtained by the RNN execpting Poe, Shakespare and Game of Thrones because of a subtle reason that will be explained in the conclusions.
+It can be noticed that the results obtained using a PAQ compression algorithm are better than the ones obtained by the RNN execepting Poe and Game of Thrones.
 \subsubsection{Global similarity}
 The Recurrent Neural Network got better results in global contexts. The results are shown in Tables \ref{tab:globalchi}, \ref{tab:globaltotal} and \ref{tab:globaljaccard}
 
@@ -662,7 +664,7 @@ The Recurrent Neural Network got better results in global contexts. The results 
 		{\caption{Chi Squared Results (Global similarity).}\label{tab:globalchi}}
 		\begin{tabular}{|l|l|l|}\hline
 			&\textbf{PAQ8L} & \textbf{RNN}\\ \hline
-			Game of Thrones & \textbf{60541} & 62514 \\ 
+			Game of Thrones & \textbf{60541} & 62514 \\
 			Harry Potter & \textbf{66008} & 363711 \\
 			Paulo Coelho & \textbf{67846} & 255951 \\
 			Bible & 838686 & \textbf{70258} \\
@@ -713,21 +715,23 @@ The Recurrent Neural Network got better results in global contexts. The results 
 \newpage
 \section{Conclusions}
 
-In the sentiment analysis task, an improvement using PAQ over a Neural Network is noticed. A Data Compression algorithm has the intelligence to understand text up to the point of being able to predict its sentiment with similar or better results than the state of the art in sentiment analysis. In some cases the precision improvement was up to 6\% which is a lot. 
+In the sentiment analysis task, an improvement using PAQ over a Neural Network is noticed. A Data Compression algorithm has the intelligence to understand text up to the point of being able to predict its sentiment with similar or better results than the state of the art in sentiment analysis. In some cases the precision improvement was up to 6\% which is a lot.
 
 Sentiment analysis is a predictive task, the goal is to predict sentiment based on previously seen samples for both positive and negative sentiment, in this regard a compression algorithm seems to be a better predictor than a RNN.
 
-In the text generation task, the use of a right seed is needed for PAQ algorithm to be able to generate useful text, this was evident in the Bible example. This result is consistent with the sentiment analysis result because the seed is acting like the previously seen reviews, if it is not in sync with the text then the results will not be similar to the original one. 
+In the text generation task, the use of a right seed is needed for PAQ algorithm to be able to generate useful text, this was evident in the Bible example. This result is consistent with the sentiment analysis result because the seed is acting like the previously seen reviews, if it is not in sync with the text then the results will not be similar to the original one.
 
-Considering that, PAQ learns from the previously seen text and creates a model that is optimal for predicting what is next, that is why it works so well for Data Compression or generating local sampling. The text generated by a RNN looks in general better than the Data Compressor's, but if specific paragraphs are generated, PAQ is clearly better. 
+Considering that, PAQ learns from the previously seen text and creates a model that is optimal for predicting what is next, that is why it works so well for Data Compression or generating new local samples.
 
-On the other hand, the RNN is a great imitator of what it learned, it can replicate style, syntax and other writing conventions with a surprising level of detail but what the RNN generates is based on the whole text used for training without weighting recent text as more relevant. In this sense, the RNN is better for random text generation while the Compression algorithm should be better for random text extension or completion.
+On the other hand, the RNN imitates what it has learned, it can replicate style, syntax and other writing conventions with a surprising level of detail, obtaining a result based on the whole training set without weighting recent text as more relevant. In other words, the text generated by the RNN looks in general better than the Data Compressor's, but if specific paragraphs are generated, PAQ is clearly superior. In this sense, the RNN is better for random text generation while the Compression algorithm should be better for random text extension or completion.
 
 Suppose the text of Romeo \& Juliet is located at the end of William Shakespeare's works and then both algorithms use them to generate a sample. As a consequence, PAQ would create a new paragraph of Romeo and Juliet whereas the RNN would generate a Shakespeare-like piece of text. \textit{Data Compressors are better for local predictions and RNNs are better for global predictions.}
 
+\begin{comment}
 Accordingly, PAQ and the RNN obtained different results for the different training tests on Automatic Text Generation. PAQ struggled with "Poe" but was outstanding with "Coelho" and "Harry Potter". What really happened was that it was measured how predictable the last piece of each text was! When the text is not predictable enough, PAQ will be defeated in local similarity by the RNN's ability to imitate. This can be used as a wonderful tool to evaluate the predictability of different authors comparing if the Compressor or the RNN works better on this task. In our experiment it was concluded that Coelho is more predictable than Poe and it makes all the sense in the world!
+\end{comment}
 
-As our final conclusion it was shown that Data Compression algorithms show rational behaviour and they predict with high accuracy what will follow, based on what they have learnt recently. RNNs learn a global model from the training data and can then replicate it. That is why Data Compression algorithms are great \textit{predictors} while Recurrent Neural Networks are great \textit{imitators}. Depending on which ability is needed one or the other may provide the better results. 
+As our final conclusion it was shown that Data Compression algorithms show rational behaviour and they predict with high accuracy what will follow, based on what they have learnt recently. RNNs learn a global model from the training data and can then replicate it. That is why Data Compression algorithms are great \textit{predictors} while Recurrent Neural Networks are great \textit{imitators}. Depending on which ability is needed one or the other may provide the better results.
 
 \section{Future Work}
 
@@ -738,11 +742,11 @@ We have also shown that the difference between a Compressor and a RNN can be use
 \section*{Acknowledgements}
 This research was supported by Universidad de Buenos Aires. We thank our colleagues who provided insight and expertise that greatly assisted the research.
 \newline
+
+We thank researchers from Argentine Symposium of Artificial Intelligence for comments that greatly improved the manuscript.
 \newline
-We thank researchers from Argentine Symposium of Artificial Intelligence for comments that greatly improved the manuscript. 
-\newline
-\newline
-We would also like to show our gratitude to Dr. Matt Mahoney for sharing his knowledge in compression algorithms. We are also immensely grateful to Dr. Alex Graves for his comments on an earlier attempt to make handwriting recognition with PAQ compressor
+
+We would also like to show our gratitude to Dr. Matt Mahoney for sharing his knowledge in compression algorithms. We are also immensely grateful to Dr. Alex Graves for his comments on an earlier attempt to make handwriting recognition with PAQ compressor.
 
 \nocite{*}
 \bibliographystyle{plain}
