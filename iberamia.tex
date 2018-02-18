@@ -646,15 +646,15 @@ Tables \ref{tab:localchi}, \ref{tab:localtotal} and \ref{tab:localjaccard} show 
 			Bible &  \textbf{0.1419} & 0.1310 \\
 			Poe & 	0.0602 & \textbf{0.0605} \\
 			Shakespeare & 0.0333 & \textbf{0.04016} \\
-			Math Collection & \textbf{0.21} & 0.1626 \\
+			Math Collection & \textbf{0.2100} & 0.1626 \\
 			War and Peace & \textbf{0.0753} & 0.0689 \\
 			Linux Kernel & \textbf{0.0738} & 0.0713 \\ \hline
 		\end{tabular}
 	\end{center}
 \end{table}
-In order to understand how tables must be read, consider as an example the first row of Table \ref{tab:localchi}. In such table, the metric Chi Squared has been used within a local context. As you could see in section \ref{chisquare}, lower values mean that there is more similarity between two texts. The value 44935 (RNN) is lower than the value 47790 (PAQ8L) and it means that a RNN samples more similar results to the input text than a PAQ8L compressor. 
+In order to understand how tables must be read, consider as an example the first row of Table \ref{tab:localjaccard}. In such table, the Jaccard Similarity has been used within a local stage. As you could see in section \ref{subjaccard}, higher values mean that there is more similarity between two texts. The value 0.0638 (RNN) is higher than 0.06118 (PAQ) and it means that given local stage and Jaccard Similarity, RNN samples are more similar to the input text than the PAQ's ones.
 
-It can be noticed that the results obtained using a PAQ compression algorithm are better than the ones obtained by the RNN execpting Poe, Shakespare and Game of Thrones because of a subtle reason that will be explained in the conclusions.
+It can be noticed that the results obtained using PAQ compression algorithm are better than the ones obtained by the RNN execepting Poe and Game of Thrones.
 \subsubsection{Global similarity}
 The Recurrent Neural Network got better results in global contexts. The results are shown in Tables \ref{tab:globalchi}, \ref{tab:globaltotal} and \ref{tab:globaljaccard}
 

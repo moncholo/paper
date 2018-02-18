@@ -54,9 +54,8 @@ Alison~L. Gibbs and Francis~Edward Su.
 \bibitem{Graves}
 Alex Graves.
 \newblock Generating sequences with recurrent neural networks.
-\newblock
-  \url{https://pdfs.semanticscholar.org/dcc3/26daee87e74bbe962b85fea13343819f58cc.pdf},
-  June 2014.
+\newblock \url{https://arxiv.org/pdf/1308.0850.pdf}, June 2014.
+\newblock arXiv:1308.0850v5.
 
 \bibitem{Gregor}
 Karol Gregor, Ivo Danihelka, Alex Graves, Danilo~Jimenez Rezende, and Daan
@@ -67,9 +66,9 @@ Karol Gregor, Ivo Danihelka, Alex Graves, Danilo~Jimenez Rezende, and Daan
   Learning.
 
 \bibitem{Grunwald}
-Peter Grunwald.
-\newblock A tutorial introduction to the minimum description length principle.
-\newblock \url{https://homepages.cwi.nl/~pdg/ftp/mdlintro.pdf}, June 2004.
+Peter Gr{\"u}nwald.
+\newblock {\em The Minimum Description Length Principle}, pages 3--22.
+\newblock Massachusetts Institute of Technology, 2007.
 
 \bibitem{Hochreiter}
 Sepp Hochreiter and J{\"u}rgen Schmidhuber.
@@ -82,7 +81,14 @@ Andrej Karpathy.
 \newblock \url{ http://karpathy.github.io/2015/05/21/rnn-effectiveness/}, May
   2015.
 
-\bibitem{Ratsaby}
+\bibitem{fromimitation}
+Juan~Andres Laura, Gabriel~Omar Masi, and Luis Argerich.
+\newblock From imitation to prediction, data compression vs recurrent neural
+  networks for natural language processing.
+\newblock {\em 46JAIIO - ASAI}, pages 72--79, 2017.
+\newblock ISSN: 2451-7585.
+
+\bibitem{Vitany2}
 Ming Li and Paul Vitanyi.
 \newblock On prediction by data compression.
 \newblock \url{
