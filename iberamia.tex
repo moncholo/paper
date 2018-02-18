@@ -406,7 +406,6 @@ Total variation distance \cite{Variation} can be computed according to the follo
 \end{equation}
 
 In other words, the total variation distance is the largest possible difference between the probabilities that two probability distributions can assign to the same event. As shown in section \ref{chisquare}, the closer the value is to zero, the more similarity there will be between the input text and the sampled one. A value of 0 means equality. This metric is computed using 4-grams.
-Karpathy
 \subsubsection{Generalized Jaccard Similarity}\label{subjaccard}
 
 It is the size of the intersection divided by the size of the union of the sample sets \cite{Chierichetti}. Jaccard Similarity is computed using the following formula:
@@ -641,21 +640,21 @@ Tables \ref{tab:localchi}, \ref{tab:localtotal} and \ref{tab:localjaccard} show 
 		{\caption{Jaccard Similarity (Local similarity).}\label{tab:localjaccard}}
 		\begin{tabular}{|l|l|l|}\hline
 			&\textbf{PAQ8L} & \textbf{RNN}\\ \hline
-			Game of Thrones & \textbf{0.0692} & 0.0608 \\
+			Game of Thrones & 0.06118 & \textbf{0.0638} \\
 			Harry Potter &  \textbf{0.1095} & 0.0387 \\f
 			Paulo Coelho &  \textbf{0.0825} & 0.0367 \\
 			Bible &  \textbf{0.1419} & 0.1310 \\
 			Poe & 	0.0602 & \textbf{0.0605} \\
-			Shakespeare & \textbf{0.0470} & 0.0295 \\
-			Math Collection & \textbf{0.2100} & 0.1626 \\
+			Shakespeare & 0.0333 & \textbf{0.04016} \\
+			Math Collection & \textbf{0.21} & 0.1626 \\
 			War and Peace & \textbf{0.0753} & 0.0689 \\
 			Linux Kernel & \textbf{0.0738} & 0.0713 \\ \hline
 		\end{tabular}
 	\end{center}
 \end{table}
-In order to understand how tables must be read, consider as an example the first row of Table \ref{tab:localjaccard}. In such table, the Jaccard Similarity has been used within a local stage. As you could see in section \ref{subjaccard}, higher values mean that there is more similarity between two texts. The value 0.0692 (PAQ) is higher than 0.0608 (RNN) and it means that given local stage and Jaccard Similarity, PAQ samples are more similar to the input text than the RNN's ones.
+In order to understand how tables must be read, consider as an example the first row of Table \ref{tab:localchi}. In such table, the metric Chi Squared has been used within a local context. As you could see in section \ref{chisquare}, lower values mean that there is more similarity between two texts. The value 44935 (RNN) is lower than the value 47790 (PAQ8L) and it means that a RNN samples more similar results to the input text than a PAQ8L compressor. 
 
-It can be noticed that the results obtained using a PAQ compression algorithm are better than the ones obtained by the RNN execepting Poe and Game of Thrones.
+It can be noticed that the results obtained using a PAQ compression algorithm are better than the ones obtained by the RNN execpting Poe, Shakespare and Game of Thrones because of a subtle reason that will be explained in the conclusions.
 \subsubsection{Global similarity}
 The Recurrent Neural Network got better results in global contexts. The results are shown in Tables \ref{tab:globalchi}, \ref{tab:globaltotal} and \ref{tab:globaljaccard}
 
@@ -664,7 +663,7 @@ The Recurrent Neural Network got better results in global contexts. The results 
 		{\caption{Chi Squared Results (Global similarity).}\label{tab:globalchi}}
 		\begin{tabular}{|l|l|l|}\hline
 			&\textbf{PAQ8L} & \textbf{RNN}\\ \hline
-			Game of Thrones & \textbf{60541} & 62514 \\
+			Game of Thrones & \textbf{60541} & 62514 \\ 
 			Harry Potter & \textbf{66008} & 363711 \\
 			Paulo Coelho & \textbf{67846} & 255951 \\
 			Bible & 838686 & \textbf{70258} \\
